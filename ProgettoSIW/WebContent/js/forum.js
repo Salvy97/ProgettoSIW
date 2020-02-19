@@ -105,8 +105,8 @@ $(document).ready(function()
 	{
 		$.each(data, function(key, value)
 		{
-			$("body").css('background-image', 'url("' + value.locandina +'")');
-			$("#locandinaContenuto").append('<img src="'+ value.locandina + '" width="100%"/>');
+			$("body").css('background-image', 'url("' + value.immagineForum +'")');
+			$("#locandinaContenuto").append('<img src="'+ value.immagineForum + '" width="100%"/>');
 		})
 	})
 });

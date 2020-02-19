@@ -52,15 +52,32 @@
 	      		</div>
 	      		<div class="collapse navbar-collapse" id="navbarResponsive">
 	      			<ul class="navbar-nav lg-auto ml-auto sg-auto">
-	          			<li class="nav-item">
-	            			<a class="nav-link" href="#">Login</a>
-	          			</li>
-	          			<li class="nav-item">
-	            			<a class="nav-link" href="#">Sign up</a>
-	          			</li>
-	          			<li class="nav-item">
-	          				<a class="nav-link" href="#">&#128100;</a>
-	          			</li>
+            			<c:choose>
+						    <c:when test="${sessionScope.name!=null}">
+							    <li class="nav-item">
+						        	<span class="btn btn-outline-primary">${sessionScope.name}</span>
+						        </li>
+							    <div class="dropdown">
+							        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									    &#128100;
+									</button>
+							        <div class="dropdown-menu">
+							        	<h6 class="dropdown-header">${sessionScope.name}</h6>
+							        	<div class="dropdown-divider"></div>
+							            <a href="${pageContext.request.contextPath}/user" class="dropdown-item">Profilo</a>
+							            <a href="LogoutServlet" class="dropdown-item">Logout</a>
+							        </div>
+							    </div>
+						    </c:when>    
+						    <c:otherwise>
+						    	<li class="nav-item">
+						        	<a class="nav-link" href="ottieniLogin"><span class="btn btn-outline-success">Login</span></a>
+						        </li>
+						        <li class="nav-item">
+			            			<a class="nav-link" href="ottieniRegistration"><span class="btn btn-outline-danger">Sign up</span></a>
+			          			</li>
+						    </c:otherwise>
+						</c:choose>
 	        		</ul>
 	    		</div>
 	    	</div>

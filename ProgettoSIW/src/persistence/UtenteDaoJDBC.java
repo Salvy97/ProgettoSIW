@@ -15,8 +15,37 @@ public class UtenteDaoJDBC implements UtenteDAO {
 		this.dataSource = dataSource;
 	}
 
-	public void save(Utente utente) {
-		// to be...
+	public void save(Utente utente) 
+	{
+		Connection connection = null;
+		try 
+		{
+			connection = this.dataSource.getConnection();
+			PreparedStatement statement;
+			String query = "insert into utente(username, email, password, nome, cognome) values (?,?,?,?,?)";
+			statement = connection.prepareStatement(query);
+			statement.setString(1, utente.getUsername());
+			statement.setString(2, utente.getEmail());
+			statement.setString(3, utente.getPassword());
+			statement.setString(4, utente.getNome());
+			statement.setString(5, utente.getCognome());
+			statement.executeUpdate();
+		}
+		catch (SQLException e) 
+		{
+			throw new PersistenceException(e.getMessage());
+		} 
+		finally 
+		{
+			try 
+			{
+				connection.close();
+			} 
+			catch (SQLException e) 
+			{
+				throw new PersistenceException(e.getMessage());
+			}
+		}
 	}
 
 	public Utente findByPrimaryKey(int id) {
@@ -33,12 +62,13 @@ public class UtenteDaoJDBC implements UtenteDAO {
 				utente = new Utente();
 				utente.setId(result.getInt("id"));
 				utente.setUsername(result.getString("username"));
-				utente.setHash(result.getString("hash"));
 				utente.setRole(result.getString("ruolo"));
 				utente.setUsernamePP(result.getString("username_pp"));
 				utente.setAutoRenew(result.getBoolean("autorenew"));
 				utente.setEmail(result.getString("email"));
 				utente.setPassword(result.getString("password"));
+				utente.setPassword(result.getString("nome"));
+				utente.setPassword(result.getString("cognome"));
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -61,16 +91,17 @@ public class UtenteDaoJDBC implements UtenteDAO {
 		Connection connection = null;
 	    try {
 	      connection = this.dataSource.getConnection();
-	      String update = "UPDATE public.utente SET username = ?, hash = ?, ruolo = ?, autorenew = ?, username_pp = ?, email = ?, password = ? WHERE id = ? ";
+	      String update = "UPDATE public.utente SET username = ?, ruolo = ?, autorenew = ?, username_pp = ?, email = ?, password = ?, nome = ?, cognome = ? WHERE id = ? ";
 	      PreparedStatement statement = connection.prepareStatement(update);
 	      statement.setString(1, utente.getUsername());
-	      statement.setString(2, utente.getHash());
 	      statement.setString(3, utente.getRole());
 	      statement.setBoolean(4, utente.getAutoRenew());
 	      statement.setString(5, utente.getUsernamePP());
 	      statement.setInt(6, utente.getId());
 	      statement.setString(7, utente.getEmail());
 	      statement.setString(8, utente.getPassword());
+	      statement.setString(9, utente.getNome());
+	      statement.setString(10, utente.getCognome());
 	      statement.executeUpdate();
 	    } catch (SQLException e) {
 	      throw new RuntimeException(e.getMessage());
@@ -101,12 +132,13 @@ public class UtenteDaoJDBC implements UtenteDAO {
 				utente = new Utente();
 				utente.setId(result.getInt("id"));
 				utente.setUsername(result.getString("username"));
-				utente.setHash(result.getString("hash"));
 				utente.setRole(result.getString("ruolo"));
 				utente.setUsernamePP(result.getString("username_pp"));
 				utente.setAutoRenew(result.getBoolean("autorenew"));
 				utente.setEmail(result.getString("email"));
 				utente.setPassword(result.getString("password"));
+				utente.setNome(result.getString("nome"));
+				utente.setCognome(result.getString("cognome"));
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());

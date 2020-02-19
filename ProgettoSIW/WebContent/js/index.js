@@ -28,9 +28,9 @@ $(document).ready(function(){
 
 function checkIfLogged()
 {
-	var role = document.getElementById("role").value;
+	var name = document.getElementById("name").value;
 	
-	if (role == "null")
+	if (name == "null")
 		alert("Devi essere autenticato per discutere un contenuto.");
 	else
 		location.href = "cercaContenuto.jsp";

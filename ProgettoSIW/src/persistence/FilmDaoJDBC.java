@@ -22,7 +22,7 @@ class FilmDaoJDBC implements FilmDao {
 		Connection connection = this.dataSource.getConnection();
 		try {
 			String insert = "insert into film(titolo, anno,"
-					+ " durata, genere, locandina, filmato) values (?,?,?,?,?,?)";
+					+ " durata, genere, locandina, filmato, regista, immagine_forum) values (?,?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setInt(1, film.getId_film());
 			statement.setString(2, film.getTitolo());
@@ -31,6 +31,7 @@ class FilmDaoJDBC implements FilmDao {
 			statement.setString(5, film.getGenere());
 			statement.setString(6, film.getLocandina());
 			statement.setString(7, film.getRegista());
+			statement.setString(8, film.getImmagineForum());
 
 			
 			statement.executeUpdate();
@@ -63,6 +64,7 @@ class FilmDaoJDBC implements FilmDao {
 				film.setGenere(result.getString("genere"));
 				film.setLocandina(result.getString("locandina"));
 				film.setFilmato(result.getString("filmato"));
+				film.setImmagineForum(result.getString("immagine_forum"));
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -97,6 +99,7 @@ class FilmDaoJDBC implements FilmDao {
 				film.setDurata(result.getInt("durata"));
 				film.setGenere(result.getString("genere"));
 				film.setLocandina(result.getString("locandina"));
+				film.setImmagineForum(result.getString("immagine_forum"));
 				
 				if (film.getTitolo().toUpperCase().contains(title.toUpperCase()))
 					films.add(film);
@@ -138,7 +141,7 @@ class FilmDaoJDBC implements FilmDao {
 				film.setGenere(result.getString("genere"));
 				film.setLocandina(result.getString("locandina"));
 				film.setRegista(result.getString("regista"));
-
+				film.setImmagineForum(result.getString("immagine_forum"));
 				
 				films.add(film);
 			}
@@ -173,6 +176,7 @@ class FilmDaoJDBC implements FilmDao {
 				film.setGenere(result.getString("genere"));
 				film.setLocandina(result.getString("locandina"));
 				film.setRegista(result.getString("regista"));
+				film.setImmagineForum(result.getString("immagine_forum"));
 				
 				films.add(film);
 			}
@@ -208,7 +212,7 @@ class FilmDaoJDBC implements FilmDao {
 				film.setGenere(result.getString("genere"));
 				film.setLocandina(result.getString("locandina"));
 				film.setRegista(result.getString("regista"));
-
+				film.setImmagineForum(result.getString("immagine_forum"));
 				
 				films.add(film);
 			}
@@ -243,6 +247,7 @@ class FilmDaoJDBC implements FilmDao {
 				film.setGenere(result.getString("genere"));
 				film.setLocandina(result.getString("locandina"));
 				film.setRegista(result.getString("regista"));
+				film.setImmagineForum(result.getString("immagine_forum"));
 				
 				films.add(film);
 			}
@@ -277,6 +282,7 @@ class FilmDaoJDBC implements FilmDao {
 				film.setLocandina(result.getString("locandina"));
 				film.setRegista(result.getString("regista"));
 				film.setData_inserimento(result.getDate("data_inserimento"));
+				film.setImmagineForum(result.getString("immagine_forum"));
 				
 				films.add(film);
 			}
@@ -312,6 +318,7 @@ class FilmDaoJDBC implements FilmDao {
 				film.setRegista(result.getString("regista"));
 				film.setData_inserimento(result.getDate("data_inserimento"));
 				film.setVisualizzazioni(result.getInt("visualizzazioni"));
+				film.setImmagineForum(result.getString("immagine_forum"));
 				
 				films.add(film);
 			}
@@ -375,6 +382,7 @@ class FilmDaoJDBC implements FilmDao {
 				film.setRegista(result.getString("regista"));
 				film.setFilmato(result.getString("filmato"));
 				film.setVisualizzazioni(result.getInt("visualizzazioni"));
+				film.setImmagineForum(result.getString("immagine_forum"));
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());

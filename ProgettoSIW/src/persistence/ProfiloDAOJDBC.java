@@ -22,17 +22,13 @@ public class ProfiloDAOJDBC implements ProfiloDAO
 		try 
 		{
 			String insert = "insert into profilo(username, contenuti_guardati,"
-					+ " posts_creati, recensioni_effettuate, immagine_di_profilo, email, nome,"
-					+ " cognome) values (?,?,?,?,?,?,?,?)";
+					+ " posts_creati, recensioni_effettuate, immagine_di_profilo) values (?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, profilo.getUsername());
-			statement.setInt(2, profilo.getContenutiGuardati());
-			statement.setInt(3, profilo.getPostsCreati());
-			statement.setInt(4, profilo.getRecensioniEffettuate());
-			statement.setString(5, profilo.getImmagineDiProfilo());
-			statement.setString(6, profilo.getEmail());
-			statement.setString(7, profilo.getNome());
-			statement.setString(8, profilo.getCognome());
+			statement.setInt(2, 0);
+			statement.setInt(3, 0);
+			statement.setInt(4, 0);
+			statement.setString(5, "images/noProfilePicture.png");
 			statement.executeUpdate();
 		} 
 		catch (SQLException e) 

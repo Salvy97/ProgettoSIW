@@ -91,9 +91,12 @@
 	    <div class="container">
 		
 			<div class="signup-form">
-			    <form action="RegistrationServlet" method="post">
+			    <form action="signUp" method="post">
 					<h2>Register</h2>
 					<p class="hint-text">Crea il tuo account. E' gratuito e richiede solo pochi minuti.</p>
+			        <div class="form-group">
+			        	<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+			        </div>
 			        <div class="form-group">
 						<div class="row">
 							<div class="col-xs-6 col-sm-6 col-md-6"><input type="text" class="form-control" name="first_name" placeholder="Nome" required="required"></div>

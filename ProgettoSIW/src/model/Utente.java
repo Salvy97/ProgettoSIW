@@ -1,6 +1,7 @@
 package model;
 
-public class Utente {
+public class Utente 
+{
 	private int id;
 	private String username;
 	private String role;
@@ -10,6 +11,8 @@ public class Utente {
 	private Boolean autoRenew;
 	private String email;
 	private String password;
+	private String nome;
+	private String cognome;
 	
 	public Boolean getAutoRenew() {
 		return autoRenew;
@@ -78,5 +81,21 @@ public class Utente {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCognome() {
+		return cognome;
+	}
+
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
 	}
 }

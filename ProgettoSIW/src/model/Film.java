@@ -2,7 +2,8 @@ package model;
 
 import java.sql.Date;
 
-public class Film {
+public class Film 
+{
 	private int id_film;
 	private String titolo;
 	private int anno;
@@ -10,15 +11,14 @@ public class Film {
 	private String genere;
 	private String locandina;
 	private String regista;
-	
 	private String filmato;
 	private Date data_inserimento;
 	private int visualizzazioni;
+	private String immagineForum;
 
-
-	public Film(){}
+	public Film() {}
 	
-	public Film(int id_film,String titolo,int anno,int durata,String genere,String locandina, String regista, String filmato, Date data_inserimento, int visualizzazioni){
+	public Film(int id_film,String titolo,int anno,int durata,String genere,String locandina, String regista, String filmato, Date data_inserimento, int visualizzazioni, String immagineForum){
 		this.id_film = id_film;
 		this.titolo = titolo;
 		this.anno = anno;
@@ -29,6 +29,7 @@ public class Film {
 		this.filmato = filmato;
 		this.data_inserimento = data_inserimento;
 		this.visualizzazioni = visualizzazioni;
+		this.immagineForum = immagineForum;
 	}
 	
 
@@ -110,6 +111,14 @@ public class Film {
 
 	public void setVisualizzazioni(int visualizzazioni) {
 		this.visualizzazioni = visualizzazioni;
+	}
+
+	public String getImmagineForum() {
+		return immagineForum;
+	}
+
+	public void setImmagineForum(String immagineForum) {
+		this.immagineForum = immagineForum;
 	}
 
 }

@@ -47,10 +47,10 @@
 		            		<a class="nav-link" href="ottieniSerieTV">Serie TV</a>
 		          		</li>
 		          		<li class="nav-item">
-		            		<a class="nav-link" href="#">Forum</a>
+		            		<a class="nav-link" href="cercaContenuto.jsp">Forum</a>
 		          		</li>
 		         		<li class="nav-item">
-		            		<a class="nav-link" href="#">Contatti</a>
+		            		<a class="nav-link" href="contatti.jsp">Contatti</a>
 		          		</li>
 		        	</ul>
 	      		</div>

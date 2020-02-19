@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import model.Post;
-import model.Utente;
 import persistence.DatabaseManager;
 import persistence.dao.FilmDao;
 import persistence.dao.PostDao;
@@ -34,7 +32,7 @@ public class CreaPost extends HttpServlet
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");  
 		String data = dateFormat.format(today).substring(0, 10);
 		String ora = dateFormat.format(today).substring(11);
-		String username = ((Utente)session.getAttribute("user")).getUsername();
+		String username = (String) session.getAttribute("name");
 		
 		Post post = new Post();
 		

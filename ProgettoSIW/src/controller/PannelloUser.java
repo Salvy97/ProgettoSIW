@@ -17,7 +17,6 @@ public class PannelloUser extends HttpServlet
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
 		RequestDispatcher rd = req.getRequestDispatcher("ottieniIndex");
-		String role = (String) req.getSession(false).getAttribute("role");
 		String username = (String) req.getSession(false).getAttribute("name");
 		if (username != null) 
 		{
