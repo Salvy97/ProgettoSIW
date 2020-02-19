@@ -10,9 +10,6 @@ import persistence.dao.SerieTVDao;
 import persistence.dao.SottoscrizioneDAO;
 import persistence.dao.StagioneDao;
 import persistence.dao.UtenteDAO;
-import persistence.dao.jdbc.AbbonamentoDaoJDBC;
-import persistence.dao.jdbc.SottoscrizioneDaoJDBC;
-import persistence.dao.jdbc.UtenteDaoJDBC;
 
 class PostgresDAOFactory extends DAOFactory {
 
@@ -72,11 +69,6 @@ class PostgresDAOFactory extends DAOFactory {
 		return new EpisodioDaoJDBC(dataSource);
 	}
 	
-	@Override
-	public UtilDao getUtilDAO(){
-		return new UtilDao(dataSource);
-	}
-
 	@Override
 	public PostDao getPostDAO() {
 		return new PostDaoJDBC(dataSource);

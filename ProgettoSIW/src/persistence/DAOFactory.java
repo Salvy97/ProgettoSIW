@@ -59,6 +59,5 @@ public abstract class DAOFactory {
   public abstract AbbonamentoDAO getAbbonamentoDAO();
   public abstract SottoscrizioneDAO getSottoscrizioneDAO();
   public abstract UtenteDAO getUtenteDAO();
-  public abstract persistence.UtilDao getUtilDAO();
   public abstract ProfiloDAO getProfiloDAO();
 }

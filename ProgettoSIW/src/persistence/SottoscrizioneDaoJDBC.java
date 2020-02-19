@@ -1,4 +1,4 @@
-package persistence.dao.jdbc;
+package persistence;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +8,6 @@ import java.util.LinkedList;
 import java.util.List;
 import model.Sottoscrizione;
 import model.Utente;
-import persistence.DatabaseManager;
-import persistence.DataSource;
 import persistence.dao.SottoscrizioneDAO;
 
 public class SottoscrizioneDaoJDBC implements SottoscrizioneDAO {

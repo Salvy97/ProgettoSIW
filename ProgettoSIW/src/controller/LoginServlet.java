@@ -1,13 +1,15 @@
 package controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Utente;
+import persistence.DatabaseManager;
+import persistence.dao.UtenteDAO;
 
 @WebServlet(value = "/LoginServlet")
 public class LoginServlet extends HttpServlet{
@@ -16,23 +18,33 @@ public class LoginServlet extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		            
-        String name=req.getParameter("username");  
-        String password=req.getParameter("password");  
-          
-        resp.sendRedirect("ottieniIndex");
+		       
+		HttpSession session = req.getSession();
+		
+        String email = req.getParameter("email");  
+        String password = req.getParameter("password");  
         
-        if(password.equals("admin123"))
-        {   
-	        HttpSession session=req.getSession();  
-	        session.setAttribute("name",name);
-	        
-	        System.out.println("Login");
+        UtenteDAO uDao = DatabaseManager.getInstance().getDaoFactory().getUtenteDAO();
+        Utente utente = uDao.findByEmail(email);
+        if (utente == null)
+        {  
+        	session.setAttribute("message", "Email errata oppure utente inesistente!");
+        	resp.sendRedirect("ottieniLogin");	
         }
         else
         {
-        	System.out.println("NO login");
+	        if (password.equals(utente.getPassword()))
+	        {   
+		        session.setAttribute("name", utente.getUsername());
+		        resp.sendRedirect("ottieniIndex");
+	        }
+	        else
+	        {
+	        	session.setAttribute("message", "Password errata!");
+	        	resp.sendRedirect("ottieniLogin");
+	        }
         }
-		
 	}
+	
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {}
 }

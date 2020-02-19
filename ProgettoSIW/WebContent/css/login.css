@@ -7,6 +7,19 @@ body, html {
   	background-attachment: fixed;
 }
 
+h1 {
+	padding-top: 36px;
+}
+
+#message {
+	margin: 0 0 15px;
+	position: relative;
+	text-align: center;
+	color: red;
+	font-weight: bold;
+	font-size: 32px;
+}
+
 #logo {
 	padding-right: 120px;
 }

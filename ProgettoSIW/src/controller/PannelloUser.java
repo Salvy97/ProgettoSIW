@@ -16,10 +16,10 @@ public class PannelloUser extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
-		RequestDispatcher rd = req.getRequestDispatcher("no.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("ottieniIndex");
 		String role = (String) req.getSession(false).getAttribute("role");
-		String username = (String) req.getSession(false).getAttribute("username");
-		if (role != null) 
+		String username = (String) req.getSession(false).getAttribute("name");
+		if (username != null) 
 		{
 			ProfiloDAO pDao = DatabaseManager.getInstance().getDaoFactory().getProfiloDAO();
 			Profilo profilo = pDao.findByUsername(username);

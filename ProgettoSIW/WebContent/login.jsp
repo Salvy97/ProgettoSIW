@@ -89,9 +89,9 @@
 	
 		<!-- Page Content -->
 	    <div class="container">
-		
-		
-		
+
+			<h1 id="message">${sessionScope.message}</h1>		
+
 			<div class="card card-container">
 	            <!-- <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
 	            <p id="profile-name" class="profile-name-card">Login</p> -->
@@ -100,7 +100,7 @@
 					<p class="hint-text">Accedi al tuo account. Inserisci email e password.</p>
 	     			
 	                <span id="reauth-email" class="reauth-email"></span>
-	                <input name="username" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+	                <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
 	                <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
 	                <div id="remember" class="checkbox">
 	                    <label>

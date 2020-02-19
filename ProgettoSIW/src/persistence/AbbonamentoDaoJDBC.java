@@ -1,4 +1,4 @@
-package persistence.dao.jdbc;
+package persistence;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,6 @@ import java.util.LinkedList;
 import java.util.List;
 import model.Abbonamento;
 import model.Utente;
-import persistence.DataSource;
 import persistence.dao.AbbonamentoDAO;
 
 public class AbbonamentoDaoJDBC implements AbbonamentoDAO {
