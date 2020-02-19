@@ -1,0 +1,13 @@
+body, html {
+	padding: 30px;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: url(../images/background.jpg);
+    background-size: cover;
+  	background-attachment: fixed;
+  	color: white;
+}
+
+#logo {
+	padding-right: 120px;
+}

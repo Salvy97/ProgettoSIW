@@ -1,0 +1,154 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Forum</title>
+		<!-- Bootstrap core CSS -->
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+		<!-- Custom styles for this template -->
+		<link href="css/forum.css" rel="stylesheet">
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+	</head>
+		
+	<body>
+		 <!-- Navigation -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	   		<div class="container">
+	      		<a class="navbar-brand" href="index.html" id="logo">
+	      			<img src="images/logo.gif"/>
+	      		</a>
+	      		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+	        		<span class="navbar-toggler-icon"></span>
+	      		</button>
+	      		<div class="collapse navbar-collapse" id="navbarResponsive">
+		        	<ul class="navbar-nav">
+		          		<li class="nav-item active">
+		          			<a class="nav-link" href="index.jsp">Home
+		              			<span class="sr-only">(current)</span>
+		            		</a>
+		          		</li>
+		          		<li class="nav-item">
+		            		<a class="nav-link" href="film.jsp">Film</a>
+		          		</li>
+		          		<li class="nav-item">
+		            		<a class="nav-link" href="#">Serie TV</a>
+		          		</li>
+		          		<li class="nav-item">
+		            		<a class="nav-link" href="cercaContenuto.jsp">Forum</a>
+		          		</li>
+		         		<li class="nav-item">
+		            		<a class="nav-link" href="#">Contatti</a>
+		          		</li>
+		        	</ul>
+	      		</div>
+	      		<div class="collapse navbar-collapse" id="navbarResponsive">
+	      			<ul class="navbar-nav lg-auto ml-auto sg-auto">
+	          			<li class="nav-item">
+	            			<a class="nav-link" href="#">Login</a>
+	          			</li>
+	          			<li class="nav-item">
+	            			<a class="nav-link" href="#">Sign up</a>
+	          			</li>
+	          			<li class="nav-item">
+	          				<a class="nav-link" href="#">&#128100;</a>
+	          			</li>
+	        		</ul>
+	    		</div>
+	    	</div>
+	    </nav>
+	    
+	   	<div class="container"> 
+		   	<div class="card row">
+		    	<div class="card-body col-lg-12 row">
+		    		<h2 class="card-title col-lg-3">
+		    			Forum
+		    		</h2>
+		    		<div class="col-lg-2"></div>
+		    		<div id="titoloContenuto" class="col-lg-5"></div>
+		    		<div class="lg-auto ml-auto sg-auto">
+		    			<button class="btn btn-success" onclick="scriviPost();">Scrivi post</button>
+		    		</div>	
+		    	</div>
+			    <div id="locandinaContenuto"></div>
+		    </div>
+	    
+		    <div class="row">
+			    <div class="card h-100 col-lg-4 col-md-6 mb-4">
+			    	<div class="card-body">
+		                <h3 class="card-title" style="color: blue;">
+		                    Ultimi Posts
+		                </h3>
+		                <c:forEach items="${posts}" var="post">
+			                <div class="post card-footer" onclick="showPost('${post.id}', '${post.username}', '${post.data}', '${post.ora}', '${post.titolo}', '${post.descrizione}', '${post.profileImage}', '${post.commenti}')">
+			                	<div class="row">	
+				                	<img class="col-lg-4" src="${post.profileImage}" width="80" height="80"/>
+					                <p id="titoloPost" class="col-lg-8 card-text">
+					                	${post.titolo}
+					                </p>
+					            </div>
+					            <div class="row">
+					            	<p id="usernamePost" class="col-lg-6">${post.username}</p>
+					            	<div id="dataPost" class="col-lg-6">${post.data}</div>
+					            </div>				  
+				            </div>
+			            </c:forEach>
+		            </div>
+			    </div>
+			   	
+			    <div class="col-lg-8 col-md-6 mb-8 card h-100">
+			    	<div class="card-body">
+			    		<div class="row">
+			    			<div class="col-lg-4">
+			    				<img id="profilePicture" src="" width="100" height="100"/>
+			    				<p id="username" style="font-size: 18px; padding-top: 10px;"></p>
+			    			</div>
+			    			<div class="lg-auto ml-auto sg-auto">
+				    			<div id="data"></div>
+				    			<p id="ora" style="text-align: right;"></p>
+				    		</div>
+			    		</div>
+			    		<div id="titolo"></div>
+			    		<hr>
+			    		<div id="descrizione"></div>
+			    		<hr>
+			    		<div id="commentiInfo"><span id="numeroCommenti"></span> Commenti</div>
+			    		<div id="commenti" class="jumbotron"></div>
+			    	</div>
+			    	<div class="card-footer">
+			    		<div class="row">
+			    			<form id="commenta" action="creaCommento" method="POST">
+				    			<input name="commento" id="commento" class="col-lg-10" placeholder="Commenta" onkeyup="updateCharNumber();"/>
+				    			<input type="hidden" name="post" id="postCommento"/>
+				    			<input type="hidden" name="contenuto" id="contenutoCommento"/>
+				    		</form>
+				    		<button class="btn btn-info col-lg-2" name="posta" style="margin: 0 10px;" onclick="commenta();">Posta</button>
+			    		</div>
+			    		<div id="showCharNumber">
+					    	<span id="currentCharNumber">0</span> / 128
+					    </div>
+			    	</div>
+			    </div>	 
+			</div>
+		</div>	
+	    
+	    <!-- Footer -->
+	    <footer class="py-4 bg-dark">
+	        <div class="container">
+	            <p class="m-0 text-right text-white">Copyright &copy; Golden Streaming 2019-2020</p>
+	        </div>
+	        <!-- /.container -->
+	    </footer>
+	
+		<!-- Bootstrap core JavaScript -->
+	 	
+	    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+	    
+	    <script src="jquery/jquery.min.js"></script>
+	    <script src="js/forum.js"></script>
+	</body>
+</html>

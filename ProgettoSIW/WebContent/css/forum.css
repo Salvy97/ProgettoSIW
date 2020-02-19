@@ -1,0 +1,127 @@
+@font-face {
+	font-family: "Montserrat";
+	src: url(../fonts/Montserrat.ttf);
+}
+
+@font-face {
+	font-family: "Raleway";
+	src: url(../fonts/Raleway.ttf);
+}
+
+body {
+	background: #909090;
+	padding-top: 60px;
+	background-size: cover;                     
+  	background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	max-width: 100%;
+  	max-height: 100%;
+  	margin: auto;
+}
+
+#logo {
+	padding-right: 120px;
+}
+
+#titoloContenuto {
+	font-family: "Montserrat";
+	font-size: 32px;
+	color: red;
+}
+
+#locandinaContenuto {
+	margin: 0 auto;
+	padding-bottom: 40px;
+}
+
+.card-text {
+	padding: 20px;
+}
+
+.card {
+	background: #eeeeee;
+}
+
+.scriviPost {
+	padding-left: 50px;
+}
+
+#cerca {
+	margin: 0 auto;
+}
+
+#ricercaContenuto {
+	padding-bottom: 20px;
+	padding-left: 20px;
+}
+
+#titoloPost {
+	font-family: "Montserrat";
+	font-size: 16px;
+	font-weight: bold;
+}
+
+#usernamePost {
+	font-family: "Raleway";
+	font-size: 14px;
+	padding-top: 12px;
+}
+
+#dataPost {
+	font-family: "Montserrat";
+	font-size: 8px;
+	font-style: italic;
+	padding-top: 12px;
+	text-align: right;
+}
+
+#username {
+	font-family: "Raleway";
+	font-size: 20px;
+	padding-top: 20px;
+}
+
+#titolo {
+	font-family: "Montserrat";
+	font-size: 24px;
+}
+
+#commentiInfo {
+	padding-top: 40px;
+	font-family: "Raleway";
+	font-size: 22px;
+}
+
+.commentDescription {
+	padding-left: 100px;
+}
+
+.commentUsername {
+	font-family: "Raleway";
+	font-size: 14px;
+	padding-top: 12px;
+	padding-bottom: 40px;
+}
+
+.lastCommentUsername {
+	font-family: "Raleway";
+	font-size: 14px;
+	padding-top: 12px;
+	padding-bottom: 0;
+}
+
+.jumbotron {
+	background-color: #cccccc;
+	padding: 20px;
+}
+
+#currentCharNumber {
+	color: green;
+}
+
+#showCharNumber {
+	font-family: "Raleway";
+	font-size: 24px;
+	font-weight: bold;
+	color: red;
+}

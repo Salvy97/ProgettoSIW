@@ -1,0 +1,177 @@
+@font-face {
+	font-family: "big_noodle_titling";
+	src: url(../fonts/big_noodle_titling.ttf);
+}
+
+@font-face {
+	font-family: "Raleway";
+	src: url(../fonts/Raleway.ttf);
+}
+
+body {
+  	padding-top: 56px;
+  	background-image: url(../images/background.jpg);
+  	background-size: cover;                     
+  	background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	max-width: 100%;
+  	max-height: 100%;
+  	margin: auto;
+}
+
+#logo {
+	padding-right: 120px;
+}
+
+#description {
+	font-family: "Raleway";
+	font-weight: bold;
+	font-size: 32px;
+	color: #ffff00;
+	padding: 10px;
+	padding-bottom: 0;
+	padding-right: 0;
+	background: #808080;
+}
+
+.leftBox {
+	padding-top: 50px;
+}
+
+#searchBox {
+	background: #909090;
+	padding: 20px;
+}
+
+#type {
+	text-align: right;
+	font-size: 16px;
+	font-weight: bold;
+	color: #0000ff;
+}
+
+.socialNetworks {
+	padding: 10px;
+	padding-top: 40px;
+}
+
+.fa:hover {
+	opacity: 0.7;
+	color: white;
+	text-decoration: none;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 80px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+.noMargin {
+	margin: 0 auto;
+}
+
+.imageContent:hover {
+	opacity: 0.7;
+}
+
+.mainCarousel {
+	padding-bottom: 60px;
+}
+
+.mostPopular.jumbotron {
+	height: 30px;
+	font-family: "big_noodle_titling";
+	color: #ff0000;
+	font-size: 32px;
+	padding-bottom: 40px;
+	padding-top: 0;
+	width: 200px;
+	margin: 0 auto;
+	background: #aaaaaa;
+}
+
+.mostWatched.jumbotron {
+	height: 30px;
+	font-family: "big_noodle_titling";
+	color: #ff0000;
+	font-size: 32px;
+	padding-bottom: 40px;
+	padding-top: 0;
+	width: 156px;
+	margin: 0 auto;
+	background: #aaaaaa;
+}
+
+.row.jumbotron {
+	padding-top: 20px;
+	padding-bottom: 0;
+	padding-left: 0;
+	padding-right: 0;
+	background: #aaaaaa;
+}
+
+#durationFilm {
+	text-align: left;
+	font-size: 14px;
+	font-weight: bold;
+	color: #0000ff;
+}
+
+#yearFilm {
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	color: #0000ff;
+}
+
+#genderFilm {
+	text-align: right;
+	font-size: 14px;
+	font-weight: bold;
+	color: #0000ff;
+}
+
+#imgCardFilm {
+	height: 350px;
+}
+
+#cardTitleFilm {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-bottom: 0px;
+	line-height: 1.5em;
+    height: 3.8em;
+    overflow: hidden;
+	/*white-space: nowrap;      /*keep text on one line */
+	/*overflow: hidden;         /*prevent text from being shown outside the border */
+	/*text-overflow: ellipsis;  /*cut off text with an ellipsis*/
+}
+
+#inputSrc {
+	margin-top: 20px;
+	margin-left: 10px;
+}

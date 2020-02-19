@@ -1,0 +1,69 @@
+@font-face {
+	font-family: "Montserrat";
+	src: url(../fonts/Montserrat.ttf);
+}
+
+@font-face {
+	font-family: "Raleway";
+	src: url(../fonts/Raleway.ttf);
+}
+
+body {
+	background: #909090;
+	padding-top: 60px;
+	background-size: cover;                     
+  	background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	max-width: 100%;
+  	max-height: 100%;
+  	margin: auto;
+}
+
+#logo {
+	padding-right: 120px;
+}
+
+.card-text {
+	padding: 20px;
+}
+
+.card {
+	background: #eeeeee;
+}
+
+#contentTitle {
+	font-family: Raleway;
+	font-size: 28px;
+	font-weight: bold;
+	color: blue;
+}
+
+#titoloInfo {
+	font-family: "Montserrat";
+	font-size: 24px;
+}
+
+#descrizioneInfo {
+	font-family: "Montserrat";
+	font-size: 24px;
+	padding-top: 20px;
+}
+
+#currentCharNumber {
+	color: green;
+}
+
+#showCharNumber {
+	font-family: "Raleway";
+	font-size: 24px;
+	font-weight: bold;
+	color: red;
+}
+
+textarea {
+    max-width: 100%;
+}
+
+footer {
+	padding-top: 20%;
+}

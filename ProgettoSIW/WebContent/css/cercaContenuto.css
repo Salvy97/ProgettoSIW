@@ -1,0 +1,45 @@
+@font-face {
+	font-family: "big_noodle_titling";
+	src: url(../fonts/big_noodle_titling.ttf);
+}
+
+@font-face {
+	font-family: "Raleway";
+	src: url(../fonts/Raleway.ttf);
+}
+
+body {
+  	padding-top: 10%;
+  	background-image: url(../images/background.jpg);
+  	background-size: cover;                     
+  	background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	max-width: 100%;
+  	max-height: 100%;
+  	margin: auto;
+}
+
+#cercaContenutoInfo {
+	font-family: "Raleway";
+	font-size: 48px;
+	font-weight: bold;
+	color: red;
+	text-align: center;
+}
+
+#searchCard {
+	padding-bottom: 24%;
+}
+
+.card {
+	background: #dddddd;
+}
+
+#logo {
+	padding-right: 120px;
+}
+
+#cercaContenutoDiv {
+	padding-bottom: 10%;
+	padding-top: 10%;
+}

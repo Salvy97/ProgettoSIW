@@ -1,0 +1,205 @@
+@charset "ISO-8859-1";
+
+@font-face {
+	font-family: "big_noodle_titling";
+	src: url(../fonts/big_noodle_titling.ttf);
+}
+
+@font-face {
+	font-family: "Raleway";
+	src: url(../fonts/Raleway.ttf);
+}
+
+body {
+  	padding-top: 56px;
+  	background-image: url(../images/background.jpg);
+  	background-size: cover;                     
+  	background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	max-width: 100%;
+  	max-height: 100%;
+  	margin: auto;
+}
+
+#logo {
+	padding-right: 120px;
+}
+
+.searchFilmPosition {
+	padding-top: 30px;
+}
+
+.searchMovieDirectorHere {
+	text-align: left;
+	font-size: 12px;
+	font-weight: bold;
+	color: #0000ff;
+	
+	margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+#yearFilm {
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	color: #0000ff;
+}
+
+#genderFilm {
+	text-align: right;
+	font-size: 14px;
+	font-weight: bold;
+	color: #0000ff;
+}
+
+.imageContent:hover {
+	opacity: 0.7;
+}
+
+#imgCardFilm {
+	height: 350px;
+}
+
+#cardTitleFilm {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-bottom: 0px;
+	line-height: 1.5em;
+    height: 3.8em;       /* height is 2x line-height, so two lines will display */
+    overflow: hidden;   /* prevents extra lines from being visible */
+	/*white-space: nowrap;      /*keep text on one line */
+	/*overflow: hidden;         /*prevent text from being shown outside the border */
+	/*text-overflow: ellipsis;  /*cut off text with an ellipsis*/
+}
+
+.cercaFilm {
+	font-family: "big_noodle_titling";
+	color: #ff0000;
+	font-size: 47px;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	margin: 0 auto; 
+	margin-bottom: 10px;
+	background: #ffffff;
+}
+
+.catalogoFilm {
+	font-family: "big_noodle_titling";
+	color: #ff0000;
+	font-size: 47px;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	margin: 0 auto; 
+	background: #ffffff;
+}
+
+#risultatoRicercaText {
+	font-family: "Raleway";
+	color: #999999;
+	font-size: 32px;
+	padding-bottom: 150px;
+	padding-top: 150px;
+	margin: 0 auto; 
+	margin-bottom: 10px;
+	background: 0;
+}
+
+.linkPageBoxFilm {
+	font-family: "big_noodle_titling";
+	color: #0000ff;
+	font-size: 32px;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	margin: 0 auto;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	background: #ffffff;
+}
+
+.row.jumbotron {	
+	padding-top: 20px;
+	padding-bottom: 0;
+	padding-left: 0;
+	padding-right: 0;
+	background: #d0d0d0;
+}
+
+.searchFilm.jumbotron {
+	height: 100%;
+	font-family: "big_noodle_titling";
+	color: #ff0000;
+	font-size: 32px;
+	padding-bottom: 15px;
+	padding-top: 10px;
+	width: 100%;
+	margin: 0 auto;
+	background: #999999;
+	margin-bottom: 35px;
+}
+
+.searchBarFilm.jumbotron {
+	height: 100%;
+	font-family: "big_noodle_titling";
+	color: #ff0000;
+	font-size: 32px;
+	padding-top: 10px;
+	width: 100%;
+	margin: 0 auto;
+	background: #999999;
+}
+
+.paginationCharacter {
+	font-family: "big_noodle_titling";
+	font-size: 17px;
+	background: 0;
+	margin-bottom: 15px;
+}
+
+.list-group-item {
+	padding: 0;
+}
+
+.btnList {
+	padding: 7px;
+	color: #ff0000;
+	border-color: #0000ff;
+}
+
+.txtSearch {
+	padding-right: 0px;
+	font-family: "Raleway";
+}
+
+.btnSearch {
+	padding-top: 8px;
+	padding-bottom: 8px;
+	margin-top: 0px;
+	margin-bottom: 8px;
+	background-color: #707070;
+}
+
+/* No rendering dei risultati */
+#result {
+	display: none;
+}
+
+/*match search */
+.highlight {
+	color: red;
+}
+
+#txtSearched {
+	font-size: 21px;
+	font-weight: bold;
+	color: blue;
+	background-color: white;
+	border-radius: 25px;
+}
+
+p {
+	padding-left: 3%;
+}

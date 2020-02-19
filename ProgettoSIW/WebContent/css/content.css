@@ -1,0 +1,94 @@
+@font-face {
+	font-family: "Montserrat";
+	src: url(../fonts/Montserrat.ttf);
+}
+
+@font-face {
+	font-family: "Raleway";
+	src: url(../fonts/Raleway.ttf);
+}
+
+body {
+  	padding-top: 56px;
+  	background-color: #000000;
+  	background-size: cover;                     
+  	background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	max-width: 100%;
+  	max-height: 100%;
+  	margin: auto;
+}
+
+#logo {
+	padding-right: 120px;
+}
+
+.contentBackground img {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0.4;
+	z-index: -1;
+}
+
+#videoTitle {
+	font-family: "Montserrat";
+	font-size: 48px;
+	font-weight: bold;
+	color: #ffff00;
+	padding-left: 250px;
+}
+
+.video {
+	padding-top: 10px;
+	padding-bottom: 50px;
+	left: 1%;
+}
+
+.nomargin {
+	margin: 0;
+}
+
+.leftBar.jumbotron {
+	background: url(../images/goldenBorder.png) no-repeat center center; 
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+	left: 1%;
+}
+
+.rightBar.jumbotron {
+	background: url(../images/goldenBorder.png) no-repeat center center; 
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+	right: 1%;
+}
+
+.info {
+	padding: 5px;
+	padding-bottom: 10px;
+	font-family: "Raleway";
+	font-size: 18px;
+}
+
+.info.type {
+	font-size: 32px;
+	font-weight: bold;
+	color: #0000aa;
+}
+
+.info.genre {
+	font-size: 32px;
+	font-weight: bold;
+	color: #0000aa;
+}
+
+.info.views {
+	font-size: 28px;
+	color: #ffff00;
+}

@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+
+	
+<!-- Servlet -->
+
+  <servlet>
+  	<servlet-name>PrendiFilmPerGenereAnno</servlet-name>
+  	<servlet-class>controller.DammiFilmPerGenereAnno</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiFilmPerGenereAnno</servlet-name>
+  	<url-pattern>/ottieniFilmPerGenereAnno</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>PrendiFilmPerTitolo</servlet-name>
+  	<servlet-class>controller.DammiFilmPerTitolo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiFilmPerTitolo</servlet-name>
+  	<url-pattern>/ottieniFilmPerTitolo</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>PrendiFilmPerRegista</servlet-name>
+  	<servlet-class>controller.DammiFilmPerRegista</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiFilmPerRegista</servlet-name>
+  	<url-pattern>/ottieniFilmPerRegista</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  <servlet>
+  	<servlet-name>PrendiFilm</servlet-name>
+  	<servlet-class>controller.DammiFilm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiFilm</servlet-name>
+  	<url-pattern>/ottieniFilm</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>PrendiFilmPerCarattere</servlet-name>
+  	<servlet-class>controller.DammiFilmPerCarattere</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiFilmPerCarattere</servlet-name>
+  	<url-pattern>/ottieniFilmPerCarattere</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>PrendiCercaFilm</servlet-name>
+  	<servlet-class>controller.DammiCercaFilm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiCercaFilm</servlet-name>
+  	<url-pattern>/ottieniCercaFilm</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  <servlet>
+  	<servlet-name>PrendiContenuto</servlet-name>
+  	<servlet-class>controller.DammiContenuto</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiContenuto</servlet-name>
+  	<url-pattern>/ottieniContenuto</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>PrendiIndex</servlet-name>
+  	<servlet-class>controller.DammiIndex</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiIndex</servlet-name>
+  	<url-pattern>/ottieniIndex</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  <servlet>
+  	<servlet-name>PrendiSerieTV</servlet-name>
+  	<servlet-class>controller.DammiSerieTV</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiSerieTV</servlet-name>
+  	<url-pattern>/ottieniSerieTV</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>PrendiStagioni</servlet-name>
+  	<servlet-class>controller.DammiStagioni</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiStagioni</servlet-name>
+  	<url-pattern>/ottieniStagioni</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>PrendiEpisodi</servlet-name>
+  	<servlet-class>controller.DammiEpisodi</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiEpisodi</servlet-name>
+  	<url-pattern>/ottieniEpisodi</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>PrendiSerieTVPerCarattere</servlet-name>
+  	<servlet-class>controller.DammiSerieTVPerCarattere</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiSerieTVPerCarattere</servlet-name>
+  	<url-pattern>/ottieniSerieTVPerCarattere</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>PrendiSerieTVPerTitolo</servlet-name>
+  	<servlet-class>controller.DammiSerieTVPerTitolo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiSerieTVPerTitolo</servlet-name>
+  	<url-pattern>/ottieniSerieTVPerTitolo</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>PrendiCercaSerieTV</servlet-name>
+  	<servlet-class>controller.DammiCercaSerieTV</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiCercaSerieTV</servlet-name>
+  	<url-pattern>/ottieniCercaSerieTV</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>PrendiSerieTVPerGenereAnno</servlet-name>
+  	<servlet-class>controller.DammiSerieTVPerGenereAnno</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiSerieTVPerGenereAnno</servlet-name>
+  	<url-pattern>/ottieniSerieTVPerGenereAnno</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>PrendiLogin</servlet-name>
+  	<servlet-class>controller.DammiLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiLogin</servlet-name>
+  	<url-pattern>/ottieniLogin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>PrendiRegistration</servlet-name>
+  	<servlet-class>controller.DammiRegistration</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiRegistration</servlet-name>
+  	<url-pattern>/ottieniRegistration</url-pattern>
+  </servlet-mapping>
+  
+  
+<!--   <welcome-file-list>
+    <welcome-file>ottieniIndex</welcome-file>
+  </welcome-file-list> -->
+
+
+<!-- Servlet altre -->
+
+  <servlet>
+  	<servlet-name>controller.FintoLogin</servlet-name>
+  	<servlet-class>controller.FintoLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>controller.FintoLogin</servlet-name>
+  	<url-pattern>/fintologin</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<servlet-name>controller.LogoutFake</servlet-name>
+  	<servlet-class>controller.LogoutFake</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>controller.LogoutFake</servlet-name>
+  	<url-pattern>/logoutfake</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<servlet-name>controller.GestioneContenuti</servlet-name>
+  	<servlet-class>controller.GestioneContenuti</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>controller.GestioneContenuti</servlet-name>
+  	<url-pattern>/gestionecontenuti</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<servlet-name>controller.PannelloAdmin</servlet-name>
+  	<servlet-class>controller.PannelloAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>controller.PannelloAdmin</servlet-name>
+  	<url-pattern>/pannelloadmin</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<servlet-name>controller.PannelloUser</servlet-name>
+  	<servlet-class>controller.PannelloUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>controller.PannelloUser</servlet-name>
+  	<url-pattern>/user</url-pattern>
+  </servlet-mapping>
+
+  
+  <servlet>
+  	<servlet-name>PrendiPost</servlet-name>
+  	<servlet-class>controller.DammiPost</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiPost</servlet-name>
+  	<url-pattern>/ottieniPost</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>CreaPost</servlet-name>
+  	<servlet-class>controller.CreaPost</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CreaPost</servlet-name>
+  	<url-pattern>/creaPost</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>CreaCommento</servlet-name>
+  	<servlet-class>controller.CreaCommento</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CreaCommento</servlet-name>
+  	<url-pattern>/creaCommento</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>CercaContenuto</servlet-name>
+  	<servlet-class>controller.CercaContenuto</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CercaContenuto</servlet-name>
+  	<url-pattern>/cercaContenuto</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>controller.CatalogoAbbonamenti</servlet-name>
+    <servlet-class>controller.CatalogoAbbonamenti</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>controller.CatalogoAbbonamenti</servlet-name>
+    <url-pattern>/abbonamento</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>controller.OttieniSottoscrizione</servlet-name>
+    <servlet-class>controller.OttieniSottoscrizione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>controller.OttieniSottoscrizione</servlet-name>
+    <url-pattern>/sottoscrizione</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>controller.ok</servlet-name>
+    <servlet-class>controller.ok</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>controller.ok</servlet-name>
+    <url-pattern>/ok</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>api.Abbonamenti_getAll</servlet-name>
+    <servlet-class>api.Abbonamenti_getAll</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>api.Abbonamenti_getAll</servlet-name>
+    <url-pattern>/api/abbonamenti</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>api.Sottoscrizioni_getAll</servlet-name>
+    <servlet-class>api.Sottoscrizioni_getAll</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>api.Sottoscrizioni_getAll</servlet-name>
+    <url-pattern>/api/sottoscrizioni</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>api.Contenuti_getAll</servlet-name>
+    <servlet-class>api.Contenuti_getAll</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>api.Contenuti_getAll</servlet-name>
+    <url-pattern>/api/contenuti</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+      <servlet>
+    <servlet-name>api.Contenuti_getOne</servlet-name>
+    <servlet-class>api.Contenuti_getOne</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>api.Contenuti_getOne</servlet-name>
+    <url-pattern>/api/info</url-pattern>
+  </servlet-mapping>
+  
+        <servlet>
+    <servlet-name>api.Sottoscrizioni_getLatestByUser</servlet-name>
+    <servlet-class>api.Sottoscrizioni_getLatestByUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>api.Sottoscrizioni_getLatestByUser</servlet-name>
+    <url-pattern>/api/sottoscrizione/info</url-pattern>
+  </servlet-mapping>
+  
+  
+  <error-page>
+    <!-- Missing login -->
+    <error-code>401</error-code>
+    <location>/no.jsp</location>
+</error-page>
+<error-page>
+    <!-- Forbidden directory listing -->
+    <error-code>403</error-code>
+    <location>/no.jsp</location>
+</error-page>
+<error-page>
+    <!-- Missing resource -->
+    <error-code>404</error-code>
+    <location>/no.jsp</location>
+</error-page>
+<error-page>
+    <!-- Uncaught exception -->
+    <error-code>500</error-code>
+    <location>/no.jsp</location>
+</error-page>
+<error-page>
+    <!-- Unsupported servlet method -->
+    <error-code>503</error-code>
+    <location>/no.jsp</location>
+</error-page>
+  
+   
+</web-app> 

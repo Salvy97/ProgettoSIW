@@ -1,0 +1,33 @@
+.ok-page{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    color: white;
+    margin-top: 100px;
+}
+
+
+.ok-txt{
+	width: 100%;
+}
+
+
+.ok-img{
+	
+	width: 100%;
+    text-align: center;
+    padding: 100px;
+}
+
+
+.ok-ico{
+	font-size: 22em;
+	color: darkgreen;
+	
+}
+
+.no-ico {
+	font-size: 22em;
+	color: red;	
+}
