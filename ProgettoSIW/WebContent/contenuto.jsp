@@ -97,7 +97,7 @@
 	    
 	        
 	    <div class="contentBackground">
-	    	<img src="images/${film.locandina}"/>
+	    	<img src="${film.immagineForum}"/>
 	    </div>
 	    
 	    <div id="videoTitle">${film.titolo}</div>
