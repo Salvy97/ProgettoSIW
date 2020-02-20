@@ -99,8 +99,8 @@
 			        </div>
 			        <div class="form-group">
 						<div class="row">
-							<div class="col-xs-6 col-sm-6 col-md-6"><input type="text" class="form-control" name="first_name" placeholder="Nome" required="required"></div>
-							<div class="col-xs-6 col-sm-6 col-md-6"><input type="text" class="form-control" name="last_name" placeholder="Cognome" required="required"></div>
+							<div class="col-xs-6 col-sm-6 col-md-6"><input type="text" class="form-control" name="nome" placeholder="Nome" required="required"></div>
+							<div class="col-xs-6 col-sm-6 col-md-6"><input type="text" class="form-control" name="cognome" placeholder="Cognome" required="required"></div>
 						</div>        	
 			        </div>
 			        <div class="form-group">

@@ -182,10 +182,7 @@
   	<url-pattern>/signUp</url-pattern>
   </servlet-mapping>
   
-  
-<!--   <welcome-file-list>
-    <welcome-file>ottieniIndex</welcome-file>
-  </welcome-file-list> -->
+
 
 
 <!-- Servlet altre -->
