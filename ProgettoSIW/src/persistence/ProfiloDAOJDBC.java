@@ -11,7 +11,8 @@ public class ProfiloDAOJDBC implements ProfiloDAO
 {
 	private DataSource dataSource;
 
-	public ProfiloDAOJDBC(DataSource dataSource) {
+	public ProfiloDAOJDBC(DataSource dataSource) 
+	{
 		this.dataSource = dataSource;
 	}
 	
@@ -104,4 +105,121 @@ public class ProfiloDAOJDBC implements ProfiloDAO
 
 	@Override
 	public void delete(Profilo profilo) {}
+
+	public void aumentaContenutiGuardati(String username) 
+	{
+		Connection connection = this.dataSource.getConnection();
+		int contenutiGuardati = -1;
+		try 
+		{
+			PreparedStatement statement;
+			String query = "select contenuti_guardati from profilo where username = ?";
+			statement = connection.prepareStatement(query);
+			statement.setString(1, username);
+			ResultSet result = statement.executeQuery();
+			if (result.next())
+			{
+				contenutiGuardati = result.getInt(1);
+			}
+			contenutiGuardati++;
+			query = "UPDATE public.profilo SET contenuti_guardati = ? WHERE username = ?";
+			statement = connection.prepareStatement(query);
+			statement.setInt(1, contenutiGuardati);
+			statement.setString(2, username);
+			statement.executeUpdate();
+		}
+		catch (SQLException e) 
+		{
+			throw new PersistenceException(e.getMessage());
+		} 
+		finally 
+		{
+			try 
+			{
+				connection.close();
+			} 
+			catch (SQLException e) 
+			{
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+	}
+
+	public void aumentaPostsCreati(String username) 
+	{
+		Connection connection = this.dataSource.getConnection();
+		int postsCreati = -1;
+		try 
+		{
+			PreparedStatement statement;
+			String query = "select posts_creati from profilo where username = ?";
+			statement = connection.prepareStatement(query);
+			statement.setString(1, username);
+			ResultSet result = statement.executeQuery();
+			if (result.next())
+			{
+				postsCreati = result.getInt(1);
+			}
+			postsCreati++;
+			query = "UPDATE public.profilo SET posts_creati = ? WHERE username = ?";
+			statement = connection.prepareStatement(query);
+			statement.setInt(1, postsCreati);
+			statement.setString(2, username);
+			statement.executeUpdate();
+		}
+		catch (SQLException e) 
+		{
+			throw new PersistenceException(e.getMessage());
+		} 
+		finally 
+		{
+			try 
+			{
+				connection.close();
+			} 
+			catch (SQLException e) 
+			{
+				throw new PersistenceException(e.getMessage());
+			}
+		}	
+	}
+
+	public void aumentaRecensioniEffettuate(String username) 
+	{
+		Connection connection = this.dataSource.getConnection();
+		int recensioniEffettuate = -1;
+		try 
+		{
+			PreparedStatement statement;
+			String query = "select recensioni_effettuate from profilo where username = ?";
+			statement = connection.prepareStatement(query);
+			statement.setString(1, username);
+			ResultSet result = statement.executeQuery();
+			if (result.next())
+			{
+				recensioniEffettuate = result.getInt(1);
+			}
+			recensioniEffettuate++;
+			query = "UPDATE public.profilo SET recensioni_effettuate = ? WHERE username = ?";
+			statement = connection.prepareStatement(query);
+			statement.setInt(1, recensioniEffettuate);
+			statement.setString(2, username);
+			statement.executeUpdate();
+		}
+		catch (SQLException e) 
+		{
+			throw new PersistenceException(e.getMessage());
+		} 
+		finally 
+		{
+			try 
+			{
+				connection.close();
+			} 
+			catch (SQLException e) 
+			{
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+	}
 }

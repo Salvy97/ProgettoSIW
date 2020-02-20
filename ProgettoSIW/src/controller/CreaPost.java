@@ -49,6 +49,7 @@ public class CreaPost extends HttpServlet
 		{
 			PostDao pDao = DatabaseManager.getInstance().getDaoFactory().getPostDAO();
 			pDao.save(post);
+			DatabaseManager.getInstance().getDaoFactory().getProfiloDAO().aumentaPostsCreati(username);
 			resp.sendRedirect("ottieniPost?contenuto=" + contenuto);
 		}
 	}

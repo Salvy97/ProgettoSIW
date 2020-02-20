@@ -226,11 +226,11 @@
   </servlet-mapping>
 
   <servlet>
-  	<servlet-name>controller.PannelloUser</servlet-name>
-  	<servlet-class>controller.PannelloUser</servlet-class>
+  	<servlet-name>controller.DammiProfilo</servlet-name>
+  	<servlet-class>controller.DammiProfilo</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>controller.PannelloUser</servlet-name>
+  	<servlet-name>controller.DammiProfilo</servlet-name>
   	<url-pattern>/user</url-pattern>
   </servlet-mapping>
 

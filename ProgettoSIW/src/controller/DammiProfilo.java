@@ -11,7 +11,7 @@ import persistence.DatabaseManager;
 import persistence.dao.ProfiloDAO;
 
 @SuppressWarnings("serial")
-public class PannelloUser extends HttpServlet 
+public class DammiProfilo extends HttpServlet 
 {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
