@@ -9,6 +9,7 @@ public interface PostDao {
 	public Post findByPrimaryKey(String id);  // Retrieve
 	public List<Post> findAll();
 	public List<Post> findPostsOfThatContent(String contenuto);
+	public List<Post> findPostsOfThatUser(String username);
 	public void update(Post post); //Update
 	public void delete(Post post); //Delete
 	public List<Post> findAllByContentDeep0(String content);

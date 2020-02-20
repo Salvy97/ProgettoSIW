@@ -185,6 +185,7 @@ public class PostDaoJDBC implements PostDao {
 		}
 		return posts;
 	}
+		
 	public List<Post> findPostsOfThatContent(String contenuto) 
 	{
 		Connection connection = this.dataSource.getConnection();
@@ -236,6 +237,65 @@ public class PostDaoJDBC implements PostDao {
 				
 				if (titoloContenuto.equals(contenuto))
 					posts.add(post);
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		}	 finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return posts;
+	}
+	
+	public List<Post> findPostsOfThatUser(String username) 
+	{
+		Connection connection = this.dataSource.getConnection();
+		List<Post> posts = new LinkedList<>();
+		try 
+		{
+			Post post;
+			PreparedStatement statement;
+			String query = "select * from post where post.username = ? order by data desc";
+			statement = connection.prepareStatement(query);
+			statement.setString(1, username);
+			ResultSet result = statement.executeQuery();
+			while (result.next()) 
+			{
+				post = new Post();
+				post.setId(result.getInt("id"));				
+				post.setData(result.getString("data"));
+				post.setOra(result.getString("ora"));
+				post.setTitolo(result.getString("titolo_post"));
+				post.setDescrizione(result.getString("descrizione"));
+				post.setUsername(result.getString("username"));
+				post.setContenuto(result.getInt("contenuto"));
+				
+				PreparedStatement getProfilePic = connection.prepareStatement("select immagine_di_profilo from profilo inner join post on profilo.username = " + "'" + post.getUsername() + "'");
+				ResultSet picResult = getProfilePic.executeQuery();
+				while (picResult.next())
+					post.setProfileImage(picResult.getString(1));
+				
+				PreparedStatement getComments = connection.prepareStatement("select * from commento inner join post on commento.post = " + "'" + post.getId() + "'" + "and post.id = " + "'" + post.getId() + "'");
+				ResultSet commentsResult = getComments.executeQuery();
+				List<Commento> commenti = new ArrayList<Commento>();
+				while (commentsResult.next())
+				{
+					Commento commento = new Commento();
+					commento.setId(commentsResult.getInt("id"));
+					commento.setCommento(commentsResult.getString("commento"));
+					commento.setUsername(commentsResult.getString("username"));
+					commento.setPost(commentsResult.getInt("post"));
+					commenti.add(commento);
+					PreparedStatement getProfilePicture = connection.prepareStatement("select immagine_di_profilo from profilo inner join commento on profilo.username = " + "'" + commento.getUsername() + "'");
+					ResultSet profilePictureResults = getProfilePicture.executeQuery();
+					while (profilePictureResults.next())
+						commento.setProfilePicture(profilePictureResults.getString(1));
+				}
+				post.setCommenti(commenti);
+				posts.add(post);
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());

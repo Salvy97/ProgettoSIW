@@ -245,6 +245,15 @@
   </servlet-mapping>
   
   <servlet>
+  	<servlet-name>PrendiPostUser</servlet-name>
+  	<servlet-class>controller.DammiPostUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiPostUser</servlet-name>
+  	<url-pattern>/ottieniPostUser</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
   	<servlet-name>CreaPost</servlet-name>
   	<servlet-class>controller.CreaPost</servlet-class>
   </servlet>

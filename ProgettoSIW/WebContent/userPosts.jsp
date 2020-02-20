@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Forum</title>
+		<title>I miei Posts</title>
 		<!-- Bootstrap core CSS -->
 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
@@ -87,27 +87,15 @@
 	   	<div class="container"> 
 		   	<div class="card row">
 		    	<div class="card-body col-lg-12 row">
-		    		<h2 class="card-title col-lg-3">
-		    			Forum
-		    		</h2>
-		    		<div class="col-lg-2"></div>
-		    		<div id="titoloContenuto" class="col-lg-5"></div>
-		    		<div class="lg-auto ml-auto sg-auto">
-		    			<button class="btn btn-success" onclick="scriviPost();">Scrivi post</button>
-		    		</div>	
+		    		<div class="col-lg-5"></div>
+		    		<h2 class="card-title col-lg-3">I miei Posts</h2>
+		    		<div class="col-lg-4"></div>	
 		    	</div>
-			    <div id="locandinaContenuto"></div>
 		    </div>
 	    
 		    <div class="row">
 			    <div class="card h-100 col-lg-4 col-md-6 mb-4">
 			    	<div class="card-body">
-			    		<div style="padding-bottom: 20px;">
-			    			<form action="ottieniPostUser" method="get">
-			    				<button class="btn btn-info">I miei posts</button>
-			    				<input type="hidden" name="username" value="<%= session.getAttribute("name") %>">
-			    			</form>
-			    		</div>
 		                <h3 class="card-title" style="color: blue;">
 		                    Ultimi Posts
 		                </h3>
@@ -165,7 +153,7 @@
 		</div>	
 	    
 	    <!-- Footer -->
-	    <footer class="py-4 bg-dark">
+	    <footer class="py-4 bg-dark" style="padding-top: 40px;">
 	        <div class="container">
 	            <p class="m-0 text-right text-white">Copyright &copy; Golden Streaming 2019-2020</p>
 	        </div>
@@ -177,6 +165,6 @@
 	    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 	    
 	    <script src="jquery/jquery.min.js"></script>
-	    <script src="js/forum.js"></script>
+	    <script src="js/userPosts.js"></script>
 	</body>
 </html>
