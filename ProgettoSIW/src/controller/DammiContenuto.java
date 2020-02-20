@@ -22,18 +22,27 @@ public class DammiContenuto extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		HttpSession session = req.getSession();
-		if(session.getAttribute("name")!=null)
+		Boolean abbonamento = (Boolean) session.getAttribute("abbonamento");
+		
+		if(session.getAttribute("name") != null)
         {
-			System.out.println(req.getParameter("id"));
-			
-	
-			FilmDao fDao = DatabaseManager.getInstance().getDaoFactory().getFilmDAO();
-			Film film = fDao.cercaPerId(Integer.parseInt(req.getParameter("id")));
-			
-			req.setAttribute("film", film);
-			
-			RequestDispatcher rd = req.getRequestDispatcher("contenuto.jsp");
-			rd.forward(req, resp);
+			if (abbonamento == true)
+			{
+				FilmDao fDao = DatabaseManager.getInstance().getDaoFactory().getFilmDAO();
+				Film film = fDao.cercaPerId(Integer.parseInt(req.getParameter("id")));
+				
+				req.setAttribute("film", film);
+				
+				RequestDispatcher rd = req.getRequestDispatcher("contenuto.jsp");
+				rd.forward(req, resp);
+			}
+			else
+			{
+				req.setAttribute("message", "Effettuare l'abbonamento!");
+				
+				RequestDispatcher rd = req.getRequestDispatcher("ottieniIndex");
+				rd.forward(req, resp);
+			}
         }
 		else
 		{

@@ -16,11 +16,22 @@ public class DammiForum extends HttpServlet
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
 		HttpSession session = req.getSession();
+		Boolean abbonamento = (Boolean) session.getAttribute("abbonamento");
 		
 		if(session.getAttribute("name") != null)
         {
-			RequestDispatcher rd = req.getRequestDispatcher("cercaContenuto.jsp");
-			rd.forward(req, resp);
+			if (abbonamento == true)
+			{
+				RequestDispatcher rd = req.getRequestDispatcher("cercaContenuto.jsp");
+				rd.forward(req, resp);
+			}
+			else
+			{
+				req.setAttribute("message", "Effettuare l'abbonamento!");
+				
+				RequestDispatcher rd = req.getRequestDispatcher("ottieniIndex");
+				rd.forward(req, resp);
+			}
         }
 		else
 		{
