@@ -68,6 +68,11 @@
 							        	<h6 class="dropdown-header">${sessionScope.name}</h6>
 							        	<div class="dropdown-divider"></div>
 							            <a href="#" class="dropdown-item">Profilo</a>
+							            <c:choose>
+						    				<c:when test="${sessionScope.abbonamento==false}">
+						    					 <a href="abbonamento" class="dropdown-item">Abbonati</a>
+						    				</c:when>
+						    			</c:choose>
 							            <a href="LogoutServlet" class="dropdown-item">Logout</a>
 							        </div>
 							    </div>

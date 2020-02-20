@@ -45,7 +45,7 @@
 		            		<a class="nav-link" href="ottieniSerieTV">Serie TV</a>
 		          		</li>
 		          		<li class="nav-item">
-		            		<a class="nav-link" href="#">Forum</a>
+		            		<a class="nav-link" href="ottieniForum">Forum</a>
 		          		</li>
 		         		<li class="nav-item active">
 		            		<a class="nav-link" href="#">Contatti</a>
@@ -68,6 +68,11 @@
 								        	<h6 class="dropdown-header">${sessionScope.name}</h6>
 								        	<div class="dropdown-divider"></div>
 								            <a href="#" class="dropdown-item">Profilo</a>
+								            <c:choose>
+						    					<c:when test="${sessionScope.abbonamento==false}">
+						    					 	<a href="abbonamento" class="dropdown-item">Abbonati</a>
+						    					</c:when>
+						    				</c:choose>
 								            <a href="LogoutServlet" class="dropdown-item">Logout</a>
 								        </div>
 								    </div>

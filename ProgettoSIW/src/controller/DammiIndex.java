@@ -51,6 +51,5 @@ public class DammiIndex extends HttpServlet{
 		
 		RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
 		rd.forward(req, resp);
-		
 	}
 }

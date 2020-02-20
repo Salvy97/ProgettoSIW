@@ -63,10 +63,10 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               <a class="nav-link" href="serieTV.html">Serie TV</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="cercaContenuto.jsp">Forum</a>
+              <a class="nav-link" href="ottieniForum">Forum</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contatti</a>
+              <a class="nav-link" href="contatti.jsp">Contatti</a>
             </li>
           </ul>
         </div>
@@ -86,7 +86,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 					        	<div class="dropdown-divider"></div>
 					            <a href="${pageContext.request.contextPath}/user" class="dropdown-item">Profilo</a>
 					            <c:choose>
-				    				<c:when test="${sessionScope.abbonamento==null}">
+				    				<c:when test="${sessionScope.abbonamento==false}">
 				    					 <a href="abbonamento" class="dropdown-item">Abbonati</a>
 				    				</c:when>
 				    			</c:choose>

@@ -160,7 +160,7 @@ function calculateRating(contenutiGuardati, postsCreati, recensioniEffettuate)
 	{
 		rating += 4
 	}
-	else
+	else if (contenutiGuardati >= 50)
 	{
 		rating += 6
 	}
@@ -173,7 +173,7 @@ function calculateRating(contenutiGuardati, postsCreati, recensioniEffettuate)
 	{
 		rating += 4
 	}
-	else
+	else if (postsCreati >= 25)
 	{
 		rating += 6
 	}
@@ -186,7 +186,7 @@ function calculateRating(contenutiGuardati, postsCreati, recensioniEffettuate)
 	{
 		rating += 4
 	}
-	else
+	else if (recensioniEffettuate >= 45)
 	{
 		rating += 6
 	}
