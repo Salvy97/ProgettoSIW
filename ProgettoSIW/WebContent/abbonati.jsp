@@ -84,7 +84,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 					        <div class="dropdown-menu">
 					        	<h6 class="dropdown-header">${sessionScope.name}</h6>
 					        	<div class="dropdown-divider"></div>
-					            <a href="${pageContext.request.contextPath}/user" class="dropdown-item">Profilo</a>
+					            <a href="${pageContext.request.contextPath}/user?username=${sessionScope.name}" class="dropdown-item">Profilo</a>
 					            <c:choose>
 				    				<c:when test="${sessionScope.abbonamento==false}">
 				    					 <a href="abbonamento" class="dropdown-item">Abbonati</a>

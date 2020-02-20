@@ -60,7 +60,7 @@
 							        <div class="dropdown-menu">
 							        	<h6 class="dropdown-header">${sessionScope.name}</h6>
 							        	<div class="dropdown-divider"></div>
-							            <a href="${pageContext.request.contextPath}/user" class="dropdown-item">Profilo</a>
+							            <a href="${pageContext.request.contextPath}/user?username=${sessionScope.name}" class="dropdown-item">Profilo</a>
 							            <c:choose>
 						    				<c:when test="${sessionScope.abbonamento==false}">
 						    					 <a href="abbonamento" class="dropdown-item">Abbonati</a>
@@ -129,8 +129,8 @@
 			    	<div class="card-body">
 			    		<div class="row">
 			    			<div class="col-lg-4">
-			    				<img id="profilePicture" src="" width="100" height="100"/>
-			    				<p id="username" style="font-size: 18px; padding-top: 10px;"></p>
+			    				<img id="profilePicture" onclick="goToProfileFromPost();" src="" width="100" height="100"/>
+			    				<p id="username" onclick="goToProfileFromPost();" style="font-size: 18px; padding-top: 10px;"></p>
 			    			</div>
 			    			<div class="lg-auto ml-auto sg-auto">
 				    			<div id="data"></div>

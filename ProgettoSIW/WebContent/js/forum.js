@@ -27,6 +27,8 @@ function showPost(id, username, data, ora, titolo, descrizione, profilePicture, 
 			username.setAttribute("class", "lastCommentUsername");
 		else
 			username.setAttribute("class", "commentUsername");
+		username.setAttribute("onclick", "goToProfileFromComment();");
+		profilePic.setAttribute("onclick", "goToProfileFromComment();");
 		document.getElementById("commenti").appendChild(profilePic);
 		document.getElementById("commenti").appendChild(commento);
 		document.getElementById("commenti").appendChild(username);
@@ -119,4 +121,14 @@ function updateCharNumber()
 		document.getElementById("currentCharNumber").style.color = "red";
 	else
 		document.getElementById("currentCharNumber").style.color = "green";
+}
+
+function goToProfileFromComment()
+{
+	location.href = "user?username=" + document.getElementById("commentUsername").innerHTML;
+}
+
+function goToProfileFromPost()
+{
+	location.href = "user?username=" + document.getElementById("username").innerHTML;
 }

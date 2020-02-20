@@ -8,7 +8,7 @@
    		<meta name="description" content=""/>
    		<meta name="author" content=""/>
 
-   		<title>Il tuo Profilo</title>
+   		<title>Profilo di ${profilo.username}</title>
 
    		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css"/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.css" />
@@ -74,7 +74,7 @@
 				        <div class="dropdown-menu">
 				        	<h6 class="dropdown-header">${sessionScope.name}</h6>
 				        	<div class="dropdown-divider"></div>
-				            <a href="${pageContext.request.contextPath}/user" class="dropdown-item">Profilo</a>
+				            <a href="${pageContext.request.contextPath}/user?username=${sessionScope.name}" class="dropdown-item">Profilo</a>
 				            <c:choose>
 			    				<c:when test="${sessionScope.abbonamento==false}">
 			    					 <a href="abbonamento" class="dropdown-item">Abbonati</a>

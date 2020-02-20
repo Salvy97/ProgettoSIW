@@ -17,7 +17,7 @@ public class PannelloUser extends HttpServlet
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
 		RequestDispatcher rd = req.getRequestDispatcher("ottieniIndex");
-		String username = (String) req.getSession(false).getAttribute("name");
+		String username = req.getParameter("username");
 		if (username != null) 
 		{
 			ProfiloDAO pDao = DatabaseManager.getInstance().getDaoFactory().getProfiloDAO();
