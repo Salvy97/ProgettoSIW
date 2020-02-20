@@ -182,7 +182,9 @@
   	<url-pattern>/signUp</url-pattern>
   </servlet-mapping>
   
-
+  <welcome-file-list>
+  	<welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
 
 
 <!-- Servlet altre -->
@@ -267,6 +269,15 @@
   <servlet-mapping>
   	<servlet-name>CercaContenuto</servlet-name>
   	<url-pattern>/cercaContenuto</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>DammiForum</servlet-name>
+  	<servlet-class>controller.DammiForum</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DammiForum</servlet-name>
+  	<url-pattern>/ottieniForum</url-pattern>
   </servlet-mapping>
   
   <servlet>

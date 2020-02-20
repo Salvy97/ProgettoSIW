@@ -17,7 +17,7 @@ public final class Abbonamenti_getAll extends HttpServlet {
 		DatabaseManager dbm = DatabaseManager.getInstance();
 		List<Abbonamento> subTypes = new LinkedList<>();
 		subTypes = dbm.getDaoFactory().getAbbonamentoDAO().findAll();
-
+		System.out.println("LUL");
 		String json = new Gson().toJson(subTypes);
 
 		res.setContentType("application/json");

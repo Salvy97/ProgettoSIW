@@ -37,7 +37,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="index.html" id="logo">
+        <a class="navbar-brand" href="ottieniIndex" id="logo">
           <img src="images/logo.gif" />
         </a>
         <button
@@ -54,7 +54,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="ottieniIndex">Home</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="ottieniFilm">Film</a>
@@ -71,40 +71,40 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           </ul>
         </div>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-	      		
-          <% String username = (String) session.getAttribute("username"); 
-            String ruolo = (String) session.getAttribute("role");
-          %>
-                <ul class="navbar-nav lg-auto ml-auto sg-auto">
-                  <% if (username == null) { %>
-                    <li class="nav-item">
-                      <a class="nav-link" href="${pageContext.request.contextPath}/fintologin">Login</a>
-                    </li>
-
-                    <% } else if (ruolo != null && ruolo.equals("admin")) {%>
-                    <li class="nav-item">
-                      <a class="nav-link" href="${pageContext.request.contextPath}/pannelloadmin">Area Admin</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">${username}  &#128100;</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="${pageContext.request.contextPath}/logoutfake">Log out</a>
-                    </li>
-                    <% } else {%>
-                      <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/user">Area Utente</a>
-                      </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">${username}  &#128100;</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="${pageContext.request.contextPath}/logoutfake">Log out</a>
-                    </li>
-                    
-              <% } %>
-                </ul>
-            </div>
+     			<ul class="navbar-nav lg-auto ml-auto sg-auto">
+          			<c:choose>
+				    <c:when test="${sessionScope.name!=null}">
+					    <li class="nav-item">
+				        	<span class="btn btn-outline-primary">${sessionScope.name}</span>
+				        </li>
+					    <div class="dropdown">
+					        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							    &#128100;
+							</button>
+					        <div class="dropdown-menu">
+					        	<h6 class="dropdown-header">${sessionScope.name}</h6>
+					        	<div class="dropdown-divider"></div>
+					            <a href="${pageContext.request.contextPath}/user" class="dropdown-item">Profilo</a>
+					            <c:choose>
+				    				<c:when test="${sessionScope.abbonamento==null}">
+				    					 <a href="abbonamento" class="dropdown-item">Abbonati</a>
+				    				</c:when>
+				    			</c:choose>
+					            <a href="LogoutServlet" class="dropdown-item">Logout</a>
+					        </div>
+					    </div>
+				    </c:when>    
+				    <c:otherwise>
+				    	<li class="nav-item">
+				        	<a class="nav-link" href="ottieniLogin"><span class="btn btn-outline-success">Login</span></a>
+				        </li>
+				        <li class="nav-item">
+	            			<a class="nav-link" href="ottieniRegistration"><span class="btn btn-outline-danger">Sign up</span></a>
+	          			</li>
+				    </c:otherwise>
+				</c:choose>
+       		</ul>
+   		</div>
       </div>
     </nav>
 

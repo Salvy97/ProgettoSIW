@@ -23,7 +23,7 @@
 		 <!-- Navigation -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 	   		<div class="container">
-	      		<a class="navbar-brand" href="index.html" id="logo">
+	      		<a class="navbar-brand" href="ottieniIndex" id="logo">
 	      			<img src="images/logo.gif"/>
 	      		</a>
 	      		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
 	      		<div class="collapse navbar-collapse" id="navbarResponsive">
 		        	<ul class="navbar-nav">
 		          		<li class="nav-item active">
-		          			<a class="nav-link" href="index.jsp">Home
+		          			<a class="nav-link" href="ottieniIndex">Home
 		              			<span class="sr-only">(current)</span>
 		            		</a>
 		          		</li>

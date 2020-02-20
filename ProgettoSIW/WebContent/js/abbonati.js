@@ -4,10 +4,10 @@ let loadCatalog = () => {
   let settings = {
     async: true,
     crossDomain: true,
-    url: "http://localhost:8080/Progetto/api/abbonamenti",
+    url: "api/abbonamenti",
     method: "GET",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/gson",
       Accept: "*/*"
     },
     data: {}
@@ -60,7 +60,7 @@ let saveUserInformation = () => {
   let settings = {
 		    async: true,
 		    crossDomain: true,
-		    url: "http://localhost:8080/Progetto/sottoscrizione",
+		    url: "sottoscrizione",
 		    method: "POST",
 		    headers: {
 		      "Content-Type": "application/x-www-form-urlencoded",
@@ -139,7 +139,7 @@ let postTransactionHandler = (id) => {
   let settings = {
     async: true,
     crossDomain: true,
-    url: "http://localhost:8080/Progetto/sottoscrizione",
+    url: "sottoscrizione",
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -154,7 +154,7 @@ let postTransactionHandler = (id) => {
   }
   console.log(settings.data)
   $.ajax(settings).done(result => {
-	   $(window.location).attr("href", "http://localhost:8080/Progetto/ok");
+	   $(window.location).attr("href", "ottieniIndex");
   });
 
 };
