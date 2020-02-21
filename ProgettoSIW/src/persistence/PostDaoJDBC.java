@@ -30,7 +30,7 @@ public class PostDaoJDBC implements PostDao {
 			statement.setString(3, post.getTitolo());
 			statement.setString(4, post.getDescrizione());
 			statement.setString(5, post.getUsername());
-			statement.setInt(6, post.getContenuto());
+			statement.setString(6, post.getContenuto());
 
 			statement.executeUpdate();
 		} catch (SQLException e) {
@@ -61,7 +61,7 @@ public class PostDaoJDBC implements PostDao {
 				post.setTitolo(result.getString("titolo_post"));
 				post.setDescrizione(result.getString("descrizione"));
 				post.setUsername(result.getString("username"));
-				post.setContenuto(result.getInt("contenuto"));
+				post.setContenuto(result.getString("contenuto"));
 				
 				PreparedStatement getProfilePic = connection.prepareStatement("select immagine_di_profilo from profilo inner join post on profilo.username = " + "'" + post.getUsername() + "'");
 				ResultSet picResult = getProfilePic.executeQuery();
@@ -115,7 +115,7 @@ public class PostDaoJDBC implements PostDao {
 				post.setTitolo(result.getString("titolo_post"));
 				post.setDescrizione(result.getString("descrizione"));
 				post.setUsername(result.getString("username"));
-				post.setContenuto(result.getInt("contenuto"));
+				post.setContenuto(result.getString("contenuto"));
 				
 				PreparedStatement getProfilePic = connection.prepareStatement("select immagine_di_profilo from profilo inner join post on profilo.username = " + "'" + post.getUsername() + "'");
 				ResultSet picResult = getProfilePic.executeQuery();
@@ -171,7 +171,7 @@ public class PostDaoJDBC implements PostDao {
 				post.setTitolo(result.getString("titolo_post"));
 				post.setDescrizione(result.getString("descrizione"));
 				post.setUsername(result.getString("username"));
-				post.setContenuto(result.getInt("contenuto"));
+				post.setContenuto(result.getString("contenuto"));
 				posts.add(post);
 			}
 		} catch (SQLException e) {
@@ -204,7 +204,7 @@ public class PostDaoJDBC implements PostDao {
 				post.setTitolo(result.getString("titolo_post"));
 				post.setDescrizione(result.getString("descrizione"));
 				post.setUsername(result.getString("username"));
-				post.setContenuto(result.getInt("contenuto"));
+				post.setContenuto(result.getString("contenuto"));
 				
 				PreparedStatement getProfilePic = connection.prepareStatement("select immagine_di_profilo from profilo inner join post on profilo.username = " + "'" + post.getUsername() + "'");
 				ResultSet picResult = getProfilePic.executeQuery();
@@ -228,14 +228,8 @@ public class PostDaoJDBC implements PostDao {
 						commento.setProfilePicture(profilePictureResults.getString(1));
 				}
 				post.setCommenti(commenti);
-				
-				PreparedStatement getTitoloContenuto = connection.prepareStatement("select titolo from film inner join post on film.id_film = " + "'" + post.getContenuto() + "'");
-				ResultSet titoloResult = getTitoloContenuto.executeQuery();
-				String titoloContenuto = "";
-				while (titoloResult.next())
-					titoloContenuto = titoloResult.getString(1);
-				
-				if (titoloContenuto.equals(contenuto))
+
+				if (post.getContenuto().equals(contenuto))
 					posts.add(post);
 			}
 		} catch (SQLException e) {
@@ -271,7 +265,7 @@ public class PostDaoJDBC implements PostDao {
 				post.setTitolo(result.getString("titolo_post"));
 				post.setDescrizione(result.getString("descrizione"));
 				post.setUsername(result.getString("username"));
-				post.setContenuto(result.getInt("contenuto"));
+				post.setContenuto(result.getString("contenuto"));
 				
 				PreparedStatement getProfilePic = connection.prepareStatement("select immagine_di_profilo from profilo inner join post on profilo.username = " + "'" + post.getUsername() + "'");
 				ResultSet picResult = getProfilePic.executeQuery();

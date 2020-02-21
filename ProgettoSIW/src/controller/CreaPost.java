@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Post;
 import persistence.DatabaseManager;
-import persistence.dao.FilmDao;
 import persistence.dao.PostDao;
 
 public class CreaPost extends HttpServlet
@@ -41,9 +40,7 @@ public class CreaPost extends HttpServlet
 		post.setData(data);
 		post.setOra(ora);
 		post.setUsername(username);
-		
-		FilmDao fDao = DatabaseManager.getInstance().getDaoFactory().getFilmDAO();
-		post.setContenuto(fDao.getIdFilmFromTitle(contenuto));
+		post.setContenuto(contenuto);
 
 		if (titolo != null)
 		{

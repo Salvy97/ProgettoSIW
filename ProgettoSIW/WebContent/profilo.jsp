@@ -140,7 +140,8 @@
                     <a href="cambiaUsername.jsp">Modifica username</a><br/>
                     <a href="cambiaPassword.jsp">Modifica password</a>
                     <p>SCOPRI</p>
-                    <a href="ottieniContenutiGuardati?username=<%= request.getParameter("username") %>">Contenuti guardati</a><br/>
+                    <a href="ottieniFilmGuardati?username=<%= request.getParameter("username") %>">Film guardati</a><br/>
+                     <a href="ottieniEpisodiGuardati?username=<%= request.getParameter("username") %>">Episodi guardati</a><br/>
                     <a href="ottieniPostUser?username=${profilo.username}">Posts creati</a><br/>
                 </div>       	
             </div>

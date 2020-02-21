@@ -290,12 +290,21 @@
   </servlet-mapping>
   
   <servlet>
-  	<servlet-name>DammiContenutiGuardati</servlet-name>
-  	<servlet-class>controller.DammiContenutiGuardati</servlet-class>
+  	<servlet-name>DammiFilmGuardati</servlet-name>
+  	<servlet-class>controller.DammiFilmGuardati</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>DammiContenutiGuardati</servlet-name>
-  	<url-pattern>/ottieniContenutiGuardati</url-pattern>
+  	<servlet-name>DammiFilmGuardati</servlet-name>
+  	<url-pattern>/ottieniFilmGuardati</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>DammiEpisodiGuardati</servlet-name>
+  	<servlet-class>controller.DammiEpisodiGuardati</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DammiEpisodiGuardati</servlet-name>
+  	<url-pattern>/ottieniEpisodiGuardati</url-pattern>
   </servlet-mapping>
   
   <servlet>

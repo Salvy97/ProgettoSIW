@@ -276,5 +276,4 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 		}
 		return serieTVs;
 	}
-
 }

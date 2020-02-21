@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import persistence.DatabaseManager;
 import model.ContenutoGuardato;
 
-public class DammiContenutiGuardati extends HttpServlet
+public class DammiEpisodiGuardati extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 
@@ -19,7 +19,7 @@ public class DammiContenutiGuardati extends HttpServlet
 	{
 		String username = req.getParameter("username");
 		
-		List<ContenutoGuardato> contenuti = DatabaseManager.getInstance().getDaoFactory().getContenutiGuardatiDAO().searchContentsWatchedByUser(username);
+		List<ContenutoGuardato> contenuti = DatabaseManager.getInstance().getDaoFactory().getContenutiGuardatiDAO().searchEpisodesWatchedByUser(username);
 		req.setAttribute("contenutiGuardati", contenuti);
 		
 		RequestDispatcher rd = req.getRequestDispatcher("contenutiGuardati.jsp");
