@@ -60,7 +60,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               <a class="nav-link" href="ottieniFilm">Film</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="serieTV.html">Serie TV</a>
+              <a class="nav-link" href="ottieniSerieTV">Serie TV</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="ottieniForum">Forum</a>
