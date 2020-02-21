@@ -116,7 +116,7 @@
 	                            <span></span>
 	                        </div>
 	                        <div class="footer">
-	                            <a href="ottieniContenuto?id=${contenutoGuardato.idContenuto}" class="Cbtn Cbtn-primary">Guarda di nuovo</a>
+	                            <a href="ottieniContenuto?id=${contenutoGuardato.idContenuto}" class="Cbtn Cbtn-primary">Guarda</a>
 	                        </div>
 	                    </div>
 	                </div> 

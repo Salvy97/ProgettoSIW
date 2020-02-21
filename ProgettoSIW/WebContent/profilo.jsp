@@ -137,8 +137,8 @@
                     <p>GESTISCI ACCOUNT</p>
                     <a href="abbonamento.jsp">Il tuo abbonamento</a><br/>
                     <a href="">Storico pagamenti</a><br/>
-                    <a href="">Modifica username</a><br/>
-                    <a href="">Modifica password</a>
+                    <a href="cambiaUsername.jsp">Modifica username</a><br/>
+                    <a href="cambiaPassword.jsp">Modifica password</a>
                     <p>SCOPRI</p>
                     <a href="ottieniContenutiGuardati?username=<%= request.getParameter("username") %>">Contenuti guardati</a><br/>
                     <a href="ottieniPostUser?username=${profilo.username}">Posts creati</a><br/>

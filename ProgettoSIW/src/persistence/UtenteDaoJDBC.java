@@ -104,8 +104,8 @@ public class UtenteDaoJDBC implements UtenteDAO {
 				utente.setAutoRenew(result.getBoolean("autorenew"));
 				utente.setEmail(result.getString("email"));
 				utente.setPassword(result.getString("password"));
-				utente.setPassword(result.getString("nome"));
-				utente.setPassword(result.getString("cognome"));
+				utente.setNome(result.getString("nome"));
+				utente.setCognome(result.getString("cognome"));
 			}
 		} 
 		catch (SQLException e) 

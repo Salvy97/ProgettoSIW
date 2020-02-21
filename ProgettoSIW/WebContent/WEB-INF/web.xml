@@ -299,6 +299,24 @@
   </servlet-mapping>
   
   <servlet>
+  	<servlet-name>CambiaPassword</servlet-name>
+  	<servlet-class>controller.CambiaPassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CambiaPassword</servlet-name>
+  	<url-pattern>/cambiaPassword</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>CambiaUsername</servlet-name>
+  	<servlet-class>controller.CambiaUsername</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CambiaUsername</servlet-name>
+  	<url-pattern>/cambiaUsername</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>controller.CatalogoAbbonamenti</servlet-name>
     <servlet-class>controller.CatalogoAbbonamenti</servlet-class>
   </servlet>
