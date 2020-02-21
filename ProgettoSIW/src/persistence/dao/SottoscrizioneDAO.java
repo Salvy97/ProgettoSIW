@@ -10,5 +10,5 @@ public interface SottoscrizioneDAO {
 	public List<Sottoscrizione> findAll();
 	public void update(Sottoscrizione abb); // Update
 	public void delete(Sottoscrizione abb); // Delete
-	public Sottoscrizione findByUser(int id);
+	public Sottoscrizione findByUser(String username);
 }

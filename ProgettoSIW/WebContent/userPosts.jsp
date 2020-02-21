@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>I miei Posts</title>
+		<title>Posts di <%= request.getParameter("username") %></title>
 		<!-- Bootstrap core CSS -->
 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
@@ -84,12 +84,12 @@
 	    	</div>
 	    </nav>
 	    
-	   	<div class="container"> 
+	   	<div class="container" style="padding-bottom: 16%;"> 
 		   	<div class="card row">
 		    	<div class="card-body col-lg-12 row">
 		    		<div class="col-lg-5"></div>
-		    		<h2 class="card-title col-lg-3">I miei Posts</h2>
-		    		<div class="col-lg-4"></div>	
+		    		<h2 class="card-title col-lg-5">Posts di <%= request.getParameter("username") %></h2>
+		    		<div class="col-lg-2"></div>	
 		    	</div>
 		    </div>
 	    
@@ -116,7 +116,7 @@
 		            </div>
 			    </div>
 			   	
-			    <div class="col-lg-8 col-md-6 mb-8 card h-100">
+			    <div class="col-lg-8 col-md-6 mb-8 card h-100" >
 			    	<div class="card-body">
 			    		<div class="row">
 			    			<div class="col-lg-4">
@@ -153,7 +153,7 @@
 		</div>	
 	    
 	    <!-- Footer -->
-	    <footer class="py-4 bg-dark" style="padding-top: 40px;">
+	    <footer class="py-4 bg-dark">
 	        <div class="container">
 	            <p class="m-0 text-right text-white">Copyright &copy; Golden Streaming 2019-2020</p>
 	        </div>

@@ -1,15 +1,7 @@
 package persistence;
 
 import persistence.dao.AbbonamentoDAO;
-import persistence.dao.CommentoDAO;
-import persistence.dao.EpisodioDao;
-import persistence.dao.FilmDao;
-import persistence.dao.PostDao;
-import persistence.dao.ProfiloDAO;
-import persistence.dao.SerieTVDao;
-import persistence.dao.SottoscrizioneDAO;
-import persistence.dao.StagioneDao;
-import persistence.dao.UtenteDAO;
+import persistence.dao.*;
 
 class PostgresDAOFactory extends DAOFactory {
 
@@ -97,5 +89,10 @@ class PostgresDAOFactory extends DAOFactory {
 	@Override
 	public ProfiloDAO getProfiloDAO() {
 		return new ProfiloDAOJDBC(dataSource);
+	}
+	
+	@Override
+	public ContenutiGuardatiDAO getContenutiGuardatiDAO() {
+		return new ContenutiGuardatiDAOJDBC(dataSource);
 	}
 }

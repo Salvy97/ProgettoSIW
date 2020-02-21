@@ -119,7 +119,7 @@
                             <p class="proile-rating">RATING : <span id="rating"></span></p>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Informazioni</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
@@ -134,23 +134,15 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-work">
-                    <p>WORK LINK</p>
-                    <a href="">Website Link</a><br/>
-                    <a href="">Bootsnipp Profile</a><br/>
-                    <a href="">Bootply Profile</a>
-                    <p>SKILLS</p>
-                    <a href="">Web Designer</a><br/>
-                    <a href="">Web Developer</a><br/>
-                    <a href="">WordPress</a><br/>
-                    <a href="">WooCommerce</a><br/>
-                    <a href="">PHP, .Net</a><br/>
-                </div>
-                <div class="profile-work">
-               		<form action="ottieniPostUser" method="get">
-                		<button class="btn btn-info">Posts di questo utente</button>
-                		<input type="hidden" name="username" value="${profilo.username}">
-            		</form>
-            	</div>           	
+                    <p>GESTISCI ACCOUNT</p>
+                    <a href="abbonamento.jsp">Il tuo abbonamento</a><br/>
+                    <a href="">Storico pagamenti</a><br/>
+                    <a href="">Modifica username</a><br/>
+                    <a href="">Modifica password</a>
+                    <p>SCOPRI</p>
+                    <a href="ottieniContenutiGuardati?username=<%= request.getParameter("username") %>">Contenuti guardati</a><br/>
+                    <a href="ottieniPostUser?username=${profilo.username}">Posts creati</a><br/>
+                </div>       	
             </div>
             <div class="col-md-8">
                 <div class="tab-content profile-tab" id="myTabContent">
@@ -257,10 +249,6 @@
             </div>
         </div>        
 	</div>
-	
-	<div class="container" id="main">
-	    <div id="infoarea"></div>
-    </div>
     
     <footer class="py-4 bg-dark fixed-bottom">
     	<div class="container">

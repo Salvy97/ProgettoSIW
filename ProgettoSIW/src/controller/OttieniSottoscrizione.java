@@ -30,7 +30,7 @@ public final class OttieniSottoscrizione extends HttpServlet {
 		
 			int abbType = Integer.parseInt(req.getParameter("id"));
 			Abbonamento abbonamento = DatabaseManager.getInstance().getDaoFactory().getAbbonamentoDAO().findByPrimaryKey(abbType);
-			Sottoscrizione sottoscrizioneEsistente = DatabaseManager.getInstance().getDaoFactory().getSottoscrizioneDAO().findByUser(utente.getId());
+			Sottoscrizione sottoscrizioneEsistente = DatabaseManager.getInstance().getDaoFactory().getSottoscrizioneDAO().findByUser(username);
 			Sottoscrizione sottoscrizione = new Sottoscrizione();
 			sottoscrizione.setAbbonamento(abbonamento);
 			sottoscrizione.setUser(utente);

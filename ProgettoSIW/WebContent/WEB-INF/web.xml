@@ -290,6 +290,15 @@
   </servlet-mapping>
   
   <servlet>
+  	<servlet-name>DammiContenutiGuardati</servlet-name>
+  	<servlet-class>controller.DammiContenutiGuardati</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DammiContenutiGuardati</servlet-name>
+  	<url-pattern>/ottieniContenutiGuardati</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>controller.CatalogoAbbonamenti</servlet-name>
     <servlet-class>controller.CatalogoAbbonamenti</servlet-class>
   </servlet>

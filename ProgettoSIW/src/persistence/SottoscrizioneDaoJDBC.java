@@ -39,17 +39,24 @@ public class SottoscrizioneDaoJDBC implements SottoscrizioneDAO {
       }
     }
   }
-  public Sottoscrizione findByUser(int user_id) {
+  public Sottoscrizione findByUser(String username) {
 	    Connection connection = null;
+	    int userId = -1;
 	    Sottoscrizione sottoscrizione = null;
 	    try {
-	      connection = this.dataSource.getConnection();
-	      PreparedStatement statement;
-	      String query =
-	          "SELECT * FROM public.sottoscrizioni WHERE public.sottoscrizioni.user_id = ?";
+	       connection = this.dataSource.getConnection();
+	       PreparedStatement statement;
+		   String query = "SELECT id FROM public.utente WHERE public.utente.username = ?";
+		   statement = connection.prepareStatement(query);
+		   statement.setString(1, username);
+		   ResultSet result = statement.executeQuery();
+		   if (result.next())
+			   userId = result.getInt(1);
+	    	
+	      query = "SELECT * FROM public.sottoscrizioni WHERE public.sottoscrizioni.user_id = ?";
 	      statement = connection.prepareStatement(query);
-	      statement.setInt(1, user_id);
-	      ResultSet result = statement.executeQuery();
+	      statement.setInt(1, userId);
+	      result = statement.executeQuery();
 	      if (result.next()) {
 	        sottoscrizione = new Sottoscrizione();
 	        sottoscrizione.setDueDate(result.getString("due_date"));

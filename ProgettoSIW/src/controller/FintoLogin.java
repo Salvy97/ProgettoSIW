@@ -20,7 +20,7 @@ public final class FintoLogin extends HttpServlet {
 		HttpSession session = req.getSession(true);
 		
 		Utente user = DatabaseManager.getInstance().getDaoFactory().getUtenteDAO().findByPrimaryKey(2);
-		Sottoscrizione sottoscrizione = DatabaseManager.getInstance().getDaoFactory().getSottoscrizioneDAO().findByUser(user.getId());
+		Sottoscrizione sottoscrizione = DatabaseManager.getInstance().getDaoFactory().getSottoscrizioneDAO().findByUser(user.getUsername());
 		System.out.println("[Finto login] utente in sessione " + user.getUsername() + " id " + user.getId());
 		
 		session.setAttribute("user", user);
