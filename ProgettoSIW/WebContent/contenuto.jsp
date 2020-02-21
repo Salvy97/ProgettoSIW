@@ -101,50 +101,50 @@
 	    </div>
 	    
 	    <div id="videoTitle">${film.titolo}</div>
-	    
-	    <div class="row nomargin">
-		    <div class="col-lg-2 leftBar jumbotron">
-		    	Stagione: 
-		   	 	<span class="info type">
-		    		.
-		    	</span>
-		    	<br>
-		    	Episodio: 
-		   	 	<span class="info genre">
-		    		.
-		    	</span>
-		    	<br><br>
-		    	Regista:  
-		   	 	<p class="info views">${film.regista}</p>		    	
-		   	 	Anno:  
-		   	 	<p class="info genre">${film.anno}</p>
-		   	 	Durata:  
-		   	 	<p class="info genre">${film.durata}'</p>
-		    </div>
-		    
-		    
-		    <div class="video col-lg-8">
-		    	<iframe width="840" height="460" src="${film.filmato}" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-		    </div>
-			
-		    
-		    <div class="col-lg-2 rightBar jumbotron">
-		    	Tipo: 
-		   	 	<p class="info type">
-		    		Film
-		    	</p>
-		    	Genere: 
-		   	 	<p class="info genre">${film.genere}</p>
-		    	Visualizzazioni:  
-		   	 	<p class="info views">${film.visualizzazioni}</p>
-		   	 			    	
-		   	 	<div class="info review row" style="font-size: 32px;">
-		    		&#9733; &#9733; &#9733; &#9733; &#9733;
-		    	</div>
-		    </div>
+    	<div class="video video-container" style="text-align: center;">
+    		<iframe width="1100" height="720" src="${film.filmato}"></iframe>
+    	</div>
+		
+		<div class="container" style="padding-bottom: 40px;">
+			<div class="card h-100">
+				<div class="card-title" id="informazioni">Informazioni:</div>
+				<div class="card-footer">
+					<div class="row">
+						<div class="col-lg-6">
+							<span class="infoTitle">Titolo: </span>
+							<span class="info">${film.titolo}</span>
+						</div>
+						<div class="col-lg-2"></div>
+						<div class="col-lg-4">
+							<span class="infoTitle">Genere: </span>
+							<span class="info">${film.genere}</span>		
+						</div>				
+					</div>
+					<div class="row">
+						<div class="col-lg-6">
+							<span class="infoTitle">Anno: </span>
+							<span class="info">${film.anno}</span>
+						</div>
+						<div class="col-lg-2"></div>
+						<div class="col-lg-4">
+							<span class="infoTitle">Durata: </span>
+							<span class="info">${film.durata}</span>		
+						</div>				
+					</div>
+					<div class="row">
+						<div class="col-lg-6">
+							<span class="infoTitle">Regista: </span>
+							<span class="info">${film.regista}</span>
+						</div>
+						<div class="col-lg-2"></div>
+						<div class="col-lg-4">
+							<span class="infoTitle">Visualizzazioni: </span>
+							<span class="info">${film.visualizzazioni}</span>		
+						</div>				
+					</div>
+				</div>
+			</div>
 		</div>
-		
-		
 	
 		<!-- Footer -->
 	    <footer class="py-4 bg-dark">
