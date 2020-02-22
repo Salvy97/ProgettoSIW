@@ -29,7 +29,7 @@
 			<!-- Navigation -->
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		   		<div class="container">
-		      		<a class="navbar-brand" href="index.html" id="logo">
+		      		<a class="navbar-brand" href="ottieniIndex" id="logo">
 		      			<img src="images/logo.gif"/>
 		      		</a>
 		      		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,19 +38,19 @@
 		      		<div class="collapse navbar-collapse" id="navbarResponsive">
 			        	<ul class="navbar-nav">
 			          		<li class="nav-item">
-			          			<a class="nav-link" href="index.html">Home</a>
+			          			<a class="nav-link" href="ottieniIndex">Home</a>
 			          		</li>
 			          		<li class="nav-item active">
 			            		<a class="nav-link" href="ottieniFilm">Film</a>
 			          		</li>
 			          		<li class="nav-item">
-			            		<a class="nav-link" href="serieTV.html">Serie TV</a>
+			            		<a class="nav-link" href="ottieniSerieTV">Serie TV</a>
 			          		</li>
 			          		<li class="nav-item">
-			            		<a class="nav-link" href="cercaContenuto.jsp">Forum</a>
+			            		<a class="nav-link" href="ottieniForum">Forum</a>
 			          		</li>
 			         		<li class="nav-item">
-			            		<a class="nav-link" href="#">Contatti</a>
+			            		<a class="nav-link" href="contatti.jsp">Contatti</a>
 			          		</li>
 			        	</ul>
 		      		</div>
@@ -68,7 +68,12 @@
 							        <div class="dropdown-menu">
 							        	<h6 class="dropdown-header">${sessionScope.name}</h6>
 							        	<div class="dropdown-divider"></div>
-							            <a href="${pageContext.request.contextPath}/user" class="dropdown-item">Profilo</a>
+							            <a href="${pageContext.request.contextPath}/user?username=${sessionScope.name}" class="dropdown-item">Profilo</a>
+							            <c:choose>
+						    				<c:when test="${sessionScope.abbonamento==false}">
+						    					 <a href="abbonamento" class="dropdown-item">Abbonati</a>
+						    				</c:when>
+						    			</c:choose>
 							            <a href="LogoutServlet" class="dropdown-item">Logout</a>
 							        </div>
 							    </div>
@@ -93,12 +98,10 @@
 	    
 	    <h1> Pannello Admin </h1>
 	    
-		<a href="${pageContext.request.contextPath}/gestionecontenuti"><button type="button" class="btn btn-success">Gestione Contenuti</button></a>
+		<a href="${pageContext.request.contextPath}/gestioneFilm"><button type="button" class="btn btn-success">Gestione Film</button></a>
+	    <a href="${pageContext.request.contextPath}/gestioneSerieTV"><button type="button" class="btn btn-success">Gestione Serie TV</button></a>
 	    
 	    </div>
-
-		
-	    
 
 	    <footer class="py-4 bg-dark fixed-bottom">
 	        <div class="container">

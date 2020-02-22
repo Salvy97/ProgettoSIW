@@ -19,7 +19,7 @@
 		 <!-- Navigation -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 	   		<div class="container">
-	      		<a class="navbar-brand" href="index.html" id="logo">
+	      		<a class="navbar-brand" href="ottieniIndex" id="logo">
 	      			<img src="images/logo.gif"/>
 	      		</a>
 	      		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,21 +28,21 @@
 	      		<div class="collapse navbar-collapse" id="navbarResponsive">
 		        	<ul class="navbar-nav">
 		          		<li class="nav-item active">
-		          			<a class="nav-link" href="index.jsp">Home
+		          			<a class="nav-link" href="ottieniIndex">Home
 		              			<span class="sr-only">(current)</span>
 		            		</a>
 		          		</li>
 		          		<li class="nav-item">
-		            		<a class="nav-link" href="film.jsp">Film</a>
+		            		<a class="nav-link" href="ottieniFilm">Film</a>
 		          		</li>
 		          		<li class="nav-item">
-		            		<a class="nav-link" href="#">Serie TV</a>
+		            		<a class="nav-link" href="ottieniSerieTV">Serie TV</a>
 		          		</li>
 		          		<li class="nav-item">
-		            		<a class="nav-link" href="cercaContenuto.jsp">Forum</a>
+		            		<a class="nav-link" href="ottieniForum">Forum</a>
 		          		</li>
 		         		<li class="nav-item">
-		            		<a class="nav-link" href="#">Contatti</a>
+		            		<a class="nav-link" href="contatti.jsp">Contatti</a>
 		          		</li>
 		        	</ul>
 	      		</div>
@@ -60,7 +60,12 @@
 							        <div class="dropdown-menu">
 							        	<h6 class="dropdown-header">${sessionScope.name}</h6>
 							        	<div class="dropdown-divider"></div>
-							            <a href="${pageContext.request.contextPath}/user" class="dropdown-item">Profilo</a>
+							            <a href="${pageContext.request.contextPath}/user?username=${sessionScope.name}" class="dropdown-item">Profilo</a>
+							            <c:choose>
+						    				<c:when test="${sessionScope.abbonamento==false}">
+						    					 <a href="abbonamento" class="dropdown-item">Abbonati</a>
+						    				</c:when>
+						    			</c:choose>
 							            <a href="LogoutServlet" class="dropdown-item">Logout</a>
 							        </div>
 							    </div>
@@ -97,6 +102,12 @@
 		    <div class="row">
 			    <div class="card h-100 col-lg-4 col-md-6 mb-4">
 			    	<div class="card-body">
+			    		<div style="padding-bottom: 20px;">
+			    			<form action="ottieniPostUser" method="get">
+			    				<button class="btn btn-info">I miei posts</button>
+			    				<input type="hidden" name="username" value="<%= session.getAttribute("name") %>">
+			    			</form>
+			    		</div>
 		                <h3 class="card-title" style="color: blue;">
 		                    Ultimi Posts
 		                </h3>
@@ -121,8 +132,8 @@
 			    	<div class="card-body">
 			    		<div class="row">
 			    			<div class="col-lg-4">
-			    				<img id="profilePicture" src="" width="100" height="100"/>
-			    				<p id="username" style="font-size: 18px; padding-top: 10px;"></p>
+			    				<img id="profilePicture" onclick="goToProfileFromPost();" src="" width="100" height="100"/>
+			    				<p id="username" onclick="goToProfileFromPost();" style="font-size: 18px; padding-top: 10px;"></p>
 			    			</div>
 			    			<div class="lg-auto ml-auto sg-auto">
 				    			<div id="data"></div>

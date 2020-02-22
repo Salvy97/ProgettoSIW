@@ -1,16 +1,16 @@
 $(document).ready(function()
 {
-	$("#ricerca").unbind();
-	$("#ricerca").keyup(function()
+	$("#ricercaContenuto").unbind();
+	$("#ricercaContenuto").keyup(function()
 	{
-		$("#result").empty();
-		$("result").html("");
-		var searchField = $("#ricerca").val();
-		$.getJSON("cercaContenuto?titolo=" + searchField, function(data)
+		$("#resultContenuti").empty();
+		$("resultContenuti").html("");
+		var searchFieldContenuto = $("#ricercaContenuto").val();
+		$.getJSON("cercaContenuto?titolo=" + searchFieldContenuto, function(data)
 		{
 			$.each(data, function(key, value)
 			{
-				$("#result").append('<option value="'+ value.titolo + '"></option>');
+				$("#resultContenuti").append('<option value="'+ value.titolo + '"></option>');
 			})
 		})
 	});
@@ -18,15 +18,48 @@ $(document).ready(function()
 
 function scegliContenuto()
 {
-	var searchField = $("#ricerca").val();
-	if (searchField == "")
+	var searchFieldContenuto = $("#ricercaContenuto").val();
+	if (searchFieldContenuto == "")
 		alert("Inserisci un titolo.");
 	else
 	{
-		$.getJSON("cercaContenuto?titolo=" + searchField, function(data)
+		$.getJSON("cercaContenuto?titolo=" + searchFieldContenuto, function(data)
 		{
-			document.getElementById("contenutoScelto").value = searchField;
-			document.getElementById("ricercaContenuto").submit();
+			document.getElementById("contenutoScelto").value = searchFieldContenuto;
+			document.getElementById("ricercaContenutiForm").submit();
+		})
+	}
+}
+
+$(document).ready(function()
+{
+	$("#ricercaUtente").unbind();
+	$("#ricercaUtente").keyup(function()
+	{
+		$("#resultUtenti").empty();
+		$("resultUtenti").html("");
+		var searchFieldUtente = $("#ricercaUtente").val();
+		$.getJSON("cercaUtente?username=" + searchFieldUtente, function(data)
+		{
+			$.each(data, function(key, value)
+			{
+				$("#resultUtenti").append('<option value="'+ value.username + '"></option>');
+			})
+		})
+	});
+});
+
+function scegliUtente()
+{
+	var searchFieldUtente = $("#ricercaUtente").val();
+	if (searchFieldUtente == "")
+		alert("Inserisci un username.");
+	else
+	{
+		$.getJSON("cercaUtente?username=" + searchFieldUtente, function(data)
+		{
+			document.getElementById("utenteScelto").value = searchFieldUtente;
+			document.getElementById("ricercaUtentiForm").submit();
 		})
 	}
 }

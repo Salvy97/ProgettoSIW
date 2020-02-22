@@ -24,13 +24,14 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 		Connection connection = this.dataSource.getConnection();
 		try {
 			String insert = "insert into serie_tv(id_serie_tv, titolo, anno,"
-					+ " genere, locandina) values (?,?,?,?,?)";
+					+ " genere, locandina, immagine_forum) values (?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setInt(1, serieTV.getId_serieTV());
 			statement.setString(2, serieTV.getTitolo());
 			statement.setInt(3, serieTV.getAnno());
 			statement.setString(4, serieTV.getGenere());
 			statement.setString(5, serieTV.getLocandina());
+			statement.setString(6, serieTV.getImmagineForum());
 			
 			statement.executeUpdate();
 		} catch (SQLException e) {
@@ -61,6 +62,7 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 				serieTV.setAnno(result.getInt("anno"));
 				serieTV.setGenere(result.getString("genere"));
 				serieTV.setLocandina(result.getString("locandina"));
+				serieTV.setImmagineForum(result.getString("immagine_forum"));
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -92,7 +94,7 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 				serieTV.setAnno(result.getInt("anno"));
 				serieTV.setGenere(result.getString("genere"));
 				serieTV.setLocandina(result.getString("locandina"));
-
+				serieTV.setImmagineForum(result.getString("immagine_forum"));
 				
 				serieTVs.add(serieTV);
 			}
@@ -126,6 +128,7 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 				serieTV.setAnno(result.getInt("anno"));
 				serieTV.setGenere(result.getString("genere"));
 				serieTV.setLocandina(result.getString("locandina"));
+				serieTV.setImmagineForum(result.getString("immagine_forum"));
 				
 				serieTVs.add(serieTV);
 			}
@@ -159,6 +162,7 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 				serieTV.setAnno(result.getInt("anno"));
 				serieTV.setGenere(result.getString("genere"));
 				serieTV.setLocandina(result.getString("locandina"));
+				serieTV.setImmagineForum(result.getString("immagine_forum"));
 				
 				serieTVs.add(serieTV);
 			}
@@ -178,13 +182,15 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 	public void update(SerieTV serieTV) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update serie_tv SET titolo = ?, anno = ?, stagioni = ?, genere = ?, locandina = ? WHERE id_serie_tv = ?";
+			String update = "update serie_tv SET titolo = ?, anno = ?, stagioni = ?, genere = ?, locandina = ?, immagine_forum = ? WHERE id_serie_tv = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, serieTV.getTitolo());
 			statement.setInt(2, serieTV.getAnno());
 			statement.setString(3, serieTV.getGenere());
 			statement.setString(4, serieTV.getLocandina());
-			statement.setInt(5, serieTV.getId_serieTV());
+			statement.setString(5, serieTV.getImmagineForum());
+			statement.setInt(6, serieTV.getId_serieTV());
+
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -255,6 +261,7 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 					serieTV.setAnno(result.getInt("anno"));
 					serieTV.setGenere(result.getString("genere"));
 					serieTV.setLocandina(result.getString("locandina"));
+					serieTV.setImmagineForum(result.getString("immagine_forum"));
 					
 					serieTVs.add(serieTV);
 				}
@@ -271,6 +278,7 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 		}
 		return serieTVs;
 	}
+
 	
 	public List<SerieTV> cercaUltimiInseriti() {
 		Connection connection = this.dataSource.getConnection();
@@ -292,6 +300,7 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 				serieTV.setAnno(result.getInt("anno"));
 				serieTV.setGenere(result.getString("genere"));
 				serieTV.setLocandina(result.getString("locandina"));
+				serieTV.setImmagineForum(result.getString("immagine_forum"));
 				
 				serieTVs.add(serieTV);
 			}
@@ -327,6 +336,7 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 				serieTV.setAnno(result.getInt("anno"));
 				serieTV.setGenere(result.getString("genere"));
 				serieTV.setLocandina(result.getString("locandina"));
+				serieTV.setImmagineForum(result.getString("immagine_forum"));
 				
 				serieTVs.add(serieTV);
 			}

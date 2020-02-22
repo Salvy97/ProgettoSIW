@@ -6,6 +6,7 @@ public class SerieTV {
 	private int anno;
 	private String genere;
 	private String locandina;
+	private String immagineForum;
 
 
 	public SerieTV(){}
@@ -56,6 +57,14 @@ public class SerieTV {
 
 	public void setLocandina(String locandina) {
 		this.locandina = locandina;
+	}
+
+	public String getImmagineForum() {
+		return immagineForum;
+	}
+
+	public void setImmagineForum(String immagineForum) {
+		this.immagineForum = immagineForum;
 	}
 	
 }

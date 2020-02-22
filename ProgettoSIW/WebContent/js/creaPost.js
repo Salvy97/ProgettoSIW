@@ -5,7 +5,7 @@ function creaPost()
 	{
 		alert("Il titolo non deve essere vuoto. Inserisci un titolo.");
 	}
-	else if (descrizione.length > 256)
+	else if (descrizione.length > 720)
 	{
 		alert("La descrizione supera il limite massimo consentito di caratteri.");
 	}

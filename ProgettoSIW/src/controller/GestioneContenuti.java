@@ -30,7 +30,7 @@ public class GestioneContenuti extends HttpServlet {
 		String titolo;
 		String locandina;
 		String genere;
-		String linkYT;
+		String filmato;
 		System.out.println("Operazione " + operation);
 		switch (operation) {
 		case "del":
@@ -48,8 +48,8 @@ public class GestioneContenuti extends HttpServlet {
 			titolo = req.getParameter("titolo");;
 			locandina = req.getParameter("locandina");
 			genere = req.getParameter("genere");
-			linkYT = req.getParameter("linkyt");
-			System.out.println("Soggetto da modificare | anno " + anno + " durata " + durata + " titolo: " + titolo + " locandina " + locandina + " genere " + genere + " link " + linkYT);
+			filmato = req.getParameter("filmato");
+			System.out.println("Soggetto da modificare | anno " + anno + " durata " + durata + " titolo: " + titolo + " locandina " + locandina + " genere " + genere + " link " + filmato);
 			Film editedFilm = new Film();
 			editedFilm.setId_film(subject);
 			editedFilm.setTitolo(titolo);
@@ -57,7 +57,7 @@ public class GestioneContenuti extends HttpServlet {
 			editedFilm.setDurata(durata);
 			editedFilm.setGenere(genere);
 			editedFilm.setLocandina(locandina);
-			editedFilm.setFilmato(linkYT);
+			editedFilm.setFilmato(filmato);
 			System.out.println("LINK " + editedFilm.getFilmato());
 			dbm.getDaoFactory().getFilmDAO().update(editedFilm);
 			res.setStatus(200);
@@ -74,9 +74,9 @@ public class GestioneContenuti extends HttpServlet {
 			titolo = req.getParameter("titolo");;
 			locandina = req.getParameter("locandina");
 			genere = req.getParameter("genere");
-			linkYT = req.getParameter("linkyt");
+			filmato = req.getParameter("filmato");
 
-			System.out.println("Soggetto da aggiungere | anno " + anno + " durata " + durata + " titolo: " + titolo + " locandina " + locandina + " genere " + genere + " link " + linkYT);
+			System.out.println("Soggetto da aggiungere | anno " + anno + " durata " + durata + " titolo: " + titolo + " locandina " + locandina + " genere " + genere + " link " + filmato);
 			Film newFilm = new Film();
 			newFilm.setId_film(-1);
 			newFilm.setTitolo(titolo);
@@ -84,7 +84,7 @@ public class GestioneContenuti extends HttpServlet {
 			newFilm.setDurata(durata);
 			newFilm.setGenere(genere);
 			newFilm.setLocandina(locandina);
-			newFilm.setFilmato(linkYT);
+			newFilm.setFilmato(filmato);
 			System.out.println("LINK " + newFilm.getFilmato());
 			dbm.getDaoFactory().getFilmDAO().save(newFilm);
 			res.setStatus(200);

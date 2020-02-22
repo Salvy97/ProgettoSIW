@@ -9,6 +9,7 @@ import persistence.dao.StagioneDao;
 import persistence.dao.UtenteDAO;
 import persistence.dao.AbbonamentoDAO;
 import persistence.dao.CommentoDAO;
+import persistence.dao.ContenutiGuardatiDAO;
 import persistence.dao.EpisodioDao;
 
 public abstract class DAOFactory {
@@ -60,4 +61,5 @@ public abstract class DAOFactory {
   public abstract SottoscrizioneDAO getSottoscrizioneDAO();
   public abstract UtenteDAO getUtenteDAO();
   public abstract ProfiloDAO getProfiloDAO();
+  public abstract ContenutiGuardatiDAO getContenutiGuardatiDAO();
 }

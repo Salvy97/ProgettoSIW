@@ -8,11 +8,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import model.Episodio;
 import model.Film;
 import model.SerieTV;
 import model.Stagione;
+import model.Episodio;
 import persistence.DatabaseManager;
 import persistence.dao.EpisodioDao;
 import persistence.dao.FilmDao;
@@ -27,6 +28,18 @@ public class DammiIndex extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
 
+		HttpSession session = req.getSession();
+		
+		if (session.getAttribute("name") != null)
+		{
+			String username = (String) session.getAttribute("name");
+			if (DatabaseManager.getInstance().getDaoFactory().getUtenteDAO().isAbbonato(username))
+				session.setAttribute("abbonamento", true);
+			else
+				session.setAttribute("abbonamento", false);
+		}
+		
+		// Film
 		FilmDao fDao = DatabaseManager.getInstance().getDaoFactory().getFilmDAO();
 		List<Film> ultimiFilmInseriti = fDao.cercaUltimiInseriti();
 		req.setAttribute("ultimiFilmInseriti", ultimiFilmInseriti);
@@ -35,11 +48,11 @@ public class DammiIndex extends HttpServlet{
 		req.setAttribute("filmPiuVisti", filmPiuVisti);
 		
 		
-				
+		// Serie TV
 		SerieTVDao sDao = DatabaseManager.getInstance().getDaoFactory().getSerieTVDAO();
 		List<SerieTV> ultimeSerieTVInserite = sDao.cercaUltimiInseriti();
 		req.setAttribute("ultimeSerieTVInserite", ultimeSerieTVInserite);
-		
+	
 		List<SerieTV> serieTVPiuViste = sDao.cercaPiuVisti();
 		req.setAttribute("serieTVPiuViste", serieTVPiuViste);
 		
@@ -59,6 +72,5 @@ public class DammiIndex extends HttpServlet{
 		
 		RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
 		rd.forward(req, resp);
-		
 	}
 }

@@ -21,43 +21,43 @@ public final class OttieniSottoscrizione extends HttpServlet {
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		HttpSession session = req.getSession(false);
-		Utente aassssddsasd = (Utente) session.getAttribute("user");
-		System.out.println("[Ottieni Sottoscrizione] Utente in sessione " + aassssddsasd.getUsername());
+		String username = (String) session.getAttribute("name");
+		Utente utente = DatabaseManager.getInstance().getDaoFactory().getUtenteDAO().findByUsername(username);
+		System.out.println("[Ottieni Sottoscrizione] Utente in sessione " + utente.getUsername());
 		
 		String operation = req.getParameter("operation");
 		if (operation.equals("add")) {
 		
 			int abbType = Integer.parseInt(req.getParameter("id"));
-			Abbonamento asd = DatabaseManager.getInstance().getDaoFactory().getAbbonamentoDAO().findByPrimaryKey(abbType);
-			Sottoscrizione sottoscrizioneEsistente = DatabaseManager.getInstance().getDaoFactory().getSottoscrizioneDAO().findByUser(aassssddsasd.getId());
-			Sottoscrizione asdddd = new Sottoscrizione();
-			asdddd.setAbbonamento(asd);
-			asdddd.setUser(aassssddsasd);
+			Abbonamento abbonamento = DatabaseManager.getInstance().getDaoFactory().getAbbonamentoDAO().findByPrimaryKey(abbType);
+			Sottoscrizione sottoscrizioneEsistente = DatabaseManager.getInstance().getDaoFactory().getSottoscrizioneDAO().findByUser(username);
+			Sottoscrizione sottoscrizione = new Sottoscrizione();
+			sottoscrizione.setAbbonamento(abbonamento);
+			sottoscrizione.setUser(utente);
 			LocalDate lt = LocalDate.now().plusDays(30);
-			asdddd.setDueDate(lt.toString());
+			sottoscrizione.setDueDate(lt.toString());
 			
 			if (sottoscrizioneEsistente != null) {
 				
-				if (sottoscrizioneEsistente.getAbbonamento().getId() == asdddd.getAbbonamento().getId()) {
+				if (sottoscrizioneEsistente.getAbbonamento().getId() == sottoscrizione.getAbbonamento().getId()) {
 					LocalDate data = LocalDate.parse(sottoscrizioneEsistente.getDueDate()).plusDays(30);
-					asdddd.setDueDate(data.toString());
+					sottoscrizione.setDueDate(data.toString());
 				}
 				
 				
-				DatabaseManager.getInstance().getDaoFactory().getSottoscrizioneDAO().update(asdddd);				
+				DatabaseManager.getInstance().getDaoFactory().getSottoscrizioneDAO().update(sottoscrizione);				
 			} else {
-				DatabaseManager.getInstance().getDaoFactory().getSottoscrizioneDAO().save(asdddd);
+				DatabaseManager.getInstance().getDaoFactory().getSottoscrizioneDAO().save(sottoscrizione);
 			}
-			session.setAttribute("sottoscrizione", asdddd);
 
 		} else if (operation.equals("savepref")) {
 			String userPP = req.getParameter("userpp");
 			Boolean autoRenewd = Boolean.parseBoolean(req.getParameter("autorenew"));
 			System.out.println("Aggiorno le preferenze: " + userPP + " autorinnovo: " + autoRenewd);
-			aassssddsasd.setUsernamePP(userPP);
-			aassssddsasd.setAutoRenew(autoRenewd);
-			
-			DatabaseManager.getInstance().getDaoFactory().getUtenteDAO().update(aassssddsasd);
+			utente.setUsernamePP(userPP);
+			utente.setAutoRenew(autoRenewd);
+
+			DatabaseManager.getInstance().getDaoFactory().getUtenteDAO().update(utente);
 		}
 	}
 }

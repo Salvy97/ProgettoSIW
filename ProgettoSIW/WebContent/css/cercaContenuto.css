@@ -28,7 +28,7 @@ body {
 }
 
 #searchCard {
-	padding-bottom: 24%;
+	padding-bottom: 8%;
 }
 
 .card {
@@ -40,6 +40,6 @@ body {
 }
 
 #cercaContenutoDiv {
-	padding-bottom: 10%;
-	padding-top: 10%;
+	padding-bottom: 5%;
+	padding-top: 5%;
 }

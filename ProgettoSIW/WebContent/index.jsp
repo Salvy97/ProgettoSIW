@@ -47,7 +47,7 @@
 		            		<a class="nav-link" href="ottieniSerieTV">Serie TV</a>
 		          		</li>
 		          		<li class="nav-item">
-		            		<a class="nav-link" href="cercaContenuto.jsp">Forum</a>
+		            		<a class="nav-link" href="ottieniForum">Forum</a>
 		          		</li>
 		         		<li class="nav-item">
 		            		<a class="nav-link" href="contatti.jsp">Contatti</a>
@@ -56,6 +56,13 @@
 	      		</div>
 	      		<div class="collapse navbar-collapse" id="navbarResponsive">
 	      			<ul class="navbar-nav lg-auto ml-auto sg-auto">
+	      				<div style="padding-right: 20px;">
+		      				<c:choose>
+							    <c:when test="${sessionScope.role=='admin'}">
+							    	<button class="btn btn-warning" onclick="location.href = 'PannelloAdmin.jsp';">Pannello Admin</button>
+							    </c:when>
+							</c:choose>
+						</div>
             			<c:choose>
 						    <c:when test="${sessionScope.name!=null}">
 							    <li class="nav-item">
@@ -68,7 +75,12 @@
 							        <div class="dropdown-menu">
 							        	<h6 class="dropdown-header">${sessionScope.name}</h6>
 							        	<div class="dropdown-divider"></div>
-							            <a href="${pageContext.request.contextPath}/user" class="dropdown-item">Profilo</a>
+							            <a href="${pageContext.request.contextPath}/user?username=${sessionScope.name}" class="dropdown-item">Profilo</a>
+							            <c:choose>
+						    				<c:when test="${sessionScope.abbonamento==false}">
+						    					 <a href="abbonamento" class="dropdown-item">Abbonati</a>
+						    				</c:when>
+						    			</c:choose>
 							            <a href="LogoutServlet" class="dropdown-item">Logout</a>
 							        </div>
 							    </div>
@@ -110,6 +122,26 @@
 		        </div>
 		    </div>    
 	    </c:when>
+	    <c:when test="${sessionScope.abbonamento==false}">
+	    	<div id="myModal" class="modal fade" tabindex="-1">
+		        <div class="modal-dialog">
+		            <div class="modal-content">
+		                <div class="modal-header">
+		                    <h5 class="modal-title">Avviso - Termini di Utilizzo</h5>
+		                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+		                </div>
+		                <div class="modal-body">
+		                    <p>Per usufruire dei contenuti presenti sulla piattaforma è necessario
+		                    essere registrati e disporre di un abbonamento attivo!</p>
+		                    <p class="text-secondary"><small>Accedi o registrati per iniziare subito...</small></p>
+		                </div>
+		                <div class="modal-footer">
+		                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+		                </div>
+		            </div>
+		        </div>
+		    </div>    
+	    </c:when>
 	    </c:choose>
 	    
 	    
@@ -123,20 +155,20 @@
 		    		
 		    		<!-- Search form -->
 		    		<div id="searchBox" class="jumbotron text-center">
-						
-			          <!-- <div class="p-1 bg-light rounded rounded-pill shadow-sm">
-			            <form method="GET" action="ottieniCercaFilm">
-			            <div class="input-group">
-			              <input id="inputSrc" name="search" type="search" placeholder="Cerca..." aria-describedby="button-addon1" class="form-control border-0 bg-light">
-			              <div class="input-group-append">
-			                <button id="btnSrc" type="submit" class="btn btn-link"><i class="fa fa-search"></i></button>
-			              </div>
-			             </form>
-			            </div>
-			          </div> -->
-			          
-			          
-			          <div class="dropdown">
+				        <div class="p-1 bg-light rounded rounded-pill shadow-sm">
+				        	<form id="ricercaContenutiForm" action="ottieniContenutoDaTitolo" method="GET">
+				         		<div class="input-group">
+						    		<input list="resultContenuti" id="ricercaContenuto" class="form-control border-0 bg-light" type="text" placeholder="Cerca..." aria-label="Search" aria-describedby="button-addon1"/>
+									<datalist id="resultContenuti"></datalist>
+									<input type="hidden" name="contenuto" id="contenutoScelto"/>
+									<div class="input-group-append">
+										<button id="cerca" class="btn btn-link" onclick="scegliContenuto();"><i class="fa fa-search"></i></button>
+									</div>
+								</div>
+							</form>
+				        </div>
+     
+			         <!--  <div class="dropdown">
 						  <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						    Cerca contenuto
 						  </button>
@@ -144,9 +176,9 @@
 						    <a class="dropdown-item" href="ottieniCercaFilm">Film</a>
 						    <a class="dropdown-item" href="ottieniCercaSerieTV">Serie TV</a>
 						  </div>
-					  </div>
+					  </div> -->
 					
-					</div>
+			 	</div>
 					
 					
 					
@@ -176,16 +208,20 @@
 		                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 		                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
 		            	<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+		            	<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
 		          	</ol>
 		          	<div class="carousel-inner" role="listbox">
 		                <div class="carousel-item active">
-		                    <img class="noMargin d-block img-fluid" src="images/joker.jpg" alt="First slide">
+		                    <img class="noMargin d-block img-fluid imgCar" src="${filmPiuVisti[0].immagineForum}" alt="First slide">
 		                </div>
 		                <div class="carousel-item">
-		                    <img class="noMargin d-block img-fluid" src="images/theWitcher.jpg" alt="Second slide">
+		                    <img class="noMargin d-block img-fluid imgCar" src="${serieTVPiuViste[0].immagineForum}" alt="Second slide">
 		                </div>
 		                <div class="carousel-item">
-		                    <img class="noMargin d-block img-fluid" src="images/gameOfThrones.jpg" alt="Third slide">
+		                    <img class="noMargin d-block img-fluid imgCar" src="${filmPiuVisti[1].immagineForum}" alt="Third slide">
+		                </div>
+		                <div class="carousel-item">
+		                    <img class="noMargin d-block img-fluid imgCar" src="${serieTVPiuViste[1].immagineForum}" alt="Fourth slide">
 		                </div>
 		            </div>
 		            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

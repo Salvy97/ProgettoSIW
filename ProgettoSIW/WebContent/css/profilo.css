@@ -10,7 +10,7 @@
 
 body {
   	padding-top: 56px;
-  	background-image: url(../images/background.jpg);
+  	background-image: url(../images/profiloBackground.jpg);
   	background-size: cover;                     
   	background-repeat: no-repeat;
   	background-attachment: fixed;
@@ -144,4 +144,8 @@ body {
 .profile-tab p {
     font-weight: 600;
     color: #0062cc;
+}
+
+#cambiaImmagineForm {
+	padding-top: 4px;
 }

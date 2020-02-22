@@ -191,10 +191,9 @@
   	<url-pattern>/signUp</url-pattern>
   </servlet-mapping>
   
-  
-<!--   <welcome-file-list>
-    <welcome-file>ottieniIndex</welcome-file>
-  </welcome-file-list> -->
+  <welcome-file-list>
+  	<welcome-file>ottieniIndex</welcome-file>
+  </welcome-file-list>
 
 
 <!-- Servlet altre -->
@@ -218,12 +217,21 @@
   </servlet-mapping>
 
   <servlet>
-  	<servlet-name>controller.GestioneContenuti</servlet-name>
-  	<servlet-class>controller.GestioneContenuti</servlet-class>
+  	<servlet-name>controller.GestioneFilm</servlet-name>
+  	<servlet-class>controller.GestioneFilm</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>controller.GestioneContenuti</servlet-name>
-  	<url-pattern>/gestionecontenuti</url-pattern>
+  	<servlet-name>controller.GestioneFilm</servlet-name>
+  	<url-pattern>/gestioneFilm</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>controller.GestioneSerieTV</servlet-name>
+  	<servlet-class>controller.GestioneSerieTV</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>controller.GestioneSerieTV</servlet-name>
+  	<url-pattern>/gestioneSerieTV</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -236,11 +244,11 @@
   </servlet-mapping>
 
   <servlet>
-  	<servlet-name>controller.PannelloUser</servlet-name>
-  	<servlet-class>controller.PannelloUser</servlet-class>
+  	<servlet-name>controller.DammiProfilo</servlet-name>
+  	<servlet-class>controller.DammiProfilo</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>controller.PannelloUser</servlet-name>
+  	<servlet-name>controller.DammiProfilo</servlet-name>
   	<url-pattern>/user</url-pattern>
   </servlet-mapping>
 
@@ -252,6 +260,15 @@
   <servlet-mapping>
   	<servlet-name>PrendiPost</servlet-name>
   	<url-pattern>/ottieniPost</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>PrendiPostUser</servlet-name>
+  	<servlet-class>controller.DammiPostUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiPostUser</servlet-name>
+  	<url-pattern>/ottieniPostUser</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -279,6 +296,105 @@
   <servlet-mapping>
   	<servlet-name>CercaContenuto</servlet-name>
   	<url-pattern>/cercaContenuto</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>DammiForum</servlet-name>
+  	<servlet-class>controller.DammiForum</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DammiForum</servlet-name>
+  	<url-pattern>/ottieniForum</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>DammiFilmGuardati</servlet-name>
+  	<servlet-class>controller.DammiFilmGuardati</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DammiFilmGuardati</servlet-name>
+  	<url-pattern>/ottieniFilmGuardati</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>DammiEpisodiGuardati</servlet-name>
+  	<servlet-class>controller.DammiEpisodiGuardati</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DammiEpisodiGuardati</servlet-name>
+  	<url-pattern>/ottieniEpisodiGuardati</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>CambiaPassword</servlet-name>
+  	<servlet-class>controller.CambiaPassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CambiaPassword</servlet-name>
+  	<url-pattern>/cambiaPassword</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>CambiaUsername</servlet-name>
+  	<servlet-class>controller.CambiaUsername</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CambiaUsername</servlet-name>
+  	<url-pattern>/cambiaUsername</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>CercaUtente</servlet-name>
+  	<servlet-class>controller.CercaUtente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CercaUtente</servlet-name>
+  	<url-pattern>/cercaUtente</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>DammiContenutoDaTitolo</servlet-name>
+  	<servlet-class>controller.DammiContenutoDaTitolo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DammiContenutoDaTitolo</servlet-name>
+  	<url-pattern>/ottieniContenutoDaTitolo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>CambiaImmagine</servlet-name>
+  	<servlet-class>controller.CambiaImmagine</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CambiaImmagine</servlet-name>
+  	<url-pattern>/cambiaImmagine</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>SalvaFilm</servlet-name>
+  	<servlet-class>controller.SalvaFilm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SalvaFilm</servlet-name>
+  	<url-pattern>/salvaFilm</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>EliminaFilm</servlet-name>
+  	<servlet-class>controller.EliminaFilm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>EliminaFilm</servlet-name>
+  	<url-pattern>/eliminaFilm</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>AggiornaFilm</servlet-name>
+  	<servlet-class>controller.AggiornaFilm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AggiornaFilm</servlet-name>
+  	<url-pattern>/aggiornaFilm</url-pattern>
   </servlet-mapping>
   
   <servlet>

@@ -11,7 +11,7 @@ public class Post
 	private String titolo;
 	private String descrizione;
 	private String username;
-	private int contenuto;
+	private String contenuto;
 	private String profileImage;
 	private List<Commento> commenti;
 	
@@ -53,10 +53,10 @@ public class Post
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public int getContenuto() {
+	public String getContenuto() {
 		return contenuto;
 	}
-	public void setContenuto(int contenuto) {
+	public void setContenuto(String contenuto) {
 		this.contenuto = contenuto;
 	}
 	public String getProfileImage() {
