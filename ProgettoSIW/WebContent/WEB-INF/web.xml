@@ -353,6 +353,33 @@
   </servlet-mapping>
   
   <servlet>
+  	<servlet-name>SalvaFilm</servlet-name>
+  	<servlet-class>controller.SalvaFilm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SalvaFilm</servlet-name>
+  	<url-pattern>/salvaFilm</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>EliminaFilm</servlet-name>
+  	<servlet-class>controller.EliminaFilm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>EliminaFilm</servlet-name>
+  	<url-pattern>/eliminaFilm</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>AggiornaFilm</servlet-name>
+  	<servlet-class>controller.AggiornaFilm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AggiornaFilm</servlet-name>
+  	<url-pattern>/aggiornaFilm</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>controller.CatalogoAbbonamenti</servlet-name>
     <servlet-class>controller.CatalogoAbbonamenti</servlet-class>
   </servlet>

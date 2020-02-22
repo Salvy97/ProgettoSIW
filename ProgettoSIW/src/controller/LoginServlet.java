@@ -37,6 +37,7 @@ public class LoginServlet extends HttpServlet{
 	        {   
 		        session.setAttribute("name", utente.getUsername());
 		        session.setAttribute("error", "none");
+		        session.setAttribute("role", utente.getRole());
 		        resp.sendRedirect("ottieniIndex");
 	        }
 	        else

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import model.Film;
@@ -22,18 +24,20 @@ class FilmDaoJDBC implements FilmDao {
 		Connection connection = this.dataSource.getConnection();
 		try {
 			String insert = "insert into film(titolo, anno,"
-					+ " durata, genere, locandina, filmato, regista, immagine_forum) values (?,?,?,?,?,?,?,?)";
+					+ " durata, genere, locandina, regista, filmato, data_inserimento, visualizzazioni, immagine_forum) values (?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setInt(1, film.getId_film());
-			statement.setString(2, film.getTitolo());
-			statement.setInt(3, film.getAnno());
-			statement.setInt(4, film.getDurata());
-			statement.setString(5, film.getGenere());
-			statement.setString(6, film.getLocandina());
-			statement.setString(7, film.getRegista());
-			statement.setString(8, film.getImmagineForum());
+			statement.setString(1, film.getTitolo());
+			statement.setInt(2, film.getAnno());
+			statement.setInt(3, film.getDurata());
+			statement.setString(4, film.getGenere());
+			statement.setString(5, film.getLocandina());
+			statement.setString(6, film.getRegista());
+			statement.setString(7, film.getFilmato());
+			Timestamp timestamp = new Timestamp(new Date().getTime());
+			statement.setTimestamp(8, timestamp);
+			statement.setInt(9, 0);
+			statement.setString(10, film.getImmagineForum());
 
-			
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -247,6 +251,7 @@ class FilmDaoJDBC implements FilmDao {
 				film.setGenere(result.getString("genere"));
 				film.setLocandina(result.getString("locandina"));
 				film.setRegista(result.getString("regista"));
+				film.setFilmato(result.getString("filmato"));
 				film.setImmagineForum(result.getString("immagine_forum"));
 				
 				films.add(film);
@@ -339,7 +344,7 @@ class FilmDaoJDBC implements FilmDao {
 		Connection connection = this.dataSource.getConnection();
 		try {
 			System.out.println("Update " + film.getId_film());
-			String update = "UPDATE public.film SET titolo = ?, anno = ?, durata = ?, genere = ?, locandina = ?, filmato = ? WHERE id_film = ?";
+			String update = "UPDATE public.film SET titolo = ?, anno = ?, durata = ?, genere = ?, locandina = ?, regista = ?, filmato = ?, immagine_forum = ? WHERE id_film = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, film.getTitolo());
 			statement.setInt(2, film.getAnno());
@@ -347,7 +352,9 @@ class FilmDaoJDBC implements FilmDao {
 			statement.setString(4, film.getGenere());
 			statement.setString(5, film.getLocandina());
 			statement.setString(6, film.getRegista());
-			statement.setInt(7, film.getId_film());
+			statement.setString(7, film.getFilmato());
+			statement.setString(8, film.getImmagineForum());
+			statement.setInt(9, film.getId_film());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -480,7 +487,7 @@ class FilmDaoJDBC implements FilmDao {
 		try {
 			String delete = "delete FROM film WHERE id_film = ? ";
 
-			List<Post> postCorrelatiAlFilm = DatabaseManager.getInstance().getDaoFactory().getPostDAO().findAllByContentDeep0("" + film.getId_film());
+			List<Post> postCorrelatiAlFilm = DatabaseManager.getInstance().getDaoFactory().getPostDAO().findAllByContentDeep0(film.getTitolo());
 			
 			if (postCorrelatiAlFilm != null) {
 				System.out.println("Lista dei post ottenuta " + postCorrelatiAlFilm.size());

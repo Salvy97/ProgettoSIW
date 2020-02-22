@@ -161,7 +161,7 @@ public class PostDaoJDBC implements PostDao {
 			PreparedStatement statement;
 			String query = "select * from public.post WHERE contenuto = ?";
 			statement = connection.prepareStatement(query);
-			statement.setInt(1, Integer.parseInt(contenuto));
+			statement.setString(1, contenuto);
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
 				post = new Post();
