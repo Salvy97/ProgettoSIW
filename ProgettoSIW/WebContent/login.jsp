@@ -95,7 +95,49 @@
 		<!-- Page Content -->
 	    <div class="container">
 
-			<h1 id="message">${sessionScope.message}</h1>		
+			 <c:choose>
+				<c:when test="${sessionScope.error=='email'}">
+			    	<div id="myModal" class="modal fade" tabindex="-1">
+				        <div class="modal-dialog">
+				            <div class="modal-content">
+				                <div class="modal-header">
+				                    <h5 class="modal-title">Attenzione</h5>
+				                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+				                </div>
+				                <div class="modal-body">
+				                    <p>L'email inserita è errata o inesistente!</p>
+				                    <p class="text-secondary"><small>Riprova.</small></p>
+				                </div>
+				                <div class="modal-footer">
+				                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+				                </div>
+				            </div>
+				        </div>
+				    </div>    
+			    </c:when>
+			</c:choose>
+			
+			<c:choose>
+				<c:when test="${sessionScope.error=='password'}">
+			    	<div id="myModal" class="modal fade" tabindex="-1">
+				        <div class="modal-dialog">
+				            <div class="modal-content">
+				                <div class="modal-header">
+				                    <h5 class="modal-title">Attenzione</h5>
+				                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+				                </div>
+				                <div class="modal-body">
+				                    <p>La password inserita non corrisponde con l'account in questione!</p>
+				                    <p class="text-secondary"><small>Riprova.</small></p>
+				                </div>
+				                <div class="modal-footer">
+				                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+				                </div>
+				            </div>
+				        </div>
+				    </div>    
+			    </c:when>
+			</c:choose>
 
 			<div class="card card-container">
 	            <!-- <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
@@ -105,7 +147,7 @@
 					<p class="hint-text">Accedi al tuo account. Inserisci email e password.</p>
 	     			
 	                <span id="reauth-email" class="reauth-email"></span>
-	                <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+	                <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Indirizzo email" required autofocus>
 	                <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
 	                <div id="remember" class="checkbox">
 	                    <label>

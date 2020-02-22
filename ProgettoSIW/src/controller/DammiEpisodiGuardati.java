@@ -22,7 +22,7 @@ public class DammiEpisodiGuardati extends HttpServlet
 		List<ContenutoGuardato> contenuti = DatabaseManager.getInstance().getDaoFactory().getContenutiGuardatiDAO().searchEpisodesWatchedByUser(username);
 		req.setAttribute("contenutiGuardati", contenuti);
 		
-		RequestDispatcher rd = req.getRequestDispatcher("contenutiGuardati.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("episodiGuardati.jsp");
 		rd.forward(req, resp);
 	}
 }

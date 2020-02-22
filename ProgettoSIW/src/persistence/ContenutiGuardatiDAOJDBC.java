@@ -108,24 +108,43 @@ public class ContenutiGuardatiDAOJDBC implements ContenutiGuardatiDAO
 				contenutoGuardato.setDataVisualizzazione(dataVisualizzazione);
 				
 				int idSerieTv = -1;
+				int numEpisodio = -1;
+				int idStagione = -1;
 				String titoloContenuto = null;
-				String query2 = "SELECT titolo, serie_tv_id FROM episodio WHERE episodio.id_episodio = ?";
+				String query2 = "SELECT titolo, numero_episodio, stagione_id, serie_tv_id FROM episodio WHERE episodio.id_episodio = ?";
 				PreparedStatement statement2 = connection.prepareStatement(query2);
 				statement2.setInt(1, idContenuto);
 				ResultSet result2 = statement2.executeQuery();
 				if (result2.next())
 				{
 					titoloContenuto = result2.getString(1);
-					idSerieTv = result2.getInt(2);
+					numEpisodio = result2.getInt(2);
+					idStagione = result2.getInt(3);
+					idSerieTv = result2.getInt(4);
 				}
+				contenutoGuardato.setEpisodio(numEpisodio);
 				
+				String titoloSerieTV = null;
 				String locandinaContenuto = null;
-				String query3 = "SELECT locandina FROM serie_tv WHERE serie_tv.id_serie_tv = ?";
+				String query3 = "SELECT titolo, locandina FROM serie_tv WHERE serie_tv.id_serie_tv = ?";
 				PreparedStatement statement3 = connection.prepareStatement(query3);
 				statement3.setInt(1, idSerieTv);
 				ResultSet result3 = statement3.executeQuery();
 				if (result3.next())
-					locandinaContenuto = result3.getString(1);
+				{
+					titoloSerieTV = result3.getString(1);
+					locandinaContenuto = result3.getString(2);
+				}
+				contenutoGuardato.setTitoloSerieTV(titoloSerieTV);
+				
+				int stagione = -1;
+				String query4 = "SELECT numero_stagione FROM stagione WHERE stagione.id_stagione = ?";
+				PreparedStatement statement4 = connection.prepareStatement(query4);
+				statement4.setInt(1, idStagione);
+				ResultSet result4 = statement4.executeQuery();
+				if (result4.next())
+					stagione = result4.getInt(1);
+				contenutoGuardato.setStagione(stagione);
 
 				contenutoGuardato.setTitoloContenuto(titoloContenuto);
 				contenutoGuardato.setLocandinaContenuto(locandinaContenuto);

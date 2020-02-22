@@ -9,6 +9,10 @@ public class ContenutoGuardato
 	private String titoloContenuto;
 	private String locandinaContenuto;
 	
+	private String titoloSerieTV;
+	private int stagione;
+	private int episodio;
+	
 	public int getIdContenutoGuardato() {
 		return idContenutoGuardato;
 	}
@@ -55,5 +59,29 @@ public class ContenutoGuardato
 
 	public void setLocandinaContenuto(String locandinaContenuto) {
 		this.locandinaContenuto = locandinaContenuto;
+	}
+	
+	public String getTitoloSerieTV() {
+		return titoloSerieTV;
+	}
+
+	public void setTitoloSerieTV(String titoloSerieTV) {
+		this.titoloSerieTV = titoloSerieTV;
+	}
+
+	public int getStagione() {
+		return stagione;
+	}
+
+	public void setStagione(int stagione) {
+		this.stagione = stagione;
+	}
+
+	public int getEpisodio() {
+		return episodio;
+	}
+
+	public void setEpisodio(int episodio) {
+		this.episodio = episodio;
 	}
 }

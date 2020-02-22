@@ -110,7 +110,7 @@
 				            <input type="hidden" id="contenuto" name="contenuto"/>
 					    </form>
 					    <div id="showCharNumber">
-					    	<span id="currentCharNumber">0</span> / 256
+					    	<span id="currentCharNumber">0</span> / 720
 					    </div>
 			        </div>
 			        

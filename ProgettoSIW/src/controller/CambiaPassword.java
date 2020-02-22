@@ -32,18 +32,18 @@ public class CambiaPassword extends HttpServlet
 				
 				RequestDispatcher rd = req.getRequestDispatcher("user?username=" + utente.getUsername());
 				rd.forward(req, resp);
-				req.getSession().setAttribute("message", null);
+				req.getSession().setAttribute("error", "none");
 			}
 			else
 			{
-				req.getSession().setAttribute("message", "Le password non corrispondono. Riprova.");
+				req.getSession().setAttribute("error", "newPassword");
 				RequestDispatcher rd = req.getRequestDispatcher("cambiaPassword.jsp");
 				rd.forward(req, resp);
 			}
 		}
 		else
 		{
-			req.getSession().setAttribute("message", "La password attuale è errata. Riprova.");
+			req.getSession().setAttribute("error", "oldPassword");
 			RequestDispatcher rd = req.getRequestDispatcher("cambiaPassword.jsp");
 			rd.forward(req, resp);
 		}

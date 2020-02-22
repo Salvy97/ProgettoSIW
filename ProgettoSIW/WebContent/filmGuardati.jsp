@@ -8,7 +8,7 @@
    		<meta name="description" content=""/>
    		<meta name="author" content=""/>
 
-   		<title>Contenuti guardati da <%= request.getParameter("username") %></title>
+   		<title>Film guardati da <%= request.getParameter("username") %></title>
 
    		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css"/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.css" />
@@ -101,13 +101,13 @@
 
 
 	<div class="container">
-		<div id="titoloPagina">Contenuti guardati da <%= request.getParameter("username") %></div>
+		<div id="titoloPagina">Film guardati da <%= request.getParameter("username") %></div>
         <div class="row"> 
         	<c:forEach items="${contenutiGuardati}" var="contenutoGuardato">
 	            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 	                <div class="tile">
 	                    <div class="wrapper">
-	                        <div class="header">${contenutoGuardato.titoloContenuto}</div>
+	                        <div class="header" style="font-weight: bold;">${contenutoGuardato.titoloContenuto}</div>
 	                        <div class="banner-img">
 	                            <img id="locandina" src="images/${contenutoGuardato.locandinaContenuto}" alt="Image 1" width="80%">
 	                        </div>

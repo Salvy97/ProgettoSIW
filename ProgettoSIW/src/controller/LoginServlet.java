@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet{
         Utente utente = uDao.findByEmail(email);
         if (utente == null)
         {  
-        	session.setAttribute("message", "Email errata oppure utente inesistente!");
+        	session.setAttribute("error", "email");
         	resp.sendRedirect("ottieniLogin");	
         }
         else
@@ -36,11 +36,12 @@ public class LoginServlet extends HttpServlet{
 	        if (password.equals(utente.getPassword()))
 	        {   
 		        session.setAttribute("name", utente.getUsername());
+		        session.setAttribute("error", "none");
 		        resp.sendRedirect("ottieniIndex");
 	        }
 	        else
 	        {
-	        	session.setAttribute("message", "Password errata!");
+	        	session.setAttribute("error", "password");
 	        	resp.sendRedirect("ottieniLogin");
 	        }
         }

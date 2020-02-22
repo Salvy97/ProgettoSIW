@@ -95,7 +95,49 @@
 		<!-- Page Content -->
 	    <div class="container">
 
-			<h1 id="message">${sessionScope.message}</h1>		
+			<c:choose>
+				<c:when test="${sessionScope.error=='oldPassword'}">
+			    	<div id="myModal" class="modal fade" tabindex="-1">
+				        <div class="modal-dialog">
+				            <div class="modal-content">
+				                <div class="modal-header">
+				                    <h5 class="modal-title">Attenzione</h5>
+				                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+				                </div>
+				                <div class="modal-body">
+				                    <p>La password attuale inserita è errata!</p>
+				                    <p class="text-secondary"><small>Riprova.</small></p>
+				                </div>
+				                <div class="modal-footer">
+				                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+				                </div>
+				            </div>
+				        </div>
+				    </div>    
+			    </c:when>
+			</c:choose>
+			
+			<c:choose>
+				<c:when test="${sessionScope.error=='newPassword'}">
+			    	<div id="myModal" class="modal fade" tabindex="-1">
+				        <div class="modal-dialog">
+				            <div class="modal-content">
+				                <div class="modal-header">
+				                    <h5 class="modal-title">Attenzione</h5>
+				                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+				                </div>
+				                <div class="modal-body">
+				                    <p>Le password non corrispondono!</p>
+				                    <p class="text-secondary"><small>Riprova.</small></p>
+				                </div>
+				                <div class="modal-footer">
+				                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+				                </div>
+				            </div>
+				        </div>
+				    </div>    
+			    </c:when>
+			</c:choose>	
 
 			<div class="card card-container">
 	            <!-- <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
