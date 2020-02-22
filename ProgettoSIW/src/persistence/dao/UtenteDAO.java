@@ -11,6 +11,7 @@ public interface UtenteDAO
 	public Utente findByUsername(String username); // Retrieve
 	public Utente findByEmail(String email); // Retrieve
 	public List<Utente> findAll();
+	public List<Utente> findByUsernameContains(String username);
 	public boolean isAbbonato(String username);
 	public void update(Utente utente); // Update
 	public void delete(Utente utente); // Delete

@@ -148,20 +148,20 @@
 		    		
 		    		<!-- Search form -->
 		    		<div id="searchBox" class="jumbotron text-center">
-						
-			          <!-- <div class="p-1 bg-light rounded rounded-pill shadow-sm">
-			            <form method="GET" action="ottieniCercaFilm">
-			            <div class="input-group">
-			              <input id="inputSrc" name="search" type="search" placeholder="Cerca..." aria-describedby="button-addon1" class="form-control border-0 bg-light">
-			              <div class="input-group-append">
-			                <button id="btnSrc" type="submit" class="btn btn-link"><i class="fa fa-search"></i></button>
-			              </div>
-			             </form>
-			            </div>
-			          </div> -->
-			          
-			          
-			          <div class="dropdown">
+				        <div class="p-1 bg-light rounded rounded-pill shadow-sm">
+				        	<form id="ricercaContenutiForm" action="ottieniContenutoDaTitolo" method="GET">
+				         		<div class="input-group">
+						    		<input list="resultContenuti" id="ricercaContenuto" class="form-control border-0 bg-light" type="text" placeholder="Contenuto" aria-label="Search" aria-describedby="button-addon1"/>
+									<datalist id="resultContenuti"></datalist>
+									<input type="hidden" name="contenuto" id="contenutoScelto"/>
+									<div class="input-group-append">
+										<button id="cerca" class="btn btn-link" onclick="scegliContenuto();"><i class="fa fa-search"></i></button>
+									</div>
+								</div>
+							</form>
+				        </div>
+     
+			         <!--  <div class="dropdown">
 						  <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						    Cerca contenuto
 						  </button>
@@ -169,9 +169,9 @@
 						    <a class="dropdown-item" href="ottieniCercaFilm">Film</a>
 						    <a class="dropdown-item" href="ottieniCercaSerieTV">Serie TV</a>
 						  </div>
-					  </div>
+					  </div> -->
 					
-					</div>
+			 	</div>
 					
 					
 					

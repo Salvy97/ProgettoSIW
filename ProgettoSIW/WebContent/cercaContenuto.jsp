@@ -96,15 +96,15 @@
 	    				<div id="cercaContenutoInfo">Cerca un contenuto</div>
 	    				<div id="cercaContenutoDiv" class="row">
 				    	<div class="col-lg-2"></div>
-					    	<form id="ricercaContenuto" class="col-lg-5" action="ottieniPost" method="GET">
-					    		<input list="result" id="ricerca" class="form-control" type="text" placeholder="Contenuto" aria-label="Search"/>
-								<datalist id="result"></datalist>
-								<input type="hidden" name="contenuto" id="contenutoScelto"/>
-							</form>
-							<div class="col-lg-3">
-								<button id="cerca" class="btn btn-info" onclick="scegliContenuto();">Scegli</button>
-							</div>
-							<div class="col-lg-2"></div>
+				    	<form id="ricercaContenutiForm" class="col-lg-5" action="ottieniPost" method="GET">
+				    		<input list="resultContenuti" id="ricercaContenuto" class="form-control" type="text" placeholder="Contenuto" aria-label="Search"/>
+							<datalist id="resultContenuti"></datalist>
+							<input type="hidden" name="contenuto" id="contenutoScelto"/>
+						</form>
+						<div class="col-lg-3">
+							<button id="cerca" class="btn btn-info" onclick="scegliContenuto();">Scegli</button>
+						</div>
+						<div class="col-lg-2"></div>
 						</div>
 					</div>
 	    		</div>
@@ -112,7 +112,29 @@
 	    	<div class="col-lg-4"></div>
 	    </div>
 	    
-	    
+	    <div id="searchCard" class="row">
+	    	<div class="col-lg-4"></div>
+	    	<div class="col-lg-4">
+	    		<div class="card h-100">
+	    			<div class="card-body">
+	    				<div id="cercaContenutoInfo">Cerca un utente</div>
+	    				<div id="cercaContenutoDiv" class="row">
+				    	<div class="col-lg-2"></div>
+				    	<form id="ricercaUtentiForm" class="col-lg-5" action="user" method="GET">
+				    		<input list="resultUtenti" id="ricercaUtente" class="form-control" type="text" placeholder="Username" aria-label="Search"/>
+							<datalist id="resultUtenti"></datalist>
+							<input type="hidden" name="username" id="utenteScelto"/>
+						</form>
+						<div class="col-lg-3">
+							<button id="cerca" class="btn btn-info" onclick="scegliUtente();">Scegli</button>
+						</div>
+						<div class="col-lg-2"></div>
+						</div>
+					</div>
+	    		</div>
+	    	</div>
+	    	<div class="col-lg-4"></div>
+	    </div>
 	    
 	    <!-- Footer -->
 	    <footer class="py-4 bg-dark">

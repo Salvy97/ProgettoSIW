@@ -35,3 +35,36 @@ function checkIfLogged()
 	else
 		location.href = "cercaContenuto.jsp";
 }
+
+$(document).ready(function()
+{
+	$("#ricercaContenuto").unbind();
+	$("#ricercaContenuto").keyup(function()
+	{
+		$("#resultContenuti").empty();
+		$("resultContenuti").html("");
+		var searchFieldContenuto = $("#ricercaContenuto").val();
+		$.getJSON("cercaContenuto?titolo=" + searchFieldContenuto, function(data)
+		{
+			$.each(data, function(key, value)
+			{
+				$("#resultContenuti").append('<option value="'+ value.titolo + '"></option>');
+			})
+		})
+	});
+});
+
+function scegliContenuto()
+{
+	var searchFieldContenuto = $("#ricercaContenuto").val();
+	if (searchFieldContenuto == "")
+		alert("Inserisci un titolo.");
+	else
+	{
+		$.getJSON("cercaContenuto?titolo=" + searchFieldContenuto, function(data)
+		{
+			document.getElementById("contenutoScelto").value = searchFieldContenuto;
+			document.getElementById("ricercaContenutiForm").submit();
+		})
+	}
+}

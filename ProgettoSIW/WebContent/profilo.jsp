@@ -134,11 +134,15 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-work">
-                    <p>GESTISCI ACCOUNT</p>
-                    <a href="abbonamento.jsp">Il tuo abbonamento</a><br/>
-                    <a href="">Storico pagamenti</a><br/>
-                    <a href="cambiaUsername.jsp">Modifica username</a><br/>
-                    <a href="cambiaPassword.jsp">Modifica password</a>
+                	<c:choose>
+                		<c:when test="${profilo.username==sessionScope.name}">
+		                    <p>GESTISCI ACCOUNT</p>
+		                    <a href="abbonamento.jsp">Il tuo abbonamento</a><br/>
+		                    <a href="">Storico pagamenti</a><br/>
+		                    <a href="cambiaUsername.jsp">Modifica username</a><br/>
+		                    <a href="cambiaPassword.jsp">Modifica password</a>
+		                </c:when>
+	                </c:choose>
                     <p>SCOPRI</p>
                     <a href="ottieniFilmGuardati?username=<%= request.getParameter("username") %>">Film guardati</a><br/>
                      <a href="ottieniEpisodiGuardati?username=<%= request.getParameter("username") %>">Episodi guardati</a><br/>

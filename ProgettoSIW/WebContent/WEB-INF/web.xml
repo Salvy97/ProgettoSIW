@@ -326,6 +326,24 @@
   </servlet-mapping>
   
   <servlet>
+  	<servlet-name>CercaUtente</servlet-name>
+  	<servlet-class>controller.CercaUtente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CercaUtente</servlet-name>
+  	<url-pattern>/cercaUtente</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>DammiContenutoDaTitolo</servlet-name>
+  	<servlet-class>controller.DammiContenutoDaTitolo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DammiContenutoDaTitolo</servlet-name>
+  	<url-pattern>/ottieniContenutoDaTitolo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>controller.CatalogoAbbonamenti</servlet-name>
     <servlet-class>controller.CatalogoAbbonamenti</servlet-class>
   </servlet>

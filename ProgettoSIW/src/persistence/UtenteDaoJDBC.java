@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 import model.Utente;
 import persistence.dao.UtenteDAO;
@@ -237,5 +238,50 @@ public class UtenteDaoJDBC implements UtenteDAO {
 			}
 		}
 		return abbonato;
+	}
+
+	public List<Utente> findByUsernameContains(String username) 
+	{
+		Connection connection = this.dataSource.getConnection();
+		List<Utente> utenti = new LinkedList<>();
+		try
+		{
+			Utente utente;
+			PreparedStatement statement;
+			String query = "select * from utente";
+			statement = connection.prepareStatement(query);
+			ResultSet result = statement.executeQuery();
+			while (result.next()) 
+			{
+				utente = new Utente();
+				utente.setId(result.getInt("id"));				
+				utente.setUsername(result.getString("username"));
+				utente.setRole(result.getString("ruolo"));
+				utente.setAutoRenew(result.getBoolean("autorenew"));
+				utente.setUsernamePP(result.getString("username_pp"));
+				utente.setEmail(result.getString("email"));
+				utente.setNome(result.getString("nome"));
+				utente.setCognome(result.getString("cognome"));
+				utente.setPassword(result.getString("password"));
+				
+				if (utente.getUsername().toUpperCase().contains(username.toUpperCase()))
+					utenti.add(utente);
+			}
+		} 
+		catch (SQLException e) 
+		{
+			throw new PersistenceException(e.getMessage());
+		} 
+		finally 
+		{
+			try 
+			{
+				connection.close();
+			} catch (SQLException e) 
+			{
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return utenti;
 	}
 }
