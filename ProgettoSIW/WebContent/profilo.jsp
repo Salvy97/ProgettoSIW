@@ -155,6 +155,30 @@
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row">
                             <div class="col-md-6">
+                                <label>Nome</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>${profilo.nome}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Cognome</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>${profilo.cognome}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>${profilo.email}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
                                 <label>Contenuti guardati</label>
                             </div>
                             <div class="col-md-6">
@@ -175,30 +199,6 @@
                             </div>
                             <div class="col-md-6">
                                 <p>${profilo.postsCreati}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Email</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>${profilo.email}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Nome</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>${profilo.nome}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Cognome</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>${profilo.cognome}</p>
                             </div>
                         </div>
             		</div>
