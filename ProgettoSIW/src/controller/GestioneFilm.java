@@ -11,7 +11,7 @@ import model.Film;
 import persistence.DatabaseManager;
 
 @SuppressWarnings("serial")
-public class GestioneContenuti extends HttpServlet 
+public class GestioneFilm extends HttpServlet 
 {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{

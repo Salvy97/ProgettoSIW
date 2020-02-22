@@ -208,12 +208,21 @@
   </servlet-mapping>
 
   <servlet>
-  	<servlet-name>controller.GestioneContenuti</servlet-name>
-  	<servlet-class>controller.GestioneContenuti</servlet-class>
+  	<servlet-name>controller.GestioneFilm</servlet-name>
+  	<servlet-class>controller.GestioneFilm</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>controller.GestioneContenuti</servlet-name>
-  	<url-pattern>/gestionecontenuti</url-pattern>
+  	<servlet-name>controller.GestioneFilm</servlet-name>
+  	<url-pattern>/gestioneFilm</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>controller.GestioneSerieTV</servlet-name>
+  	<servlet-class>controller.GestioneSerieTV</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>controller.GestioneSerieTV</servlet-name>
+  	<url-pattern>/gestioneSerieTV</url-pattern>
   </servlet-mapping>
 
   <servlet>

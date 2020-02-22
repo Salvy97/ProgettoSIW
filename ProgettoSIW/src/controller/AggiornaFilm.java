@@ -49,6 +49,6 @@ public class AggiornaFilm extends HttpServlet
 		System.out.println("FILMATO " + editedFilm.getFilmato());
 		dbm.getDaoFactory().getFilmDAO().update(editedFilm);
 		
-		res.sendRedirect("gestionecontenuti");
+		res.sendRedirect("gestioneFilm");
 	}
 }

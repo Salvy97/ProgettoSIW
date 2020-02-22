@@ -21,6 +21,6 @@ public class EliminaFilm extends HttpServlet
 		
 		DatabaseManager.getInstance().getDaoFactory().getFilmDAO().delete(film);
 		
-		res.sendRedirect("gestionecontenuti");
+		res.sendRedirect("gestioneFilm");
 	}
 }

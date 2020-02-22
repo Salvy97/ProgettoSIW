@@ -98,12 +98,10 @@
 	    
 	    <h1> Pannello Admin </h1>
 	    
-		<a href="${pageContext.request.contextPath}/gestionecontenuti"><button type="button" class="btn btn-success">Gestione Contenuti</button></a>
+		<a href="${pageContext.request.contextPath}/gestioneFilm"><button type="button" class="btn btn-success">Gestione Film</button></a>
+	    <a href="${pageContext.request.contextPath}/gestioneSerieTV"><button type="button" class="btn btn-success">Gestione Serie TV</button></a>
 	    
 	    </div>
-
-		
-	    
 
 	    <footer class="py-4 bg-dark fixed-bottom">
 	        <div class="container">
