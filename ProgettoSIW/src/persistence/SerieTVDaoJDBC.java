@@ -26,7 +26,7 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 			String insert = "insert into serie_tv(id_serie_tv, titolo, anno,"
 					+ " genere, locandina) values (?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setString(1, serieTV.getId_serieTV());
+			statement.setInt(1, serieTV.getId_serieTV());
 			statement.setString(2, serieTV.getTitolo());
 			statement.setInt(3, serieTV.getAnno());
 			statement.setString(4, serieTV.getGenere());
@@ -45,18 +45,18 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 	}
 
 	@Override
-	public SerieTV findByPrimaryKey(String id_serieTV) {
+	public SerieTV cercaPerId(int id_serieTV) {
 		Connection connection = this.dataSource.getConnection();
 		SerieTV serieTV = null;
 		try {
 			PreparedStatement statement;
 			String query = "select * from serie_tv where id_serie_tv = ?";
 			statement = connection.prepareStatement(query);
-			statement.setString(1, id_serieTV);
+			statement.setInt(1, id_serieTV);
 			ResultSet result = statement.executeQuery();
 			if (result.next()) {
 				serieTV = new SerieTV();
-				serieTV.setId_serieTV(result.getString("id_serie_tv"));				
+				serieTV.setId_serieTV(result.getInt("id_serie_tv"));				
 				serieTV.setTitolo(result.getString("titolo"));
 				serieTV.setAnno(result.getInt("anno"));
 				serieTV.setGenere(result.getString("genere"));
@@ -87,7 +87,7 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
 				serieTV = new SerieTV();
-				serieTV.setId_serieTV(result.getString("id_serie_tv"));				
+				serieTV.setId_serieTV(result.getInt("id_serie_tv"));				
 				serieTV.setTitolo(result.getString("titolo"));
 				serieTV.setAnno(result.getInt("anno"));
 				serieTV.setGenere(result.getString("genere"));
@@ -121,7 +121,7 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
 				serieTV = new SerieTV();
-				serieTV.setId_serieTV(result.getString("id_serie_tv"));				
+				serieTV.setId_serieTV(result.getInt("id_serie_tv"));				
 				serieTV.setTitolo(result.getString("titolo"));
 				serieTV.setAnno(result.getInt("anno"));
 				serieTV.setGenere(result.getString("genere"));
@@ -154,7 +154,7 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
 				serieTV = new SerieTV();
-				serieTV.setId_serieTV(result.getString("id_serie_tv"));				
+				serieTV.setId_serieTV(result.getInt("id_serie_tv"));				
 				serieTV.setTitolo(result.getString("titolo"));
 				serieTV.setAnno(result.getInt("anno"));
 				serieTV.setGenere(result.getString("genere"));
@@ -184,7 +184,7 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 			statement.setInt(2, serieTV.getAnno());
 			statement.setString(3, serieTV.getGenere());
 			statement.setString(4, serieTV.getLocandina());
-			statement.setString(5, serieTV.getId_serieTV());
+			statement.setInt(5, serieTV.getId_serieTV());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -203,7 +203,7 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 		try {
 			String delete = "delete FROM serie_tv WHERE id_serie_tv = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
-			statement.setString(1, serieTV.getId_serieTV());
+			statement.setInt(1, serieTV.getId_serieTV());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -250,7 +250,7 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 				
 				while (result.next()) {
 					serieTV = new SerieTV();
-					serieTV.setId_serieTV(result.getString("id_serie_tv"));				
+					serieTV.setId_serieTV(result.getInt("id_serie_tv"));				
 					serieTV.setTitolo(result.getString("titolo"));
 					serieTV.setAnno(result.getInt("anno"));
 					serieTV.setGenere(result.getString("genere"));
@@ -260,6 +260,76 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 				}
 			}
 			
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		}	 finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return serieTVs;
+	}
+	
+	public List<SerieTV> cercaUltimiInseriti() {
+		Connection connection = this.dataSource.getConnection();
+		List<SerieTV> serieTVs = new LinkedList<>();
+		try {
+			SerieTV serieTV;
+			PreparedStatement statement;
+			String query = "SELECT *\r\n" + 
+					"FROM serie_tv AS s\r\n" + 
+					"INNER JOIN stagione ON stagione.serie_tv_id = s.id_serie_tv\r\n" + 
+					"INNER JOIN episodio ON episodio.stagione_id = stagione.id_stagione\r\n" + 
+					"ORDER BY episodio.data_inserimento DESC LIMIT 3";
+			statement = connection.prepareStatement(query);
+			ResultSet result = statement.executeQuery();
+			while (result.next()) {
+				serieTV = new SerieTV();
+				serieTV.setId_serieTV(result.getInt("id_serie_tv"));				
+				serieTV.setTitolo(result.getString("titolo"));
+				serieTV.setAnno(result.getInt("anno"));
+				serieTV.setGenere(result.getString("genere"));
+				serieTV.setLocandina(result.getString("locandina"));
+				
+				serieTVs.add(serieTV);
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		}	 finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return serieTVs;
+	}
+	
+	public List<SerieTV> cercaPiuVisti() {
+		Connection connection = this.dataSource.getConnection();
+		List<SerieTV> serieTVs = new LinkedList<>();
+		try {
+			SerieTV serieTV;
+			PreparedStatement statement;
+			String query = "SELECT *\r\n" + 
+					"FROM serie_tv AS s\r\n" + 
+					"INNER JOIN stagione ON stagione.serie_tv_id = s.id_serie_tv\r\n" + 
+					"INNER JOIN episodio ON episodio.stagione_id = stagione.id_stagione\r\n" + 
+					"ORDER BY episodio.visualizzazioni DESC LIMIT 3";
+			statement = connection.prepareStatement(query);
+			ResultSet result = statement.executeQuery();
+			while (result.next()) {
+				serieTV = new SerieTV();
+				serieTV.setId_serieTV(result.getInt("id_serie_tv"));				
+				serieTV.setTitolo(result.getString("titolo"));
+				serieTV.setAnno(result.getInt("anno"));
+				serieTV.setGenere(result.getString("genere"));
+				serieTV.setLocandina(result.getString("locandina"));
+				
+				serieTVs.add(serieTV);
+			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}	 finally {

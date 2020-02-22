@@ -1,7 +1,7 @@
 package model;
 
 public class SerieTV {
-	private String id_serieTV;
+	private int id_serieTV;
 	private String titolo;
 	private int anno;
 	private String genere;
@@ -10,7 +10,7 @@ public class SerieTV {
 
 	public SerieTV(){}
 	
-	public SerieTV(String id_serieTV, String titolo, int anno, String genere, String locandina){
+	public SerieTV(int id_serieTV, String titolo, int anno, String genere, String locandina){
 		this.id_serieTV = id_serieTV;
 		this.titolo = titolo;
 		this.anno = anno;
@@ -18,11 +18,11 @@ public class SerieTV {
 		this.locandina = locandina;
 	}
 
-	public String getId_serieTV() {
+	public int getId_serieTV() {
 		return id_serieTV;
 	}
 
-	public void setId_serieTV(String id_serieTV) {
+	public void setId_serieTV(int id_serieTV) {
 		this.id_serieTV = id_serieTV;
 	}
 

@@ -114,6 +114,15 @@
   	<url-pattern>/ottieniEpisodi</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>PrendiEpisodio</servlet-name>
+  	<servlet-class>controller.DammiEpisodio</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PrendiEpisodio</servlet-name>
+  	<url-pattern>/ottieniEpisodio</url-pattern>
+  </servlet-mapping>
+  
   
   <servlet>
   	<servlet-name>PrendiSerieTVPerCarattere</servlet-name>

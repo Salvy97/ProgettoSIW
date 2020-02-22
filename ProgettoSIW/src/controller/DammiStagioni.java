@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.SerieTV;
 import model.Stagione;
 import persistence.DatabaseManager;
+import persistence.dao.SerieTVDao;
 import persistence.dao.StagioneDao;
 
 
@@ -22,12 +24,16 @@ public class DammiStagioni extends HttpServlet{
 	protected void doGet(HttpServletRequest req, 
 			HttpServletResponse resp) throws ServletException, IOException {
 		
-		StagioneDao sDao = DatabaseManager.getInstance().getDaoFactory().getStagioneDAO();
-		List<Stagione> stagioni = sDao.findAll();
+		SerieTVDao sDao = DatabaseManager.getInstance().getDaoFactory().getSerieTVDAO();
+		SerieTV serieTV = sDao.cercaPerId(Integer.parseInt(req.getParameter("id_serie")));
 		
+		StagioneDao stDao = DatabaseManager.getInstance().getDaoFactory().getStagioneDAO();
+		List<Stagione> stagioni = stDao.cercaPerIdSerie(Integer.parseInt(req.getParameter("id_serie")));
+		
+		req.setAttribute("serieTV", serieTV);
 		req.setAttribute("stagioni", stagioni);
 		
-		RequestDispatcher rd = req.getRequestDispatcher("serieTV.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("stagioni.jsp");
 		rd.forward(req, resp);
 		
 	}

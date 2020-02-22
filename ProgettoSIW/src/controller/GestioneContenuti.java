@@ -35,7 +35,7 @@ public class GestioneContenuti extends HttpServlet {
 		switch (operation) {
 		case "del":
 			subject = Integer.parseInt(req.getParameter("id"));
-			Film film = dbm.getDaoFactory().getFilmDAO().findByPrimaryKey(subject);
+			Film film = dbm.getDaoFactory().getFilmDAO().cercaPerId(subject);
 			dbm.getDaoFactory().getFilmDAO().delete(film);
 			System.out.println("Soggetto da eliminare: " + subject);
 			res.setStatus(200);

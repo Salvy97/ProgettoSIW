@@ -187,6 +187,10 @@
 		    </div>
 		    
 		    
+		    <!-- Testo cercato -->
+		    <div id="txtSearched">
+		    </div>		    
+		    
 		    		    
 		    <!-- Result-->
 		    <div id="result" class="row jumbotron">

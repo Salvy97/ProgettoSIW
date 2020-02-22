@@ -7,8 +7,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
 		<meta name="author" content="">
-	
-		<title>Golden Streaming</title>
+		
+		<title>Golden Streaming - Home</title>
 	
 		<!-- Bootstrap core CSS -->
 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -201,8 +201,8 @@
 				
 		    </div>
 		    
-		    
-		    <div class="mostPopular jumbotron">Ultimi inseriti</div>
+		    <!-- Film -->
+		    <div class="mostPopularFilm jumbotron">Ultimi Film inseriti</div>
 		      
 		    <div class="row jumbotron">
 		        
@@ -211,10 +211,10 @@
 			        <div class="content col-lg-4 col-md-6 mb-4">
 			            <div class="card h-100">
 			            	<a href="ottieniContenuto?id=${film.id_film}" class="imageContent">
-			            		<img id="imgCardFilm" class="card-img-top" src="images/${film.locandina}" alt="">
+			            		<img id="imgCard" class="card-img-top" src="images/${film.locandina}" alt="">
 			            	</a>
 				            <div class="card-body"> 
-				                <h4 id="cardTitleFilm" class="card-title jumbotron">
+				                <h4 id="cardTitle" class="card-title jumbotron">
 				                	<a href="ottieniContenuto?id=${film.id_film}">${film.titolo}</a>
 				                </h4>
 				            </div> 
@@ -234,7 +234,7 @@
 	         
 	         
 	         
-	         <div class="mostWatched jumbotron">PIU'  VISTI</div>
+	         <div class="mostWatchedFilm jumbotron">Film più visti</div>
 			 
 			 <div class="row jumbotron">
 		         <c:forEach items="${filmPiuVisti}" var="film">
@@ -242,10 +242,10 @@
 			        <div class="content col-lg-4 col-md-6 mb-4">
 			            <div class="card h-100">
 			            	<a href="ottieniContenuto?id=${film.id_film}" class="imageContent">
-			            		<img id="imgCardFilm" class="card-img-top" src="images/${film.locandina}" alt="">
+			            		<img id="imgCard" class="card-img-top" src="images/${film.locandina}" alt="">
 			            	</a>
 				            <div class="card-body"> 
-				                <h4 id="cardTitleFilm" class="card-title jumbotron">
+				                <h4 id="cardTitle" class="card-title jumbotron">
 				                	<a href="ottieniContenuto?id=${film.id_film}">${film.titolo}</a>
 				                </h4>
 				            </div> 
@@ -262,9 +262,77 @@
 		         </c:forEach>
 		         
 		    </div>
+		    
+		    
+		    
+		    <!-- Serie TV -->
+		    <div class="mostPopularEpisode jumbotron">Ultimi Episodi inseriti</div>
+		      
+		    <div class="row jumbotron">
+		        
+		        <c:forEach items="${ultimiEpisodiInseriti}" varStatus="loop">		            
+		            
+					        <div class="content col-lg-4 col-md-6 mb-4">
+					            <div class="card h-100">
+					            	<a href="ottieniEpisodio?id_ep=${ultimiEpisodiInseriti[loop.index].id_episodio}&id_stg=${stagioniPiuViste[loop.index].id_stagione}&id_serie=${serieTVPiuViste[loop.index].id_serieTV}" class="imageContent">
+					            		<img id="imgCard" class="card-img-top" src="images/${serieTVPiuViste[loop.index].locandina}" alt="">
+					            	</a>
+						            <div class="card-body"> 
+						                <h4 id="cardTitle" class="card-title jumbotron">
+						                	<a href="ottieniEpisodio?id_ep=${ultimiEpisodiInseriti[loop.index].id_episodio}&id_stg=${stagioniPiuViste[loop.index].id_stagione}&id_serie=${serieTVPiuViste[loop.index].id_serieTV}">${stagioniPiuViste[loop.index].numero_stagione}x${ultimiEpisodiInseriti[loop.index].numero_episodio} - ${ultimiEpisodiInseriti[loop.index].titolo}</a>
+						                </h4>
+						            </div> 
+					                <div class="card-footer">
+					                    <div class="row">
+					                	    <div id="durationEpisode" class="col-sm-6">${ultimiEpisodiInseriti[loop.index].durata}'</div>
+					              		    <div id="viewsEpisode" class="col-sm-6">${ultimiEpisodiInseriti[loop.index].visualizzazioni} visualizzazioni</div>
+					              	    </div>
+					                </div>
+					             </div>
+					         </div>
+			         
+		         </c:forEach>
+		         
+	         </div>
+	         
+	         
+	         
+	         <div class="mostWatchedEpisode jumbotron">Episodi più visti</div>
+			 
+			 <div class="row jumbotron">
+			 
+		         <c:forEach items="${episodiPiuVisti}" varStatus="loop">		            
+		            
+					        <div class="content col-lg-4 col-md-6 mb-4">
+					            <div class="card h-100">
+					            	<a href="ottieniEpisodio?id_ep=${episodiPiuVisti[loop.index].id_episodio}&id_stg=${stagioniPiuViste[loop.index].id_stagione}&id_serie=${serieTVPiuViste[loop.index].id_serieTV}" class="imageContent">
+					            		<img id="imgCard" class="card-img-top" src="images/${serieTVPiuViste[loop.index].locandina}" alt="">
+					            	</a>
+						            <div class="card-body"> 
+						                <h4 id="cardTitle" class="card-title jumbotron">
+						                	<a href="ottieniEpisodio?id_ep=${episodiPiuVisti[loop.index].id_episodio}&id_stg=${stagioniPiuViste[loop.index].id_stagione}&id_serie=${serieTVPiuViste[loop.index].id_serieTV}">${stagioniPiuViste[loop.index].numero_stagione}x${episodiPiuVisti[loop.index].numero_episodio} - ${episodiPiuVisti[loop.index].titolo}</a>
+						                </h4>
+						            </div> 
+					                <div class="card-footer">
+					                    <div class="row">
+					                	    <div id="durationEpisode" class="col-sm-6">${episodiPiuVisti[loop.index].durata}'</div>
+					              		    <div id="viewsEpisode" class="col-sm-6">${episodiPiuVisti[loop.index].visualizzazioni} visualizzazioni</div>
+					              	    </div>
+					                </div>
+					             </div>
+					         </div>
+			         
+		         </c:forEach>
+		         
+		    </div>
+		    
+		    
 		    <!-- /.row -->
 	    </div>
 		<!-- container -->
+		
+		
+		
 	
 	    <!-- Footer -->
 	    <footer class="py-4 bg-dark">

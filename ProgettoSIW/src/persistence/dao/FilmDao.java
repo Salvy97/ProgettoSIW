@@ -9,7 +9,7 @@ public interface FilmDao {
 	public Film cercaPerId(int id);  // Retrieve
 	public void update(Film film); //Update
 	public void delete(Film film); //Delete
-	public Film findByPrimaryKey(int id_film);
+
 	public List<Film> findByTitle(String title);
 	public List<Film> findAll(); 
 	public List<Film> findBySearchForm(String genere, int anno);
@@ -19,4 +19,5 @@ public interface FilmDao {
 	public List<Film> cercaUltimiInseriti();
 	public List<Film> cercaPiuVisti();
 	public int getIdFilmFromTitle(String title);
+	public void incrementaVisualizzazioni(int id);
 }

@@ -22,7 +22,7 @@ class FilmDaoJDBC implements FilmDao {
 		Connection connection = this.dataSource.getConnection();
 		try {
 			String insert = "insert into film(titolo, anno,"
-					+ " durata, genere, locandina, filmato, regista, immagine_forum) values (?,?,?,?,?,?,?,?)";
+					+ " durata, genere, locandina, filmato, regista, immagine_forum, sinossi) values (?,?,?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setInt(1, film.getId_film());
 			statement.setString(2, film.getTitolo());
@@ -32,6 +32,7 @@ class FilmDaoJDBC implements FilmDao {
 			statement.setString(6, film.getLocandina());
 			statement.setString(7, film.getRegista());
 			statement.setString(8, film.getImmagineForum());
+			statement.setString(9, film.getSinossi());
 
 			
 			statement.executeUpdate();
@@ -44,38 +45,6 @@ class FilmDaoJDBC implements FilmDao {
 				throw new PersistenceException(e.getMessage());
 			}
 		}
-	}  
-
-	public Film findByPrimaryKey(int id_film) {
-		Connection connection = this.dataSource.getConnection();
-		Film film = null;
-		try {
-			PreparedStatement statement;
-			String query = "select * from film where id_film = ?";
-			statement = connection.prepareStatement(query);
-			statement.setInt(1, id_film);
-			ResultSet result = statement.executeQuery();
-			if (result.next()) {
-				film = new Film();
-				film.setId_film(result.getInt("id_film"));				
-				film.setTitolo(result.getString("titolo"));
-				film.setAnno(result.getInt("anno"));
-				film.setDurata(result.getInt("durata"));
-				film.setGenere(result.getString("genere"));
-				film.setLocandina(result.getString("locandina"));
-				film.setFilmato(result.getString("filmato"));
-				film.setImmagineForum(result.getString("immagine_forum"));
-			}
-		} catch (SQLException e) {
-			throw new PersistenceException(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}	
-		return film;
 	}
 	
 	
@@ -100,6 +69,7 @@ class FilmDaoJDBC implements FilmDao {
 				film.setGenere(result.getString("genere"));
 				film.setLocandina(result.getString("locandina"));
 				film.setImmagineForum(result.getString("immagine_forum"));
+				film.setSinossi(result.getString("sinossi"));
 				
 				if (film.getTitolo().toUpperCase().contains(title.toUpperCase()))
 					films.add(film);
@@ -142,6 +112,7 @@ class FilmDaoJDBC implements FilmDao {
 				film.setLocandina(result.getString("locandina"));
 				film.setRegista(result.getString("regista"));
 				film.setImmagineForum(result.getString("immagine_forum"));
+				film.setSinossi(result.getString("sinossi"));
 				
 				films.add(film);
 			}
@@ -177,6 +148,7 @@ class FilmDaoJDBC implements FilmDao {
 				film.setLocandina(result.getString("locandina"));
 				film.setRegista(result.getString("regista"));
 				film.setImmagineForum(result.getString("immagine_forum"));
+				film.setSinossi(result.getString("sinossi"));
 				
 				films.add(film);
 			}
@@ -213,6 +185,7 @@ class FilmDaoJDBC implements FilmDao {
 				film.setLocandina(result.getString("locandina"));
 				film.setRegista(result.getString("regista"));
 				film.setImmagineForum(result.getString("immagine_forum"));
+				film.setSinossi(result.getString("sinossi"));
 				
 				films.add(film);
 			}
@@ -248,6 +221,7 @@ class FilmDaoJDBC implements FilmDao {
 				film.setLocandina(result.getString("locandina"));
 				film.setRegista(result.getString("regista"));
 				film.setImmagineForum(result.getString("immagine_forum"));
+				film.setSinossi(result.getString("sinossi"));
 				
 				films.add(film);
 			}
@@ -283,6 +257,7 @@ class FilmDaoJDBC implements FilmDao {
 				film.setRegista(result.getString("regista"));
 				film.setData_inserimento(result.getDate("data_inserimento"));
 				film.setImmagineForum(result.getString("immagine_forum"));
+				film.setSinossi(result.getString("sinossi"));
 				
 				films.add(film);
 			}
@@ -319,6 +294,7 @@ class FilmDaoJDBC implements FilmDao {
 				film.setData_inserimento(result.getDate("data_inserimento"));
 				film.setVisualizzazioni(result.getInt("visualizzazioni"));
 				film.setImmagineForum(result.getString("immagine_forum"));
+				film.setSinossi(result.getString("sinossi"));
 				
 				films.add(film);
 			}
@@ -338,8 +314,7 @@ class FilmDaoJDBC implements FilmDao {
 	public void update(Film film) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			System.out.println("Update " + film.getId_film());
-			String update = "UPDATE public.film SET titolo = ?, anno = ?, durata = ?, genere = ?, locandina = ?, filmato = ? WHERE id_film = ?";
+			String update = "UPDATE film SET titolo = ?, anno = ?, durata = ?, genere = ?, locandina = ?, regista = ?, filmato = ?, visualizzazioni = ?, immagine_forum = ?, sinossi = ? WHERE id_film = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, film.getTitolo());
 			statement.setInt(2, film.getAnno());
@@ -347,7 +322,11 @@ class FilmDaoJDBC implements FilmDao {
 			statement.setString(4, film.getGenere());
 			statement.setString(5, film.getLocandina());
 			statement.setString(6, film.getRegista());
-			statement.setInt(7, film.getId_film());
+			statement.setString(7, film.getFilmato());
+			statement.setInt(8, film.getVisualizzazioni());
+			statement.setString(9, film.getImmagineForum());
+			statement.setString(10, film.getSinossi());
+			statement.setInt(11, film.getId_film());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -383,6 +362,7 @@ class FilmDaoJDBC implements FilmDao {
 				film.setFilmato(result.getString("filmato"));
 				film.setVisualizzazioni(result.getInt("visualizzazioni"));
 				film.setImmagineForum(result.getString("immagine_forum"));
+				film.setSinossi(result.getString("sinossi"));
 			}
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -534,5 +514,24 @@ class FilmDaoJDBC implements FilmDao {
 			}
 		}
 		return idFilm;
+	}
+	
+	public void incrementaVisualizzazioni(int id)
+	{
+		Connection connection = this.dataSource.getConnection();
+		try {
+			String update = "UPDATE film SET visualizzazioni = visualizzazioni+1 WHERE id_film = ?";
+			PreparedStatement statement = connection.prepareStatement(update);
+			statement.setInt(1, id);
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
 	}
 }

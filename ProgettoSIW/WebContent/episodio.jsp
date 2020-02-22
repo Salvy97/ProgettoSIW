@@ -5,18 +5,23 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		
-		<c:set var="film" value="${film}"></c:set>
+		<c:set var="serieTV" value="${serieTV}"></c:set>
+		<c:set var="stagione" value="${stagione}"></c:set>
+		<c:set var="episodio" value="${episodio}"></c:set>
 		
-		<title>${film.titolo}</title>
+		<title>${serieTV.titolo} - ${episodio.titolo}</title>
 		
 		<!-- Bootstrap core CSS -->
 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
 		<!-- Custom styles for this template -->
-		<link href="css/content.css" rel="stylesheet">
+		<link href="css/episode.css" rel="stylesheet">
 		
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+	
+		<!-- My javascript
+	    <script src="js/contenuto.js"></script> -->
 	    
 	    <!-- rating -->
   		<link rel="stylesheet" href="css/jquery.rateyo.css"/>
@@ -27,7 +32,7 @@
 		<!-- Navigation -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 	   		<div class="container">
-	      		<a class="navbar-brand" href="index.html" id="logo">
+	      		<a class="navbar-brand" href="ottieniIndex" id="logo">
 	      			<img src="images/logo.gif"/>
 	      		</a>
 	      		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,61 +97,66 @@
 	    
 	        
 	    <div class="contentBackground">
-	    	<img src="images/${film.locandina}"/>
+	    	<img src="images/${serieTV.locandina}"/>
 	    </div>
 	    
-	    <div id="videoTitle">${film.titolo}</div>
+	    <div id="videoTitle">${episodio.titolo}</div>
 	    
 	    
 	    <div class="row col-lg-12 justify-content-center">
-	    	
-	    	<div class="col-lg-1"></div>
-		    <div class="col-lg-2 leftBar jumbotron">
-		    	Regista:  
-		   	 	<p class="info views">${film.regista}</p>		    	
-		   	 	Anno:  
-		   	 	<p class="info genre">${film.anno}</p>
-		   	 	Durata:  
-		   	 	<p class="info genre">${film.durata}'</p>
 		    
+		    <div class="col-lg-1"></div>
+		    <div class="col-lg-2 leftBar jumbotron">
+		    	Stagione: 
+		   	 	<span class="info type">
+		    		${stagione.numero_stagione}
+		    	</span>
+		    	<br>
+		    	Episodio: 
+		   	 	<span class="info genre">
+		   	 		${episodio.numero_episodio}
+		    	</span>
+		    	<br><br>		    	
+		   	 	Anno:  
+		   	 	<p class="info genre">${serieTV.anno}</p>
+		   	 	Durata:  
+		   	 	<p class="info genre">${episodio.durata}'</p>
 		    </div>
 		    
 		    
 		    <div class="video col-lg-6">
-		    	<iframe width="715" height="460" src="${film.filmato}" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		    	<iframe width="715" height="460" src="${episodio.filmato}" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		    </div>
 			
-			
+		    
 		    <div class="col-lg-2 rightBar jumbotron">
-	    	   	Tipo: 
+		    	Tipo: 
 		   	 	<p class="info type">
-		    		Film
+		    		Serie TV
 		    	</p>
 		    	Genere: 
-		   	 	<p class="info genre">${film.genere}</p>
+		   	 	<p class="info genre">${serieTV.genere}</p>
 		    	Visualizzazioni:  
-		   	 	<p class="info views">${film.visualizzazioni}</p>
-		   	 	
+		   	 	<p class="info views">${episodio.visualizzazioni}</p>
+		   	 			    	
 		   	 	Valutazione:	    	
 		    	<div id="rateYo" ></div>
-	    	</div>
-	        <div class="col-lg-1"></div>
-	    	
-	    </div>
+		    </div>
+		    <div class="col-lg-1"></div>
+		</div>
 		
 		
 		<div id="sinossi" class="row col-lg-11 jumbotron">
 	   		<h3 class="text-danger">Sinossi</h3>
-	   		<h5 class="lead">${film.sinossi}</h5>
+	   		<h5 class="lead">${episodio.sinossi}</h5>
 	   </div>
-		
+	   
 		
 		<div id="valutation" class="row col-lg-11 justify-content-center jumbotron">
-	   		<h3>Quanto ti è piaciuto il film?</h3>
+	   		<h3>Quanto ti è piaciuta la serie?</h3>
 	   		<br>	    	
 	   		<div id="rateYo2"></div>
 	   </div>
-		
 	
 		<!-- Footer -->
 	    <footer class="py-4 bg-dark">
@@ -163,7 +173,6 @@
 		<!--  rating -->
 		<script src="js/jquery.rateyo.js"></script>
 		
-		<script src="js/contenuto.js"></script>
-		
+		<script src="js/episodio.js"></script>
 	</body>
 </html>

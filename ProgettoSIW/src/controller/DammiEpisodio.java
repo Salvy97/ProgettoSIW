@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,28 +17,31 @@ import persistence.dao.SerieTVDao;
 import persistence.dao.StagioneDao;
 
 
-public class DammiEpisodi extends HttpServlet{
+public class DammiEpisodio extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doGet(HttpServletRequest req, 
-			HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		System.out.println(req.getParameter("id_serie"));
+		System.out.println(req.getParameter("id_stg"));
+		System.out.println(req.getParameter("id_ep"));
 		
 		SerieTVDao sDao = DatabaseManager.getInstance().getDaoFactory().getSerieTVDAO();
 		SerieTV serieTV = sDao.cercaPerId(Integer.parseInt(req.getParameter("id_serie")));
 		
 		StagioneDao stDao = DatabaseManager.getInstance().getDaoFactory().getStagioneDAO();
 		Stagione stagione = stDao.cercaPerId(Integer.parseInt(req.getParameter("id_stg")));
-		
+
 		EpisodioDao eDao = DatabaseManager.getInstance().getDaoFactory().getEpisodioDAO();
-		List<Episodio> episodi = eDao.cercaPerIdStagione(Integer.parseInt(req.getParameter("id_stg")));
+		Episodio episodio = eDao.cercaPerId(Integer.parseInt(req.getParameter("id_ep")));
 		
 		req.setAttribute("serieTV", serieTV);
 		req.setAttribute("stagione", stagione);
-		req.setAttribute("episodi", episodi);
+		req.setAttribute("episodio", episodio);
 		
-		RequestDispatcher rd = req.getRequestDispatcher("episodi.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("episodio.jsp");
 		rd.forward(req, resp);
 		
 	}

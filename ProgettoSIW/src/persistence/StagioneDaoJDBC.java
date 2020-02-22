@@ -26,10 +26,10 @@ class StagioneDaoJDBC implements StagioneDao {
 			String insert = "insert into stagione(id_stagione, numero_stagione, numero_episodi,"
 					+ " serie_tv_id) values (?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setString(1, stagione.getId_stagione());
+			statement.setInt(1, stagione.getId_stagione());
 			statement.setInt(2, stagione.getNumero_stagione());
 			statement.setInt(3, stagione.getNumero_episodi());
-			statement.setString(4, stagione.getSerieTV().getId_serieTV());
+			statement.setInt(4, stagione.getSerieTV().getId_serieTV());
 			
 			statement.executeUpdate();
 		} catch (SQLException e) {
@@ -55,13 +55,13 @@ class StagioneDaoJDBC implements StagioneDao {
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
 				stagione = new Stagione();
-				stagione.setId_stagione(result.getString("id_stagione"));				
+				stagione.setId_stagione(result.getInt("id_stagione"));				
 				stagione.setStagione(result.getInt("numero_stagione"));
 				stagione.setNumero_episodi(result.getInt("numero_episodi"));
 
 				SerieTVDaoJDBC serieTVDao = new SerieTVDaoJDBC(dataSource);
 				SerieTV serieTV;
-			    serieTV = serieTVDao.findByPrimaryKey(result.getString("serie_tv_id"));
+			    serieTV = serieTVDao.cercaPerId(result.getInt("serie_tv_id"));
 				stagione.setSerieTV(serieTV);
 				
 				stagioni.add(stagione);
@@ -86,8 +86,8 @@ class StagioneDaoJDBC implements StagioneDao {
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setInt(1, stagione.getNumero_stagione());
 			statement.setInt(2, stagione.getNumero_episodi());
-			statement.setString(3, stagione.getSerieTV().getId_serieTV());
-			statement.setString(4, stagione.getId_stagione());
+			statement.setInt(3, stagione.getSerieTV().getId_serieTV());
+			statement.setInt(4, stagione.getId_stagione());
 			
 			statement.executeUpdate();
 		} catch (SQLException e) {
@@ -106,7 +106,7 @@ class StagioneDaoJDBC implements StagioneDao {
 		try {
 			String delete = "delete FROM stagione WHERE id_stagione = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
-			statement.setString(1, stagione.getId_stagione());
+			statement.setInt(1, stagione.getId_stagione());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -119,24 +119,24 @@ class StagioneDaoJDBC implements StagioneDao {
 		}
 	}
 	
-	public Stagione cercaPerId(String id) {
+	public Stagione cercaPerId(int id) {
 		Connection connection = this.dataSource.getConnection();
 		Stagione stagione = null;
 		try {
 			PreparedStatement statement;
 			String query = "select * from stagione where id_stagione = ?";
 			statement = connection.prepareStatement(query);
-			statement.setString(1, id);
+			statement.setInt(1, id);
 			ResultSet result = statement.executeQuery();
 			if (result.next()) {
 				stagione = new Stagione();
-				stagione.setId_stagione(result.getString("id_stagione"));				
+				stagione.setId_stagione(result.getInt("id_stagione"));				
 				stagione.setStagione(result.getInt("numero_stagione"));
 				stagione.setNumero_episodi(result.getInt("numero_episodi"));
 
 				SerieTVDaoJDBC serieTVDao = new SerieTVDaoJDBC(dataSource);
 				SerieTV serieTV;
-			    serieTV = serieTVDao.findByPrimaryKey(result.getString("serie_tv_id"));
+			    serieTV = serieTVDao.cercaPerId(result.getInt("serie_tv_id"));
 				stagione.setSerieTV(serieTV);
 			}
 		} catch (SQLException e) {
@@ -149,6 +149,109 @@ class StagioneDaoJDBC implements StagioneDao {
 			}
 		}	
 		return stagione;
+	}
+	
+	public List<Stagione> cercaPerIdSerie(int id) {
+		Connection connection = this.dataSource.getConnection();
+		List<Stagione> stagioni = new LinkedList<>();
+		try {
+			Stagione stagione;
+			PreparedStatement statement;
+			String query = "select * from stagione where serie_tv_id = ?";
+			statement = connection.prepareStatement(query);
+			statement.setInt(1, id);
+			ResultSet result = statement.executeQuery();
+			while (result.next()) {
+				stagione = new Stagione();
+				stagione.setId_stagione(result.getInt("id_stagione"));				
+				stagione.setStagione(result.getInt("numero_stagione"));
+				stagione.setNumero_episodi(result.getInt("numero_episodi"));
+
+				SerieTVDaoJDBC serieTVDao = new SerieTVDaoJDBC(dataSource);
+				SerieTV serieTV;
+			    serieTV = serieTVDao.cercaPerId(result.getInt("serie_tv_id"));
+				stagione.setSerieTV(serieTV);
+				
+				stagioni.add(stagione);
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		}	 finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return stagioni;
+	}
+	
+	public List<Stagione> cercaUltimiInseriti() {
+		Connection connection = this.dataSource.getConnection();
+		List<Stagione> stagioni = new LinkedList<>();
+		try {
+			Stagione stagione;
+			PreparedStatement statement;
+			String query = "select * from stagione as s inner join episodio ON s.id_stagione = episodio.stagione_id order by episodio.data_inserimento desc limit 3";
+			statement = connection.prepareStatement(query);
+			ResultSet result = statement.executeQuery();
+			while (result.next()) {
+				stagione = new Stagione();
+				stagione.setId_stagione(result.getInt("id_stagione"));				
+				stagione.setStagione(result.getInt("numero_stagione"));
+				stagione.setNumero_episodi(result.getInt("numero_episodi"));
+
+				SerieTVDaoJDBC serieTVDao = new SerieTVDaoJDBC(dataSource);
+				SerieTV serieTV;
+			    serieTV = serieTVDao.cercaPerId(result.getInt("serie_tv_id"));
+				stagione.setSerieTV(serieTV);
+				
+				stagioni.add(stagione);
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		}	 finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return stagioni;
+	}
+	
+	public List<Stagione> cercaPiuVisti() {
+		Connection connection = this.dataSource.getConnection();
+		List<Stagione> stagioni = new LinkedList<>();
+		try {
+			Stagione stagione;
+			PreparedStatement statement;
+			String query = "select * from stagione as s inner join episodio ON s.id_stagione = episodio.stagione_id order by episodio.visualizzazioni desc limit 3";
+			statement = connection.prepareStatement(query);
+			ResultSet result = statement.executeQuery();
+			while (result.next()) {
+				stagione = new Stagione();
+				stagione.setId_stagione(result.getInt("id_stagione"));				
+				stagione.setStagione(result.getInt("numero_stagione"));
+				stagione.setNumero_episodi(result.getInt("numero_episodi"));
+
+				SerieTVDaoJDBC serieTVDao = new SerieTVDaoJDBC(dataSource);
+				SerieTV serieTV;
+			    serieTV = serieTVDao.cercaPerId(result.getInt("serie_tv_id"));
+				stagione.setSerieTV(serieTV);
+				
+				stagioni.add(stagione);
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		}	 finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return stagioni;
 	}
 
 }
