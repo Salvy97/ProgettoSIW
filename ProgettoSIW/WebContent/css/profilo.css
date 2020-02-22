@@ -145,3 +145,7 @@ body {
     font-weight: 600;
     color: #0062cc;
 }
+
+#cambiaImmagineForm {
+	padding-top: 4px;
+}

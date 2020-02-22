@@ -70,7 +70,6 @@ public class ProfiloDAOJDBC implements ProfiloDAO
 				profilo.setPostsCreati(result.getInt("posts_creati"));
 				profilo.setRecensioniEffettuate(result.getInt("recensioni_effettuate"));
 				profilo.setImmagineDiProfilo(result.getString("immagine_di_profilo"));
-
 			}
 			PreparedStatement statement2 = connection.prepareStatement("select * from utente where username = ?");
 			statement2.setString(1, username);
@@ -101,7 +100,37 @@ public class ProfiloDAOJDBC implements ProfiloDAO
 	}
 
 	@Override
-	public void update(Profilo profilo) {}
+	public void update(Profilo profilo) 
+	{
+		Connection connection = this.dataSource.getConnection();
+		try 
+		{
+			String update = "update profilo SET username = ?, contenuti_guardati = ?, posts_creati = ?, recensioni_effettuate = ?, immagine_di_profilo = ? WHERE id_profilo = ?";
+			PreparedStatement statement = connection.prepareStatement(update);
+			statement.setString(1, profilo.getUsername());
+			statement.setInt(2, profilo.getContenutiGuardati());
+			statement.setInt(3, profilo.getPostsCreati());
+			statement.setInt(4, profilo.getRecensioniEffettuate());
+			statement.setString(5, profilo.getImmagineDiProfilo());
+			statement.setInt(6, profilo.getIdProfilo());
+			statement.executeUpdate();
+		} 
+		catch (SQLException e) 
+		{
+			throw new PersistenceException(e.getMessage());
+		} 
+		finally 
+		{
+			try 
+			{
+				connection.close();
+			} 
+			catch (SQLException e) 
+			{
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+	}
 
 	@Override
 	public void delete(Profilo profilo) {}

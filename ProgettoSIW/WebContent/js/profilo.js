@@ -6,6 +6,8 @@ var frasi =
 	"Maestro indiscusso"
 ]
 
+var showing = false;
+
 function calculateRating(contenutiGuardati, postsCreati, recensioniEffettuate)
 {
 	var rating = 1;
@@ -62,4 +64,47 @@ function calculateRating(contenutiGuardati, postsCreati, recensioniEffettuate)
 		document.getElementById("fraseInfo").innerHTML = frasi[3];
 	
 	document.getElementById("rating").innerHTML = rating + "/10";
+}
+
+function showCambiaImmagineForm()
+{
+	if (!showing)
+	{
+		var mainDiv = document.createElement("div");
+		mainDiv.setAttribute("class", "row");
+		document.getElementById("mainDivProfile").appendChild(mainDiv);
+		
+		var form = document.createElement("form");
+		form.setAttribute("id", "cambiaImmagineForm");
+		form.setAttribute("action", "cambiaImmagine");
+		form.setAttribute("class", "col-lg-6");
+		form.setAttribute("method", "POST");
+		mainDiv.appendChild(form);
+		
+		var input = document.createElement("input");
+		input.setAttribute("type", "text");
+		input.setAttribute("placeholder", "Inserisci URL dell'immagine qui");
+		input.setAttribute("name", "url");
+		form.appendChild(input);
+		
+		var separatorDiv = document.createElement("div");
+		separatorDiv.setAttribute("class", "col-lg-3");
+		mainDiv.appendChild(separatorDiv);
+		
+		var button = document.createElement("button");
+		button.setAttribute("id", "buttonImage");
+		button.setAttribute("class", "btn btn-warning col-lg-3");
+		button.setAttribute("onclick", "document.getElementById('cambiaImmagineForm').submit();");
+		button.innerHTML = "Scegli";
+		mainDiv.appendChild(button);
+		
+		showing = true;
+	}
+	else
+	{
+		const nodo = document.getElementById("mainDivProfile");
+		while (nodo.firstChild)
+			nodo.removeChild(nodo.firstChild);
+		showing = false;
+	}
 }

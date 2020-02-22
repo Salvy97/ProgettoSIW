@@ -104,19 +104,18 @@
             <div class="col-md-4">
                 <div class="profile-img">
                     <img src="${profilo.immagineDiProfilo}" alt=""/>
-                    <div class="file btn btn-lg btn-primary">
+                    <div class="file btn btn-lg btn-primary" onclick="showCambiaImmagineForm();">
                         Change Photo
-                        <input type="file" name="file"/>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="profile-head">
-                            <h5>
-                                ${profilo.username}
-                            </h5>
-                            <h6 id="fraseInfo"></h6>
-                            <p class="proile-rating">RATING : <span id="rating"></span></p>
+                    <h5>
+                        ${profilo.username}
+                    </h5>
+                    <h6 id="fraseInfo"></h6>
+                    <p class="proile-rating">RATING : <span id="rating"></span></p>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Informazioni</a>
@@ -127,13 +126,11 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-2">
-                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
-            </div>
         </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-work">
+                	<div id="mainDivProfile"></div>
                 	<c:choose>
                 		<c:when test="${profilo.username==sessionScope.name}">
 		                    <p>GESTISCI ACCOUNT</p>
