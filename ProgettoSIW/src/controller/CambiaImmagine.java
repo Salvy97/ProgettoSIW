@@ -7,9 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import model.Profilo;
-import model.Utente;
 import persistence.DatabaseManager;
 
 public class CambiaImmagine extends HttpServlet

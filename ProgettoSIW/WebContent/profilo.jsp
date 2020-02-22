@@ -104,9 +104,13 @@
             <div class="col-md-4">
                 <div class="profile-img">
                     <img src="${profilo.immagineDiProfilo}" alt=""/>
-                    <div class="file btn btn-lg btn-primary" onclick="showCambiaImmagineForm();">
-                        Change Photo
-                    </div>
+                    <c:choose>
+                    	<c:when test="${profilo.username==sessionScope.name}">
+		                    <div class="file btn btn-lg btn-primary" onclick="showCambiaImmagineForm();">
+		                        Cambia Immagine di Profilo
+		                    </div>
+		                </c:when>
+		            </c:choose>
                 </div>
             </div>
             <div class="col-md-6">
