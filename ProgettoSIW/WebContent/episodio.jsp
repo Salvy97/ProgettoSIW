@@ -28,7 +28,7 @@
 	
 	</head>
 			
-	<body>
+	<body onload="javascript:initializeFilmato('${episodio.filmato}');">
 		<!-- Navigation -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 	   		<div class="container">
@@ -128,13 +128,9 @@
 		   	 	<p class="info genre">${serieTV.anno}</p>
 		   	 	Durata:  
 		   	 	<p class="info genre">${episodio.durata}'</p>
-		    </div>
+		    </div>    
 		    
-		    
-		    <div class="video col-lg-6">
-		    	<iframe width="715" height="460" src="${episodio.filmato}" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-		    </div>
-			
+		    <div id="player" class="video col-lg-6"></div>
 		    
 		    <div class="col-lg-2 rightBar jumbotron">
 		    	Tipo: 

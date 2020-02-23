@@ -5,8 +5,10 @@ import model.ContenutoGuardato;
 
 public interface ContenutiGuardatiDAO 
 {
-	public void save(ContenutoGuardato contenutoGuardato);  // Create
+	public void saveFilm(ContenutoGuardato contenutoGuardato);  // Create
+	public void saveEpisode(ContenutoGuardato contenutoGuardato);  // Create
 	public List<ContenutoGuardato> searchFilmsWatchedByUser(String username);  // Retrieve
 	public List<ContenutoGuardato> searchEpisodesWatchedByUser(String username);  // Retrieve
-	public void delete(ContenutoGuardato contenutoGuardato); //Delete
+	public void deleteFilm(ContenutoGuardato contenutoGuardato); //Delete
+	public void deleteEpisode(ContenutoGuardato contenutoGuardato); //Delete
 }

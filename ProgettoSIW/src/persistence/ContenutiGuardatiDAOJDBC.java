@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import model.ContenutoGuardato;
 import persistence.dao.ContenutiGuardatiDAO;
@@ -18,9 +20,65 @@ public class ContenutiGuardatiDAOJDBC implements ContenutiGuardatiDAO
 		this.dataSource = dataSource;
 	}
 	
-	public void save(ContenutoGuardato contenutoGuardato) 
+	public void saveFilm(ContenutoGuardato contenutoGuardato) 
 	{
-		
+		Connection connection = null;
+		try
+		{
+			 connection = this.dataSource.getConnection();
+			 String insert = "insert into film_guardati(username, id_contenuto, data_visualizzazione) values(?,?,?)";
+			 PreparedStatement statement = connection.prepareStatement(insert);
+			 statement.setString(1, contenutoGuardato.getUsername());
+			 statement.setInt(2, contenutoGuardato.getIdContenuto());
+			 statement.setString(3, contenutoGuardato.getDataVisualizzazione());
+			 statement.executeUpdate();
+		}
+		catch (SQLException e) 
+		{
+			throw new PersistenceException(e.getMessage());
+		} 
+		finally 
+		{
+			try 
+			{
+				connection.close();
+			} 
+			catch (SQLException e) 
+			{
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+	}
+	
+	public void saveEpisode(ContenutoGuardato contenutoGuardato) 
+	{
+		Connection connection = null;
+		try
+		{
+			 connection = this.dataSource.getConnection();
+			 String insert = "insert into episodi_guardati(username, id_contenuto, data_visualizzazione) values(?,?,?)";
+			 PreparedStatement statement = connection.prepareStatement(insert);
+			 statement.setString(1, contenutoGuardato.getUsername());
+			 statement.setInt(2, contenutoGuardato.getIdContenuto());
+			 Timestamp timestamp = new Timestamp(new Date().getTime());
+			 statement.setTimestamp(3, timestamp);
+			 statement.executeUpdate();
+		}
+		catch (SQLException e) 
+		{
+			throw new PersistenceException(e.getMessage());
+		} 
+		finally 
+		{
+			try 
+			{
+				connection.close();
+			} 
+			catch (SQLException e) 
+			{
+				throw new PersistenceException(e.getMessage());
+			}
+		}
 	}
 
 	public List<ContenutoGuardato> searchFilmsWatchedByUser(String username) 
@@ -80,7 +138,12 @@ public class ContenutiGuardatiDAOJDBC implements ContenutiGuardatiDAO
 		return contenutiGuardati;
 	}
 
-	public void delete(ContenutoGuardato contenutoGuardato) 
+	public void deleteFilm(ContenutoGuardato contenutoGuardato) 
+	{
+		
+	}
+	
+	public void deleteEpisode(ContenutoGuardato contenutoGuardato) 
 	{
 		
 	}

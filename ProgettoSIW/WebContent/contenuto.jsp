@@ -23,7 +23,7 @@
 	
 	</head>
 			
-	<body>
+	<body onload="javascript:initializeFilmato('${film.filmato}');">
 		<!-- Navigation -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 	   		<div class="container">
@@ -101,7 +101,7 @@
 	    	</div>
 	    </nav>
 	    	    
-	    
+	    <input type="hidden" id="contenuto" value="<%= request.getParameter("id") %>"/>
 	        
 	    <div class="contentBackground">
 	    	<img src="${film.immagineForum}"/>
@@ -122,12 +122,8 @@
 		   	 	<p class="info genre">${film.durata}'</p>
 		    
 		    </div>
-		    
-		    
-		    <div class="video col-lg-6">
-		    	<iframe width="715" height="460" src="${film.filmato}" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-		    </div>
-			
+		    	    
+		    <div id="player" class="video col-lg-6"></div>
 			
 		    <div class="col-lg-2 rightBar jumbotron">
 	    	   	Tipo: 

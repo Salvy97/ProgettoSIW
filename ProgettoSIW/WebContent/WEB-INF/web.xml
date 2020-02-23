@@ -497,6 +497,24 @@
   </servlet-mapping>
   
   <servlet>
+  	<servlet-name>AggiungiFilmVisto</servlet-name>
+  	<servlet-class>controller.AggiungiFilmVisto</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AggiungiFilmVisto</servlet-name>
+  	<url-pattern>/aggiungiFilmVisto</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>AggiungiEpisodioVisto</servlet-name>
+  	<servlet-class>controller.AggiungiEpisodioVisto</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AggiungiEpisodioVisto</servlet-name>
+  	<url-pattern>/aggiungiEpisodioVisto</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>controller.CatalogoAbbonamenti</servlet-name>
     <servlet-class>controller.CatalogoAbbonamenti</servlet-class>
   </servlet>

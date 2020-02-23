@@ -32,3 +32,38 @@ $(function () {
               
           });
 });
+
+function initializeFilmato(filmato)
+{	
+	var idFilmato = filmato.substring(30);
+	onYouTubeIframeAPIReady(idFilmato);
+}
+
+function onYouTubeIframeAPIReady(idFilmato) 
+{
+    player = new YT.Player('player', 
+    {  
+    	height: '560',
+        width: '640',
+        videoId: idFilmato.toString(),
+	    events: 
+	    {
+	      'onStateChange': onPlayerStateChange
+	   }
+    });
+}
+
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api"; 
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+var player;
+
+function onPlayerStateChange(event)
+{
+	if (event.data == YT.PlayerState.PLAYING)
+	{ 
+		var contenuto = $('#contenuto').val();
+		$.post("aggiungiFilmVisto", { contenuto: contenuto }).done(function(data) {}); 
+    }
+}
