@@ -59,6 +59,13 @@
 		        	</ul>
 	      		</div>
 	      		<div class="collapse navbar-collapse" id="navbarResponsive">
+	      			<div style="padding-right: 20px;">
+		     			<c:choose>
+						    <c:when test="${sessionScope.role=='admin'}">
+						    	<button class="btn btn-warning" onclick="location.href = 'PannelloAdmin.jsp';">Pannello Admin</button>
+						    </c:when>
+						</c:choose>
+					</div>
 	      			<ul class="navbar-nav lg-auto ml-auto sg-auto">
 	          			
 	          			<c:choose>
