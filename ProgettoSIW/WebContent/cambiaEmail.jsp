@@ -8,13 +8,13 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 	
-		<title>Cambia Username</title>
+		<title>Cambia Email</title>
 	
 		<!-- Bootstrap core CSS -->
 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
 		<!-- Custom styles for this template -->
-		<link href="css/cambiaUsername.css" rel="stylesheet">
+		<link href="css/cambiaEmail.css" rel="stylesheet">
 		
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		
@@ -101,15 +101,33 @@
 	
 		<!-- Page Content -->
 	    <div class="container">
-
-			<h1 id="message">${sessionScope.message}</h1>		
+			
+			<c:choose>
+				<c:when test="${sessionScope.error=='emailUsed'}">
+			    	<div id="myModal" class="modal fade" tabindex="-1">
+				        <div class="modal-dialog">
+				            <div class="modal-content">
+				                <div class="modal-header">
+				                    <h5 class="modal-title">Errore</h5>
+				                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+				                </div>
+				                <div class="modal-body">
+				                    <p>L'email scelta è già in uso!</p>
+				                    <p class="text-secondary"><small>Riprova.</small></p>
+				                </div>
+				                <div class="modal-footer">
+				                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+				                </div>
+				            </div>
+				        </div>
+				    </div>    
+			    </c:when>
+			</c:choose>	
 
 			<div class="card card-container">
-	            <!-- <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-	            <p id="profile-name" class="profile-name-card">Login</p> -->
-	            <form class="form-signin" action="cambiaUsername" method="post">
-	            	<h2>Cambia username</h2>
-	                <input name="newUsername" type="password" id="inputNewUsername" class="form-control" placeholder="Username nuovo" required autofocus>
+	            <form class="form-signin" action="cambiaEmail" method="post">
+	            	<h2>Cambia email</h2>
+	                <input name="email" type="text" id="inputNewEmail" class="form-control" placeholder="Nuova email" required autofocus>
 	                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Conferma</button>
 	            </form><!-- /form -->
 	        </div>	
@@ -126,7 +144,7 @@
 		<!-- Bootstrap core JavaScript -->
 	 	<script src="jquery/jquery.min.js"></script>
 	    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-	    	    
-	    <script src="js/cambiaUsername.js"></script>
+	    
+	    <script src="js/cambiaEmail.js"></script>
 	</body>
 </html>

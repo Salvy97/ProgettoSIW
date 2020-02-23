@@ -147,7 +147,7 @@
 		                    <p>GESTISCI ACCOUNT</p>
 		                    <a href="abbonamento.jsp">Il tuo abbonamento</a><br/>
 		                    <a href="">Storico pagamenti</a><br/>
-		                    <a href="cambiaUsername.jsp">Modifica username</a><br/>
+		                    <a href="cambiaEmail.jsp">Modifica email</a><br/>
 		                    <a href="cambiaPassword.jsp">Modifica password</a>
 		                </c:when>
 	                </c:choose>

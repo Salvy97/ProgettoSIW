@@ -147,8 +147,6 @@
 			</c:choose>	
 
 			<div class="card card-container">
-	            <!-- <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-	            <p id="profile-name" class="profile-name-card">Login</p> -->
 	            <form class="form-signin" action="cambiaPassword" method="post">
 	            	<h2>Cambia password</h2>
 	                <input name="oldPassword" type="password" id="inputOldPassword" class="form-control" placeholder="Password attuale" required autofocus>

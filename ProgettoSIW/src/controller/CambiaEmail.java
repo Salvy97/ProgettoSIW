@@ -9,32 +9,32 @@ import javax.servlet.http.HttpServletResponse;
 import model.Utente;
 import persistence.DatabaseManager;
 
-public class CambiaUsername extends HttpServlet
+public class CambiaEmail extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
-		String newUsername = req.getParameter("newUsername");
+		String newEmail = req.getParameter("email");
 		
 		String username = (String) req.getSession().getAttribute("name");
 		Utente utente = DatabaseManager.getInstance().getDaoFactory().getUtenteDAO().findByUsername(username);
 		
-		Utente existsUtente = DatabaseManager.getInstance().getDaoFactory().getUtenteDAO().findByUsername(newUsername);
-		
-		if (existsUtente == null)
+		Utente utenteNewEmail = DatabaseManager.getInstance().getDaoFactory().getUtenteDAO().findByEmail(newEmail);
+		if (utenteNewEmail == null)
 		{
-			utente.setUsername(newUsername);
+			utente.setEmail(newEmail);
 			DatabaseManager.getInstance().getDaoFactory().getUtenteDAO().update(utente);
 				
+			req.getSession().setAttribute("error", "none");
 			RequestDispatcher rd = req.getRequestDispatcher("user?username=" + utente.getUsername());
 			rd.forward(req, resp);
 		}
 		else
 		{
-			req.getSession().setAttribute("message", "L'username è già in uso. Riprova.");
-			RequestDispatcher rd = req.getRequestDispatcher("cambiaUsername.jsp");
+			req.getSession().setAttribute("error", "emailUsed");
+			RequestDispatcher rd = req.getRequestDispatcher("cambiaEmail.jsp");
 			rd.forward(req, resp);
 		}
 	}

@@ -344,12 +344,12 @@
   </servlet-mapping>
   
   <servlet>
-  	<servlet-name>CambiaUsername</servlet-name>
-  	<servlet-class>controller.CambiaUsername</servlet-class>
+  	<servlet-name>CambiaEmail</servlet-name>
+  	<servlet-class>controller.CambiaEmail</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>CambiaUsername</servlet-name>
-  	<url-pattern>/cambiaUsername</url-pattern>
+  	<servlet-name>CambiaEmail</servlet-name>
+  	<url-pattern>/cambiaEmail</url-pattern>
   </servlet-mapping>
   
   <servlet>
