@@ -5,7 +5,6 @@ public class Utente
 	private int id;
 	private String username;
 	private String role;
-	private String hash;
 	private Sottoscrizione sottoscrizione;
 	private String usernamePP;
 	private Boolean autoRenew;
@@ -29,12 +28,6 @@ public class Utente
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getHash() {
-		return hash;
-	}
-	public void setHash(String hash) {
-		this.hash = hash;
 	}
 	public String getUsername() {
 		return username;

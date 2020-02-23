@@ -6,10 +6,10 @@ import model.Episodio;
 
 public interface EpisodioDao {
 	
-	public void save(Episodio stagione);  // Create
+	public void save(Episodio episodio);  // Create
 	public Episodio cercaPerId(int id);  // Retrieve
-	public void update(Episodio stagione); //Update
-	public void delete(Episodio stagione); //Delete
+	public void update(Episodio episodio); //Update
+	public void delete(Episodio episodio); //Delete
 	
 	public List<Episodio> findAll();
 	public List<Episodio> cercaPerIdStagione(int id);

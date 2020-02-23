@@ -106,8 +106,13 @@ class StagioneDaoJDBC implements StagioneDao {
 	public void delete(Stagione stagione) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String delete = "delete FROM stagione WHERE id_stagione = ? ";
-			PreparedStatement statement = connection.prepareStatement(delete);
+			String deleteEpisodes = "delete from episodio where stagione_id = ?";
+			PreparedStatement statement = connection.prepareStatement(deleteEpisodes);
+			statement.setInt(1, stagione.getId_stagione());
+			statement.executeUpdate();
+			
+			String deleteStagione = "delete FROM stagione WHERE id_stagione = ?";
+			statement = connection.prepareStatement(deleteStagione);
 			statement.setInt(1, stagione.getId_stagione());
 			statement.executeUpdate();
 		} catch (SQLException e) {

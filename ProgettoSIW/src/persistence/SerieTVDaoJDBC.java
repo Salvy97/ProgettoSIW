@@ -207,8 +207,13 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 	public void delete(SerieTV serieTV) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String delete = "delete FROM serie_tv WHERE id_serie_tv = ? ";
-			PreparedStatement statement = connection.prepareStatement(delete);
+			String deleteStagioni = "delete FROM stagione WHERE serie_tv_id = ? ";
+			PreparedStatement statement = connection.prepareStatement(deleteStagioni);
+			statement.setInt(1, serieTV.getId_serieTV());
+			statement.executeUpdate();
+			
+			String deleteSerieTV = "delete FROM serie_tv WHERE id_serie_tv = ? ";
+			statement = connection.prepareStatement(deleteSerieTV);
 			statement.setInt(1, serieTV.getId_serieTV());
 			statement.executeUpdate();
 		} catch (SQLException e) {

@@ -27,6 +27,8 @@ public class SignUp extends HttpServlet
 		Utente utente = new Utente();
 		Profilo profilo = new Profilo();
 		
+		utente.setRole("user");
+		
 		utente.setUsername(username);
 		utente.setNome(nome);
 		utente.setCognome(cognome);

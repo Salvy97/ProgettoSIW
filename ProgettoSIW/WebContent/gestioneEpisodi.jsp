@@ -122,6 +122,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 				</div>
 				<div class="modal-body">
 					<form action="salvaEpisodio" method="POST">
+						<input type="hidden" name="id" value='<%= request.getParameter("id") %>'/>
 						<div class="form-group">
 							<label for="titolo">Titolo</label> <input type="text"
 								class="form-control" name="titolo" id="titolo" aria-describedby="titoloHelp">
@@ -138,9 +139,10 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 							<label for="locandina">Numero episodio</label> <input type="text"
 								class="form-control" name="numeroEpisodio" id="numeroEpisodio">
 						</div>
-						<div class="form-group">
-							<label for="immagineForum">Stagione</label> <input type="text"
-								class="form-control" name="numeroStagione" id="numeroStagione">
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Chiudi</button>
+							<button type="submit" class="btn btn-primary salvaContenuto">Salva</button>
 						</div>
 					</form>
 				</div>
@@ -163,7 +165,8 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 				</div>
 				<div class="modal-body">
 					<form action="aggiornaEpisodio" method="POST">
-						<input type="hidden" name="idFilm" id="idA"/>
+						<input type="hidden" name="idEpisodio" id="idA"/>
+						<input type="hidden" name="idStagione" value='<%= request.getParameter("id") %>'/>
 						<div class="form-group">
 							<label for="titolo">Titolo</label> <input type="text"
 								class="form-control" name="titolo" id="titoloA" aria-describedby="titoloHelp">
@@ -179,10 +182,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 		       			<div class="form-group">
 							<label for="locandina">Numero episodio</label> <input type="text"
 								class="form-control" name="numeroEpisodio" id="numeroEpisodioA">
-						</div>
-						<div class="form-group">
-							<label for="immagineForum">Stagione</label> <input type="text"
-								class="form-control" name="numeroStagione" id="numeroStagioneA">
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
@@ -211,7 +210,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             <th scope="col">Durata</th>
             <th scope="col">Filmato</th>
             <th scope="col">Numero Episodio</th>
-   			<th scope="col">Stagione</th>
           </tr>
           <% int i = 1; %>
           <c:forEach items="${episodi}" var="episodio">
@@ -222,9 +220,8 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           		<td class="cella">${episodio.durata}</td>
           		<td class="cella">${episodio.filmato}</td>
           		<td class="cella">${episodio.numero_episodio}</td>
-          		<td class="cella">${episodio.stagione.numero_stagione}</td>
           		<td class="buttonCella">
-          			<button class="btn btn-warning" onclick="aggiornaEpisodio('${episodio.id_episodio}', '${episodio.titolo}', '${episodio.durata}', '${episodio.filmato}', '${episodio.numero_episodio}', '${episodio.stagione.numero_stagione}');">Aggiorna</button>
+          			<button class="btn btn-warning" onclick="aggiornaEpisodio('${episodio.id_episodio}', '${episodio.titolo}', '${episodio.durata}', '${episodio.filmato}', '${episodio.numero_episodio}');">Aggiorna</button>
           		</td>
           		<td class="buttonCella">
           			<form action="eliminaEpisodio" method="POST">

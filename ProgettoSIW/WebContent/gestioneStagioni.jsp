@@ -12,7 +12,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Gestione Serie TV</title>
+    <title>Gestione Stagioni</title>
 
     <link
       rel="stylesheet"
@@ -27,7 +27,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
     />
 
-    <link rel="stylesheet" href="css/gestioneSerieTV.css" rel="no-referrer" />
+    <link rel="stylesheet" href="css/gestioneStagioni.css" rel="no-referrer" />
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
@@ -114,7 +114,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalCenterTitle">Inserisci
-						una nuova serie TV</h5>
+						una nuova stagione</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -122,25 +122,14 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 				</div>
 				<div class="modal-body">
 					<form action="salvaSerieTV" method="POST">
+						<input type="hidden" name="idSerieTV" value='<%= request.getParameter("id") %>'>
 						<div class="form-group">
-							<label for="titolo">Titolo</label> <input type="text"
-								class="form-control" name="titolo" id="titolo" aria-describedby="titoloHelp">
+							<label for="titolo">Numero stagione</label> <input type="text"
+								class="form-control" name="numeroStagione" id="numeroStagione" aria-describedby="titoloHelp">
 						</div>
 						<div class="form-group">
-							<label for="anno">Anno</label> <input type="number"
-								class="form-control" name="anno" id="anno">
-						</div>
-						<div class="form-group">
-							<label for="genere">Genere</label> <input type="text"
-								class="form-control" name="genere" id="genere">
-		       			</div>
-		       			<div class="form-group">
-							<label for="locandina">Locandina</label> <input type="text"
-								class="form-control" name="locandina" id="locandina">
-						</div>
-						<div class="form-group">
-							<label for="immagineForum">Immagine Forum</label> <input type="text"
-								class="form-control" name="immagineForum" id="immagineForum">
+							<label for="anno">Numero episodi</label> <input type="number"
+								class="form-control" name="numeroEpisodi" id="numeroEpisodi">
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
@@ -153,14 +142,14 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 		</div>
 	</div>
 
-	<div class="modal fade" id="aggiornaSerieTV" tabindex="-1"
+	<div class="modal fade" id="aggiornaStagione" tabindex="-1"
 		role="dialog" aria-labelledby="exampleModalCenterTitle"
 		aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalCenterTitle">Modifica
-						una serie TV</h5>
+						una stagione</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -168,26 +157,15 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 				</div>
 				<div class="modal-body">
 					<form action="aggiornaFilm" method="POST">
-						<input type="hidden" name="idFilm" id="idA"/>
+						<input type="hidden" name="idStagione" id="idA"/>
+						<input type="hidden" name="idSerieTV" value='<%= request.getParameter("id") %>'>
 						<div class="form-group">
-							<label for="titolo">Titolo</label> <input type="text"
-								class="form-control" name="titolo" id="titoloA" aria-describedby="titoloHelp">
+							<label for="titolo">Numero stagione</label> <input type="text"
+								class="form-control" name="numeroStagione" id="numeroStagioneA" aria-describedby="titoloHelp">
 						</div>
 						<div class="form-group">
-							<label for="anno">Anno</label> <input type="number"
-								class="form-control" name="anno" id="annoA">
-						</div>
-						<div class="form-group">
-							<label for="genere">Genere</label> <input type="text"
-								class="form-control" name="genere" id="genereA">
-		       			</div>
-		       			<div class="form-group">
-							<label for="locandina">Locandina</label> <input type="text"
-								class="form-control" name="locandina" id="locandinaA">
-						</div>
-						<div class="form-group">
-							<label for="immagineForum">Immagine Forum</label> <input type="text"
-								class="form-control" name="immagineForum" id="immagineForumA">
+							<label for="anno">Numero episodi</label> <input type="number"
+								class="form-control" name="numeroEpisodi" id="numeroEpisodiA">
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
@@ -202,45 +180,39 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
     <!-- Page Content -->
     <div class="main container" id="main">
-      <h1>Gestione Serie TV</h1> 
+      <h1>Gestione Stagioni</h1> 
       <button type="button" class="btn btn-success adminAddBtn"
 	data-toggle="modal" data-target="#exampleModalCenter">Aggiungi
-	una serie TV</button>
+	una stagione</button>
 	
       <table class="table table-hover">
         <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">ID</th>
-            <th scope="col">Titolo</th>
-            <th scope="col">Anno</th>
-            <th scope="col">Genere</th>
-            <th scope="col">Locandina</th>
-   			<th scope="col">Immagine Forum</th>
+            <th scope="col">Numero stagione</th>
+            <th scope="col">Numero episodi</th>
           </tr>
           <% int i = 1; %>
-          <c:forEach items="${serieTVs}" var="serieTV">
+          <c:forEach items="${stagioni}" var="stagione">
           	<tr>
           		<td><%= i %></td>
-          		<td class="cella">${serieTV.id_serieTV}</td>
-          		<td class="cella">${serieTV.titolo}</td>
-          		<td class="cella">${serieTV.anno}</td>
-          		<td class="cella">${serieTV.genere}</td>
-          		<td class="cella">${serieTV.locandina}</td>
-          		<td class="cella">${serieTV.immagineForum}</td>
+          		<td class="cella">${stagione.id_stagione}</td>
+          		<td class="cella">${stagione.numero_stagione}</td>
+          		<td class="cella">${stagione.numero_episodi}</td>
           		<td class="buttonCella">
-          			<button class="btn btn-warning" onclick="aggiornaSerieTV('${serieTV.id_serieTV}', '${serieTV.titolo}', '${serieTV.anno}', '${serieTV.genere}', '${serieTV.locandina}', '${serieTV.immagineForum}');">Aggiorna</button>
+          			<button class="btn btn-warning" onclick="aggiornaStagione('${stagione.id_stagione}', '${stagione.numero_stagione}', '${stagione.numero_episodi}');">Aggiorna</button>
           		</td>
           		<td class="buttonCella">
-          			<form action="eliminaSerieTV" method="POST">
-          				<input name="id" type="hidden" value="${serieTV.id_serieTV}"/>
+          			<form action="eliminaStagione" method="POST">
+          				<input name="id" type="hidden" value="${stagione.id_stagione}"/>
           				<button class="btn btn-danger" type="submit">Elimina</button>
           			</form>
           		</td>
           		<td class="buttonCella">
-          			<form action="gestioneStagioni" method="GET">
-          				<input name="id" type="hidden" value="${serieTV.id_serieTV}"/>
-          				<button class="btn btn-info" type="submit">Gestisci stagioni</button>
+          			<form action="gestioneEpisodi" method="GET">
+          				<input name="id" type="hidden" value="${stagione.id_stagione}"/>
+          				<button class="btn btn-info" type="submit">Gestisci episodi</button>
           			</form>
           		</td>
           	</tr>
@@ -264,6 +236,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.js"></script>
-    <script src="js/gestioneSerieTV.js"></script>
+    <script src="js/gestioneStagioni.js"></script>
   </body>
 </html>

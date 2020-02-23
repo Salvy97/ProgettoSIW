@@ -407,6 +407,96 @@
   </servlet-mapping>
   
   <servlet>
+  	<servlet-name>GestioneStagioni</servlet-name>
+  	<servlet-class>controller.GestioneStagioni</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>GestioneStagioni</servlet-name>
+  	<url-pattern>/gestioneStagioni</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>SalvaEpisodio</servlet-name>
+  	<servlet-class>controller.SalvaEpisodio</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SalvaEpisodio</servlet-name>
+  	<url-pattern>/salvaEpisodio</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>EliminaEpisodio</servlet-name>
+  	<servlet-class>controller.EliminaEpisodio</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>EliminaEpisodio</servlet-name>
+  	<url-pattern>/eliminaEpisodio</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>AggiornaEpisodio</servlet-name>
+  	<servlet-class>controller.AggiornaEpisodio</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AggiornaEpisodio</servlet-name>
+  	<url-pattern>/aggiornaEpisodio</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>SalvaStagione</servlet-name>
+  	<servlet-class>controller.SalvaStagione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SalvaStagione</servlet-name>
+  	<url-pattern>/salvaStagione</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>EliminaStagione</servlet-name>
+  	<servlet-class>controller.EliminaStagione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>EliminaStagione</servlet-name>
+  	<url-pattern>/eliminaStagione</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>AggiornaStagione</servlet-name>
+  	<servlet-class>controller.AggiornaStagione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AggiornaStagione</servlet-name>
+  	<url-pattern>/aggiornaStagione</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>SalvaSerieTV</servlet-name>
+  	<servlet-class>controller.SalvaSerieTV</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SalvaSerieTV</servlet-name>
+  	<url-pattern>/salvaSerieTV</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>EliminaSerieTV</servlet-name>
+  	<servlet-class>controller.EliminaSerieTV</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>EliminaSerieTV</servlet-name>
+  	<url-pattern>/eliminaSerieTV</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>AggiornaSerieTV</servlet-name>
+  	<servlet-class>controller.AggiornaSerieTV</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AggiornaSerieTV</servlet-name>
+  	<url-pattern>/aggiornaSerieTV</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>controller.CatalogoAbbonamenti</servlet-name>
     <servlet-class>controller.CatalogoAbbonamenti</servlet-class>
   </servlet>
@@ -452,7 +542,7 @@
     <url-pattern>/api/sottoscrizioni</url-pattern>
   </servlet-mapping>
   
-    <servlet>
+  <servlet>
     <servlet-name>api.Contenuti_getAll</servlet-name>
     <servlet-class>api.Contenuti_getAll</servlet-class>
   </servlet>
@@ -463,7 +553,7 @@
   
   
   
-      <servlet>
+  <servlet>
     <servlet-name>api.Contenuti_getOne</servlet-name>
     <servlet-class>api.Contenuti_getOne</servlet-class>
   </servlet>
@@ -472,7 +562,7 @@
     <url-pattern>/api/info</url-pattern>
   </servlet-mapping>
   
-        <servlet>
+  <servlet>
     <servlet-name>api.Sottoscrizioni_getLatestByUser</servlet-name>
     <servlet-class>api.Sottoscrizioni_getLatestByUser</servlet-class>
   </servlet>
