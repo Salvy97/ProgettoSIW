@@ -8,7 +8,7 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 	
-		<title>Golden Streaming - Registration</title>
+		<title>Golden Streaming - Registrati</title>
 	
 		<!-- Bootstrap core CSS -->
 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -93,11 +93,11 @@
 	    </nav>
 	
 		<!-- Page Content -->
-	    <div class="container">
+	    <div class="container" style="padding-top: 100px; padding-bottom: 100px;">
 		
 			<div class="signup-form">
 			    <form action="signUp" method="post">
-					<h2>Register</h2>
+					<h2>Registrati</h2>
 					<p class="hint-text">Crea il tuo account. E' gratuito e richiede solo pochi minuti.</p>
 			        <div class="form-group">
 			        	<input type="text" class="form-control" name="username" placeholder="Username" required="required">
@@ -127,9 +127,6 @@
 			        <div class="text-center">Hai già un account? <a href="#">Accedi</a></div>
 			    </form>
 			</div>	
-		
-	    
-		    
 		    <!-- /.row -->
 	    </div>
 		<!-- container -->

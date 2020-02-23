@@ -46,14 +46,14 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 	}
 
 	@Override
-	public SerieTV findByPrimaryKey(String id_serieTV) {
+	public SerieTV findByPrimaryKey(int id_serieTV) {
 		Connection connection = this.dataSource.getConnection();
 		SerieTV serieTV = null;
 		try {
 			PreparedStatement statement;
 			String query = "select * from serie_tv where id_serie_tv = ?";
 			statement = connection.prepareStatement(query);
-			statement.setString(1, id_serieTV);
+			statement.setInt(1, id_serieTV);
 			ResultSet result = statement.executeQuery();
 			if (result.next()) {
 				serieTV = new SerieTV();

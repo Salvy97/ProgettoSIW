@@ -61,7 +61,7 @@ class StagioneDaoJDBC implements StagioneDao {
 
 				SerieTVDaoJDBC serieTVDao = new SerieTVDaoJDBC(dataSource);
 				SerieTV serieTV;
-			    serieTV = serieTVDao.findByPrimaryKey(result.getString("serie_tv_id"));
+			    serieTV = serieTVDao.findByPrimaryKey(result.getInt("serie_tv_id"));
 				stagione.setSerieTV(serieTV);
 				
 				stagioni.add(stagione);
@@ -119,14 +119,14 @@ class StagioneDaoJDBC implements StagioneDao {
 		}
 	}
 	
-	public Stagione cercaPerId(String id) {
+	public Stagione cercaPerId(int id) {
 		Connection connection = this.dataSource.getConnection();
 		Stagione stagione = null;
 		try {
 			PreparedStatement statement;
 			String query = "select * from stagione where id_stagione = ?";
 			statement = connection.prepareStatement(query);
-			statement.setString(1, id);
+			statement.setInt(1, id);
 			ResultSet result = statement.executeQuery();
 			if (result.next()) {
 				stagione = new Stagione();
@@ -136,7 +136,7 @@ class StagioneDaoJDBC implements StagioneDao {
 
 				SerieTVDaoJDBC serieTVDao = new SerieTVDaoJDBC(dataSource);
 				SerieTV serieTV;
-			    serieTV = serieTVDao.findByPrimaryKey(result.getString("serie_tv_id"));
+			    serieTV = serieTVDao.findByPrimaryKey(result.getInt("serie_tv_id"));
 				stagione.setSerieTV(serieTV);
 			}
 		} catch (SQLException e) {

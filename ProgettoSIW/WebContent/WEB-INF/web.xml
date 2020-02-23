@@ -224,6 +224,15 @@
   	<servlet-name>controller.GestioneSerieTV</servlet-name>
   	<url-pattern>/gestioneSerieTV</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>controller.GestioneEpisodi</servlet-name>
+  	<servlet-class>controller.GestioneEpisodi</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>controller.GestioneEpisodi</servlet-name>
+  	<url-pattern>/gestioneEpisodi</url-pattern>
+  </servlet-mapping>
 
   <servlet>
   	<servlet-name>controller.PannelloAdmin</servlet-name>

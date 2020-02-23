@@ -3,7 +3,9 @@ package model;
 public class Episodio {
 	private String id_episodio;
 	private String titolo;
+	private String filmato;
 	private int durata;
+	private int numeroEpisodio;
 	private Stagione stagione;
 
 
@@ -46,6 +48,22 @@ public class Episodio {
 
 	public void setStagione(Stagione stagione) {
 		this.stagione = stagione;
+	}
+
+	public int getNumeroEpisodio() {
+		return numeroEpisodio;
+	}
+
+	public void setNumeroEpisodio(int numeroEpisodio) {
+		this.numeroEpisodio = numeroEpisodio;
+	}
+
+	public String getFilmato() {
+		return filmato;
+	}
+
+	public void setFilmato(String filmato) {
+		this.filmato = filmato;
 	}
 	
 	

@@ -1,5 +1,6 @@
 .main.container {
     max-width: 1400px;
+    padding-top: 40px;
 }
 
 .actionBtn {

@@ -6,7 +6,7 @@ import model.SerieTV;
 public interface SerieTVDao {
 
 	public void save(SerieTV serieTV);  // Create
-	public SerieTV findByPrimaryKey(String id_serieTV);  // Retrieve
+	public SerieTV findByPrimaryKey(int id_serieTV);  // Retrieve
 	public List<SerieTV> findAll(); 
 	public void update(SerieTV serieTV); //Update
 	public void delete(SerieTV serieTV); //Delete

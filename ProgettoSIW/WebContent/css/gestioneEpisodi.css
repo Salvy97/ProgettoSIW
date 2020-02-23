@@ -1,0 +1,27 @@
+.main.container {
+    max-width: 1400px;
+    padding-top: 40px;
+}
+
+.actionBtn {
+	cursor: pointer;	
+}
+
+#main {
+	margin-top: 4rem;
+	margin-bottom: 10rem;
+}
+
+table {
+   width: 100%;
+   border-collapse: collapse;
+}
+
+.cella {
+   word-wrap: break-word;
+   max-width: 1px;
+}
+
+.buttonCella {
+   max-width: 80px;
+}

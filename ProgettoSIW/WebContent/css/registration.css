@@ -1,6 +1,4 @@
 body, html {
-	padding: 30px;
-    height: 100%;
     background-repeat: no-repeat;
     background-image: url(../images/background.jpg);
     background-size: cover;
@@ -11,7 +9,7 @@ body, html {
 	padding-right: 120px;
 }
 
-.form-control{
+.form-control {
 	height: 40px;
 	box-shadow: none;
 	color: #969fa4;

@@ -18,7 +18,7 @@ public class GestioneFilm extends HttpServlet
 		List<Film> films = DatabaseManager.getInstance().getDaoFactory().getFilmDAO().findAll();
 		req.setAttribute("films", films);
 			
-		RequestDispatcher rd  = req.getRequestDispatcher("GestioneContenuti.jsp");
+		RequestDispatcher rd  = req.getRequestDispatcher("gestioneFilm.jsp");
 		rd.forward(req, resp);
 	}
 }

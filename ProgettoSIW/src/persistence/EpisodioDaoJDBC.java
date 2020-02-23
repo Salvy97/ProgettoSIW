@@ -61,7 +61,7 @@ class EpisodioDaoJDBC implements EpisodioDao {
 
 				StagioneDaoJDBC stagioneDao = new StagioneDaoJDBC(dataSource);
 				Stagione stagione;
-			    stagione = stagioneDao.cercaPerId(result.getString("stagione_id"));
+			    stagione = stagioneDao.cercaPerId(result.getInt("stagione_id"));
 				episodio.setStagione(stagione);
 				
 				episodi.add(episodio);
@@ -119,14 +119,14 @@ class EpisodioDaoJDBC implements EpisodioDao {
 		}
 	}
 	
-	public Episodio cercaPerId(String id) {
+	public Episodio cercaPerId(int id) {
 		Connection connection = this.dataSource.getConnection();
 		Episodio episodio = null;
 		try {
 			PreparedStatement statement;
 			String query = "select * from episodio where id_episodio = ?";
 			statement = connection.prepareStatement(query);
-			statement.setString(1, id);
+			statement.setInt(1, id);
 			ResultSet result = statement.executeQuery();
 			if (result.next()) {
 				episodio = new Episodio();
@@ -136,7 +136,7 @@ class EpisodioDaoJDBC implements EpisodioDao {
 
 				StagioneDaoJDBC stagioneDao = new StagioneDaoJDBC(dataSource);
 				Stagione stagione;
-			    stagione = stagioneDao.cercaPerId(result.getString("stagione_id"));
+			    stagione = stagioneDao.cercaPerId(result.getInt("stagione_id"));
 				episodio.setStagione(stagione);
 			}
 		} catch (SQLException e) {
@@ -151,4 +151,42 @@ class EpisodioDaoJDBC implements EpisodioDao {
 		return episodio;
 	}
 
+	public List<Episodio> findBySerieTv(int idSerieTV) 
+	{
+		Connection connection = this.dataSource.getConnection();
+		List<Episodio> episodi = new LinkedList<>();
+		try {
+			Episodio episodio;
+			PreparedStatement statement;
+			String query = "select * from episodio where episodio.serie_tv_id = ?";
+			statement = connection.prepareStatement(query);
+			statement.setInt(1, idSerieTV);
+			ResultSet result = statement.executeQuery();
+			while (result.next())
+			{
+				episodio = new Episodio();
+				episodio.setId_episodio(result.getString("id_episodio"));				
+				episodio.setTitolo(result.getString("titolo"));
+				episodio.setDurata(result.getInt("durata"));
+				episodio.setFilmato(result.getString("filmato"));
+				episodio.setNumeroEpisodio(result.getInt("numero_episodio"));
+
+				StagioneDaoJDBC stagioneDao = new StagioneDaoJDBC(dataSource);
+				Stagione stagione;
+			    stagione = stagioneDao.cercaPerId(result.getInt("stagione_id"));
+				episodio.setStagione(stagione);
+				
+				episodi.add(episodio);
+			}
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		}	 finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return episodi;
+	}
 }

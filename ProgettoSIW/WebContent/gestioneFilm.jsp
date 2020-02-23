@@ -27,7 +27,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
     />
 
-    <link rel="stylesheet" href="css/gestioneContenuti.css" rel="no-referrer" />
+    <link rel="stylesheet" href="css/gestioneFilm.css" rel="no-referrer" />
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
@@ -161,7 +161,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 						</div>
 					</form>
 				</div>
-	
 			</div>
 		</div>
 	</div>
@@ -221,7 +220,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 						</div>
 					</form>
 				</div>
-	
 			</div>
 		</div>
 	</div>
@@ -290,6 +288,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.js"></script>
-    <script src="js/gestioneContenuti.js"></script>
+    <script src="js/gestioneFilm.js"></script>
   </body>
 </html>
