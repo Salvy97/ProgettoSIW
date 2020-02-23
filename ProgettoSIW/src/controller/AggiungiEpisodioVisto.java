@@ -40,6 +40,7 @@ public class AggiungiEpisodioVisto extends HttpServlet
 		{
 			DatabaseManager.getInstance().getDaoFactory().getContenutiGuardatiDAO().saveEpisode(contenutoGuardato);
 			DatabaseManager.getInstance().getDaoFactory().getProfiloDAO().aumentaContenutiGuardati((String)req.getSession().getAttribute("name"));
+			DatabaseManager.getInstance().getDaoFactory().getEpisodioDAO().incrementaVisualizzazioni(Integer.parseInt(req.getParameter("contenuto")));
 		}
 	}
 }

@@ -19,4 +19,5 @@ public interface EpisodioDao {
 	public List<Episodio> cercaPiuVisti();
 	public int getIdStagioneFromIdEpisodio(int id);
 	public int getIdSerieTVFromIdStagione(int id);
+	public void incrementaVisualizzazioni(int id);
 }

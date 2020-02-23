@@ -101,7 +101,7 @@
 	    	</div>
 	    </nav>
 	    	    
-	    
+	    <input type="hidden" id="contenuto" value="<%= request.getParameter("id_ep") %>"/>
 	        
 	    <div class="contentBackground">
 	    	<img src="images/${serieTV.locandina}"/>

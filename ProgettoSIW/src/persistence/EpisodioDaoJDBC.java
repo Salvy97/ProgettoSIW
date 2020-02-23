@@ -442,4 +442,23 @@ class EpisodioDaoJDBC implements EpisodioDao {
 		}
 		return episodi;
 	}
+
+	public void incrementaVisualizzazioni(int id) 
+	{
+		Connection connection = this.dataSource.getConnection();
+		try {
+			String update = "UPDATE episodio SET visualizzazioni = visualizzazioni+1 WHERE id_episodio = ?";
+			PreparedStatement statement = connection.prepareStatement(update);
+			statement.setInt(1, id);
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+	}
 }

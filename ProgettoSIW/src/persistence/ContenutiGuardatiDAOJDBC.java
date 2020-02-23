@@ -60,8 +60,7 @@ public class ContenutiGuardatiDAOJDBC implements ContenutiGuardatiDAO
 			 PreparedStatement statement = connection.prepareStatement(insert);
 			 statement.setString(1, contenutoGuardato.getUsername());
 			 statement.setInt(2, contenutoGuardato.getIdContenuto());
-			 Timestamp timestamp = new Timestamp(new Date().getTime());
-			 statement.setTimestamp(3, timestamp);
+			 statement.setString(3, contenutoGuardato.getDataVisualizzazione());
 			 statement.executeUpdate();
 		}
 		catch (SQLException e) 
@@ -170,11 +169,10 @@ public class ContenutiGuardatiDAOJDBC implements ContenutiGuardatiDAO
 				contenutoGuardato.setIdContenuto(idContenuto);
 				contenutoGuardato.setDataVisualizzazione(dataVisualizzazione);
 				
-				int idSerieTv = -1;
 				int numEpisodio = -1;
 				int idStagione = -1;
 				String titoloContenuto = null;
-				String query2 = "SELECT titolo, numero_episodio, stagione_id, serie_tv_id FROM episodio WHERE episodio.id_episodio = ?";
+				String query2 = "SELECT titolo, numero_episodio, stagione_id FROM episodio WHERE episodio.id_episodio = ?";
 				PreparedStatement statement2 = connection.prepareStatement(query2);
 				statement2.setInt(1, idContenuto);
 				ResultSet result2 = statement2.executeQuery();
@@ -183,15 +181,27 @@ public class ContenutiGuardatiDAOJDBC implements ContenutiGuardatiDAO
 					titoloContenuto = result2.getString(1);
 					numEpisodio = result2.getInt(2);
 					idStagione = result2.getInt(3);
-					idSerieTv = result2.getInt(4);
 				}
 				contenutoGuardato.setEpisodio(numEpisodio);
+				
+				int numeroStagione = -1;
+				int idSerieTV = -1;
+				query2 = "SELECT numero_stagione, serie_tv_id FROM stagione WHERE stagione.id_stagione = ?";
+				statement2 = connection.prepareStatement(query2);
+				statement2.setInt(1, idStagione);
+				result2 = statement2.executeQuery();
+				if (result2.next())
+				{
+					numeroStagione = result2.getInt(1);
+					idSerieTV = result2.getInt(2);
+				}
+				contenutoGuardato.setStagione(numeroStagione);
 				
 				String titoloSerieTV = null;
 				String locandinaContenuto = null;
 				String query3 = "SELECT titolo, locandina FROM serie_tv WHERE serie_tv.id_serie_tv = ?";
 				PreparedStatement statement3 = connection.prepareStatement(query3);
-				statement3.setInt(1, idSerieTv);
+				statement3.setInt(1, idSerieTV);
 				ResultSet result3 = statement3.executeQuery();
 				if (result3.next())
 				{
@@ -199,15 +209,6 @@ public class ContenutiGuardatiDAOJDBC implements ContenutiGuardatiDAO
 					locandinaContenuto = result3.getString(2);
 				}
 				contenutoGuardato.setTitoloSerieTV(titoloSerieTV);
-				
-				int stagione = -1;
-				String query4 = "SELECT numero_stagione FROM stagione WHERE stagione.id_stagione = ?";
-				PreparedStatement statement4 = connection.prepareStatement(query4);
-				statement4.setInt(1, idStagione);
-				ResultSet result4 = statement4.executeQuery();
-				if (result4.next())
-					stagione = result4.getInt(1);
-				contenutoGuardato.setStagione(stagione);
 
 				contenutoGuardato.setTitoloContenuto(titoloContenuto);
 				contenutoGuardato.setLocandinaContenuto(locandinaContenuto);

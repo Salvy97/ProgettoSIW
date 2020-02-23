@@ -40,6 +40,7 @@ public class AggiungiFilmVisto extends HttpServlet
 		{
 			DatabaseManager.getInstance().getDaoFactory().getContenutiGuardatiDAO().saveFilm(contenutoGuardato);
 			DatabaseManager.getInstance().getDaoFactory().getProfiloDAO().aumentaContenutiGuardati((String)req.getSession().getAttribute("name"));
+			DatabaseManager.getInstance().getDaoFactory().getFilmDAO().incrementaVisualizzazioni(Integer.parseInt(req.getParameter("contenuto")));
 		}
 	}
 }
