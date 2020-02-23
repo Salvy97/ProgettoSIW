@@ -23,6 +23,7 @@ public class AggiornaEpisodio extends HttpServlet
 		int durata;
 		String filmato;
 		int numeroEpisodio;
+		String sinossi;
 
 		idEpisodio = Integer.parseInt(req.getParameter("idEpisodio"));
 		idStagione = Integer.parseInt(req.getParameter("idStagione"));
@@ -30,6 +31,7 @@ public class AggiornaEpisodio extends HttpServlet
 		titolo = req.getParameter("titolo");
 		filmato = req.getParameter("filmato");
 		numeroEpisodio = Integer.parseInt(req.getParameter("numeroEpisodio"));
+		sinossi = req.getParameter("sinossi");
 		
 		Episodio editedEpisodio = new Episodio();
 		editedEpisodio.setId_episodio(idEpisodio);
@@ -37,6 +39,8 @@ public class AggiornaEpisodio extends HttpServlet
 		editedEpisodio.setDurata(durata);
 		editedEpisodio.setFilmato(filmato);
 		editedEpisodio.setNumero_episodio(numeroEpisodio);
+		editedEpisodio.setSinossi(sinossi);
+		
 		Stagione stagione = new Stagione();
 		stagione.setId_stagione(idStagione);
 		editedEpisodio.setStagione(stagione);

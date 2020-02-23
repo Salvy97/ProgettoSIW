@@ -139,6 +139,10 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 							<label for="locandina">Numero episodio</label> <input type="text"
 								class="form-control" name="numeroEpisodio" id="numeroEpisodio">
 						</div>
+						<div class="form-group">
+							<label for="locandina">Sinossi</label> <input type="text"
+								class="form-control" name="sinossi" id="sinossi">
+						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
 								data-dismiss="modal">Chiudi</button>
@@ -183,6 +187,10 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 							<label for="locandina">Numero episodio</label> <input type="text"
 								class="form-control" name="numeroEpisodio" id="numeroEpisodioA">
 						</div>
+						<div class="form-group">
+							<label for="locandina">Sinossi</label> <input type="text"
+								class="form-control" name="sinossi" id="sinossiA">
+						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
 								data-dismiss="modal">Chiudi</button>
@@ -210,6 +218,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             <th scope="col">Durata</th>
             <th scope="col">Filmato</th>
             <th scope="col">Numero Episodio</th>
+            <th scope="col">Sinossi</th>
           </tr>
           <% int i = 1; %>
           <c:forEach items="${episodi}" var="episodio">
@@ -220,8 +229,9 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           		<td class="cella">${episodio.durata}</td>
           		<td class="cella">${episodio.filmato}</td>
           		<td class="cella">${episodio.numero_episodio}</td>
+          		<td class="cella" id="cellaSinossi">${episodio.sinossi}</td>
           		<td class="buttonCella">
-          			<button class="btn btn-warning" onclick="aggiornaEpisodio('${episodio.id_episodio}', '${episodio.titolo}', '${episodio.durata}', '${episodio.filmato}', '${episodio.numero_episodio}');">Aggiorna</button>
+          			<button class="btn btn-warning" onclick="aggiornaEpisodio('${episodio.id_episodio}', '${episodio.titolo}', '${episodio.durata}', '${episodio.filmato}', '${episodio.numero_episodio}', '${episodio.sinossi}');">Aggiorna</button>
           		</td>
           		<td class="buttonCella">
           			<form action="eliminaEpisodio" method="POST">

@@ -24,6 +24,7 @@ public class SalvaFilm extends HttpServlet
 		String regista;
 		String filmato;
 		String immagineForum;
+		String sinossi;
 
 		anno = Integer.parseInt(req.getParameter("anno"));
 		durata = Integer.parseInt(req.getParameter("durata"));
@@ -33,8 +34,8 @@ public class SalvaFilm extends HttpServlet
 		regista = req.getParameter("regista");
 		filmato = req.getParameter("filmato");
 		immagineForum = req.getParameter("immagineForum");
+		sinossi = req.getParameter("sinossi"); 
 
-		System.out.println("Soggetto da aggiungere | anno " + anno + " durata " + durata + " titolo: " + titolo + " locandina " + locandina + " genere " + genere + " regista " + regista + " filmato " + filmato + " immagine forum " + immagineForum);
 		Film newFilm = new Film();
 		newFilm.setId_film(-1);
 		newFilm.setTitolo(titolo);
@@ -45,7 +46,8 @@ public class SalvaFilm extends HttpServlet
 		newFilm.setLocandina(locandina);
 		newFilm.setFilmato(filmato);
 		newFilm.setImmagineForum(immagineForum);
-		System.out.println("FILMATO " + newFilm.getFilmato());
+		newFilm.setSinossi(sinossi);
+
 		dbm.getDaoFactory().getFilmDAO().save(newFilm);
 		
 		res.sendRedirect("gestioneFilm");

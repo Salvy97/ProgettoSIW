@@ -154,6 +154,10 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 							<label for="immagineForum">Immagine Forum</label> <input type="text"
 								class="form-control" name="immagineForum" id="immagineForum">
 						</div>
+						<div class="form-group">
+							<label for="immagineForum">Sinossi</label> <input type="text"
+								class="form-control" name="sinossi" id="sinossi">
+						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
 								data-dismiss="modal">Chiudi</button>
@@ -213,6 +217,10 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 							<label for="immagineForum">Immagine Forum</label> <input type="text"
 								class="form-control" name="immagineForum" id="immagineForumA">
 						</div>
+						<div class="form-group">
+							<label for="immagineForum">Sinossi</label> <input type="text"
+								class="form-control" name="sinossi" id="sinossiA">
+						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
 								data-dismiss="modal">Chiudi</button>
@@ -244,6 +252,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             <th scope="col">Locandina</th>
    			<th scope="col">Filmato</th>
    			<th scope="col">Immagine Forum</th>
+   			<th scope="col">Sinossi</th>
           </tr>
           <% int i = 1; %>
           <c:forEach items="${films}" var="film">
@@ -258,8 +267,9 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           		<td class="cella">${film.locandina}</td>
           		<td class="cella">${film.filmato}</td>
           		<td class="cella">${film.immagineForum}</td>
+          		<td class="cella" id="cellaSinossi">${film.sinossi}</td>
           		<td class="buttonCella">
-          			<button class="btn btn-warning" onclick="aggiornaFilm('${film.id_film}', '${film.titolo}', '${film.anno}', '${film.durata}', '${film.genere}', '${film.regista}', '${film.locandina}', '${film.filmato}', '${film.immagineForum}');">Aggiorna</button>
+          			<button class="btn btn-warning" onclick="aggiornaFilm('${film.id_film}', '${film.titolo}', '${film.anno}', '${film.durata}', '${film.genere}', '${film.regista}', '${film.locandina}', '${film.filmato}', '${film.immagineForum}', '${film.sinossi}');">Aggiorna</button>
           		</td>
           		<td class="buttonCella">
           			<form action="eliminaFilm" method="POST">

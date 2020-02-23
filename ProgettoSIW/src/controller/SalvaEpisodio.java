@@ -22,12 +22,14 @@ public class SalvaEpisodio extends HttpServlet
 		int durata = Integer.parseInt(req.getParameter("durata"));
 		String filmato = req.getParameter("filmato");
 		int numeroEpisodio = Integer.parseInt(req.getParameter("numeroEpisodio"));
+		String sinossi = req.getParameter("sinossi");
 		
 		Episodio episodio = new Episodio();
 		episodio.setTitolo(titolo);
 		episodio.setDurata(durata);
 		episodio.setFilmato(filmato);
 		episodio.setNumero_episodio(numeroEpisodio);
+		episodio.setSinossi(sinossi);
 		
 		Stagione stagione = new Stagione();
 		stagione.setId_stagione(idStagione);

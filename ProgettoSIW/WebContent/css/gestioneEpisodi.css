@@ -1,5 +1,5 @@
 .main.container {
-    max-width: 1400px;
+    max-width: 1600px;
     padding-top: 40px;
 }
 
@@ -24,4 +24,8 @@ table {
 
 .buttonCella {
    max-width: 80px;
+}
+
+#cellaSinossi {
+	font-size: 12px;
 }

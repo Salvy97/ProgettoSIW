@@ -25,6 +25,7 @@ public class AggiornaFilm extends HttpServlet
 		String regista;
 		String filmato;
 		String immagineForum;
+		String sinossi;
 
 		idFilm = Integer.parseInt(req.getParameter("idFilm"));
 		anno = Integer.parseInt(req.getParameter("anno"));
@@ -35,7 +36,8 @@ public class AggiornaFilm extends HttpServlet
 		regista = req.getParameter("regista");
 		filmato = req.getParameter("filmato");
 		immagineForum = req.getParameter("immagineForum");
-		System.out.println("Soggetto da modificare | anno " + anno + " durata " + durata + " titolo: " + titolo + " locandina " + locandina + " genere " + genere + " regista " + regista + " filmato " + filmato + " immagine forum " + immagineForum);
+		sinossi = req.getParameter("sinossi");
+		
 		Film editedFilm = new Film();
 		editedFilm.setId_film(idFilm);
 		editedFilm.setTitolo(titolo);
@@ -46,7 +48,8 @@ public class AggiornaFilm extends HttpServlet
 		editedFilm.setLocandina(locandina);
 		editedFilm.setFilmato(filmato);
 		editedFilm.setImmagineForum(immagineForum);
-		System.out.println("FILMATO " + editedFilm.getFilmato());
+		editedFilm.setSinossi(sinossi);
+
 		dbm.getDaoFactory().getFilmDAO().update(editedFilm);
 		
 		res.sendRedirect("gestioneFilm");
