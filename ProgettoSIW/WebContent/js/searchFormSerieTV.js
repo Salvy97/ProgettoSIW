@@ -1,6 +1,9 @@
 // Ajax per genere e anno
 function serieTVSearchGenderYear()
-{    
+{
+	// Hide testoCercato
+	$("#txtSearched").empty();
+	
 	var selGender = $("#idGender").val();
 	var selYear = $("#idYear").val();
 	
@@ -20,6 +23,8 @@ function serieTVSearchTitle()
 	$.getJSON("ottieniSerieTVPerTitolo", {title: textTitle}, function(responseJson){
 		
 		showResults(responseJson);
+		
+		highlightTextSearch($('#idTitle').val());
 		
 	});
 }
@@ -64,17 +69,17 @@ function showResults(responseJson)
 		var durata = element.durata;
 		var anno = element.anno;
 		var genere = element.genere;
-		var id = element.id_film;
+		var id = element.id_serieTV;
 		
 		
 		var html = '<div class="content col-lg-4 col-md-6 mb-4">';
 		html += '<div class="card h-100">';
-		html += '<a href="ottieniContenuto?id='+id+'" class="imageContent">';
+		html += '<a href="ottieniStagioni?id_serie='+id+'" class="imageContent">';
 		html += '<img id="imgCardSerieTV" class="card-img-top" src="images/'+locandina+'" alt="">';
 		html += '</a>';
 		html += '<div class="card-body">';
 		html += '<h4 id="cardTitleSerieTV" class="card-title jumbotron">';
-		html += '<a href="ottieniContenuto?id='+id+'">'+titolo+'</a>';
+		html += '<a class="searchTitleHere" href="ottieniStagioni?id_serie='+id+'">'+titolo+'</a>';
 		html += '</h4>';
 		html += '</div>';
 		html += '<div class="card-footer">';
@@ -106,16 +111,21 @@ function showResults(responseJson)
 		// Nuova pagination
 		showPages();
 		$("#idPages").show();
-		
-		
-		
-		/*// match search
-		var yourstring="hobbit";
-
-		$('h4:contains('+yourstring+')', document.body).each(function(){
-		      $(this).html($(this).html().replace(
-		            new RegExp(yourstring, 'g'), '<span class=someclass>'+yourstring+'</span>'
-		      ));
-		});*/
 	}
+}
+
+
+//Barra e highlight testo ricerca
+function highlightTextSearch(text) {
+	
+	// Barra testo cercato
+	$("#txtSearched").empty();
+	$("#txtSearched").append("<p>Risultati per \"<span class='highlight'>"+text+"</span>\" :</p>");
+	
+	// Highlight testo cercato	
+	$('.searchTitleHere').each(function(){
+		   var search_value = text.toUpperCase();
+		   var search_regexp = new RegExp(search_value, "i");
+		   $(this).html($(this).html().replace(search_regexp,"<span class='highlight'>"+search_value+"</span>"));
+	});
 }

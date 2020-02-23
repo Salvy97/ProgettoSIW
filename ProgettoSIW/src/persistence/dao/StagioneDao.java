@@ -1,6 +1,7 @@
 package persistence.dao;
 
 import java.util.List;
+
 import model.Stagione;
 
 public interface StagioneDao {
@@ -11,4 +12,7 @@ public interface StagioneDao {
 	public void delete(Stagione stagione); //Delete
 	
 	public List<Stagione> findAll();
+	public List<Stagione> cercaPerIdSerie(int id);
+	public List<Stagione> cercaUltimiInseriti();
+	public List<Stagione> cercaPiuVisti();
 }

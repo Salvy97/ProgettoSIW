@@ -1,6 +1,9 @@
 // Ajax per genere e anno
 function filmSearchGenderYear()
-{    
+{
+	// Hide testoCercato
+	$("#txtSearched").empty();
+	
 	var selGender = $("#idGender").val();
 	var selYear = $("#idYear").val();
 	
@@ -74,7 +77,7 @@ $(document).ready(function() {
     
     
     
-    /* da aggiustare
+    /* da aggiustare per fare la ricerca dalla home
     var textTitle = capitalizeFirstLetter($('#inputSrc').val().toLowerCase());
     $.getJSON("ottieniFilmPerTitolo", {title: textTitle}, function(responseJson){
 		

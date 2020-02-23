@@ -11,8 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Film;
+import model.SerieTV;
+import model.Stagione;
+import model.Episodio;
 import persistence.DatabaseManager;
+import persistence.dao.EpisodioDao;
 import persistence.dao.FilmDao;
+import persistence.dao.SerieTVDao;
+import persistence.dao.StagioneDao;
 
 
 public class DammiIndex extends HttpServlet{
@@ -24,14 +30,6 @@ public class DammiIndex extends HttpServlet{
 
 		HttpSession session = req.getSession();
 		
-		FilmDao fDao = DatabaseManager.getInstance().getDaoFactory().getFilmDAO();
-		
-		List<Film> ultimiFilmInseriti = fDao.cercaUltimiInseriti();
-		req.setAttribute("ultimiFilmInseriti", ultimiFilmInseriti);
-		
-		List<Film> filmPiuVisti = fDao.cercaPiuVisti();
-		req.setAttribute("filmPiuVisti", filmPiuVisti);
-		
 		if (session.getAttribute("name") != null)
 		{
 			String username = (String) session.getAttribute("name");
@@ -41,13 +39,36 @@ public class DammiIndex extends HttpServlet{
 				session.setAttribute("abbonamento", false);
 		}
 		
-		/*SerieTVDao sDao = DatabaseManager.getInstance().getDaoFactory().getFilmDAO();
+		// Film
+		FilmDao fDao = DatabaseManager.getInstance().getDaoFactory().getFilmDAO();
+		List<Film> ultimiFilmInseriti = fDao.cercaUltimiInseriti();
+		req.setAttribute("ultimiFilmInseriti", ultimiFilmInseriti);
 		
-		List<Film> ultimiInseriti = sDao.cercaUltimiInseriti();
-		req.setAttribute("ultimiInseriti", ultimiInseriti);
+		List<Film> filmPiuVisti = fDao.cercaPiuVisti();
+		req.setAttribute("filmPiuVisti", filmPiuVisti);
 		
-		List<Film> piuVisti = fDao.cercaPiuVisti();
-		req.setAttribute("piuVisti", piuVisti);*/
+		
+		// Serie TV
+		SerieTVDao sDao = DatabaseManager.getInstance().getDaoFactory().getSerieTVDAO();
+		List<SerieTV> ultimeSerieTVInserite = sDao.cercaUltimiInseriti();
+		req.setAttribute("ultimeSerieTVInserite", ultimeSerieTVInserite);
+	
+		List<SerieTV> serieTVPiuViste = sDao.cercaPiuVisti();
+		req.setAttribute("serieTVPiuViste", serieTVPiuViste);
+		
+		StagioneDao stDao = DatabaseManager.getInstance().getDaoFactory().getStagioneDAO();
+		List<Stagione> ultimeStagioniInserite = stDao.cercaUltimiInseriti();
+		req.setAttribute("ultimeStagioniInserite", ultimeStagioniInserite);
+		
+		List<Stagione> stagioniPiuViste = stDao.cercaPiuVisti();
+		req.setAttribute("stagioniPiuViste", stagioniPiuViste);
+		
+		EpisodioDao eDao = DatabaseManager.getInstance().getDaoFactory().getEpisodioDAO();
+		List<Episodio> ultimiEpisodiInseriti = eDao.cercaUltimiInseriti();
+		req.setAttribute("ultimiEpisodiInseriti", ultimiEpisodiInseriti);
+		
+		List<Episodio> episodiPiuVisti = eDao.cercaPiuVisti();
+		req.setAttribute("episodiPiuVisti", episodiPiuVisti);
 		
 		RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
 		rd.forward(req, resp);

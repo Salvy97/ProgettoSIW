@@ -15,10 +15,12 @@ public class Film
 	private Date data_inserimento;
 	private int visualizzazioni;
 	private String immagineForum;
+	private String sinossi;
+	
 
 	public Film() {}
 	
-	public Film(int id_film,String titolo,int anno,int durata,String genere,String locandina, String regista, String filmato, Date data_inserimento, int visualizzazioni, String immagineForum){
+	public Film(int id_film,String titolo,int anno,int durata,String genere,String locandina, String regista, String filmato, Date data_inserimento, int visualizzazioni, String immagineForum, String sinossi){
 		this.id_film = id_film;
 		this.titolo = titolo;
 		this.anno = anno;
@@ -30,6 +32,7 @@ public class Film
 		this.data_inserimento = data_inserimento;
 		this.visualizzazioni = visualizzazioni;
 		this.immagineForum = immagineForum;
+		this.sinossi = sinossi;
 	}
 	
 
@@ -119,6 +122,14 @@ public class Film
 
 	public void setImmagineForum(String immagineForum) {
 		this.immagineForum = immagineForum;
+	}
+	
+	public String getSinossi() {
+		return sinossi;
+	}
+
+	public void setSinossi(String sinossi) {
+		this.sinossi = sinossi;
 	}
 
 }

@@ -5,18 +5,23 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		
-		<c:set var="film" value="${film}"></c:set>
+		<c:set var="serieTV" value="${serieTV}"></c:set>
+		<c:set var="stagione" value="${stagione}"></c:set>
+		<c:set var="episodio" value="${episodio}"></c:set>
 		
-		<title>${film.titolo}</title>
+		<title>${serieTV.titolo} - ${episodio.titolo}</title>
 		
 		<!-- Bootstrap core CSS -->
 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
 		<!-- Custom styles for this template -->
-		<link href="css/content.css" rel="stylesheet">
+		<link href="css/episode.css" rel="stylesheet">
 		
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+	
+		<!-- My javascript
+	    <script src="js/contenuto.js"></script> -->
 	    
 	    <!-- rating -->
   		<link rel="stylesheet" href="css/jquery.rateyo.css"/>
@@ -47,10 +52,10 @@
 		            		<a class="nav-link" href="ottieniSerieTV">Serie TV</a>
 		          		</li>
 		          		<li class="nav-item">
-		            		<a class="nav-link" href="ottieniForum">Forum</a>
+		            		<a class="nav-link" href="#">Forum</a>
 		          		</li>
 		         		<li class="nav-item">
-		            		<a class="nav-link" href="contatti.jsp">Contatti</a>
+		            		<a class="nav-link" href="#">Contatti</a>
 		          		</li>
 		        	</ul>
 	      		</div>
@@ -69,12 +74,7 @@
 							        <div class="dropdown-menu">
 							        	<h6 class="dropdown-header">${sessionScope.name}</h6>
 							        	<div class="dropdown-divider"></div>
-							            <a href="${pageContext.request.contextPath}/user?username=${sessionScope.name}" class="dropdown-item">Profilo</a>
-							            <c:choose>
-						    				<c:when test="${sessionScope.abbonamento==false}">
-						    					 <a href="abbonamento" class="dropdown-item">Abbonati</a>
-						    				</c:when>
-						    			</c:choose>
+							            <a href="#" class="dropdown-item">Profilo</a>
 							            <a href="LogoutServlet" class="dropdown-item">Logout</a>
 							        </div>
 							    </div>
@@ -97,61 +97,66 @@
 	    
 	        
 	    <div class="contentBackground">
-	    	<img src="${film.immagineForum}"/>
+	    	<img src="images/${serieTV.locandina}"/>
 	    </div>
 	    
-	    <div id="videoTitle">${film.titolo}</div>
+	    <div id="videoTitle">${episodio.titolo}</div>
 	    
 	    
 	    <div class="row col-lg-12 justify-content-center">
-	    	
-	    	<div class="col-lg-1"></div>
-		    <div class="col-lg-2 leftBar jumbotron">
-		    	Regista:  
-		   	 	<p class="info views">${film.regista}</p>		    	
-		   	 	Anno:  
-		   	 	<p class="info genre">${film.anno}</p>
-		   	 	Durata:  
-		   	 	<p class="info genre">${film.durata}'</p>
 		    
+		    <div class="col-lg-1"></div>
+		    <div class="col-lg-2 leftBar jumbotron">
+		    	Stagione: 
+		   	 	<span class="info type">
+		    		${stagione.numero_stagione}
+		    	</span>
+		    	<br>
+		    	Episodio: 
+		   	 	<span class="info genre">
+		   	 		${episodio.numero_episodio}
+		    	</span>
+		    	<br><br>		    	
+		   	 	Anno:  
+		   	 	<p class="info genre">${serieTV.anno}</p>
+		   	 	Durata:  
+		   	 	<p class="info genre">${episodio.durata}'</p>
 		    </div>
 		    
 		    
 		    <div class="video col-lg-6">
-		    	<iframe width="715" height="460" src="${film.filmato}" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		    	<iframe width="715" height="460" src="${episodio.filmato}" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		    </div>
 			
-			
+		    
 		    <div class="col-lg-2 rightBar jumbotron">
-	    	   	Tipo: 
+		    	Tipo: 
 		   	 	<p class="info type">
-		    		Film
+		    		Serie TV
 		    	</p>
 		    	Genere: 
-		   	 	<p class="info genre">${film.genere}</p>
+		   	 	<p class="info genre">${serieTV.genere}</p>
 		    	Visualizzazioni:  
-		   	 	<p class="info views">${film.visualizzazioni}</p>
-		   	 	
+		   	 	<p class="info views">${episodio.visualizzazioni}</p>
+		   	 			    	
 		   	 	Valutazione:	    	
 		    	<div id="rateYo" ></div>
-	    	</div>
-	        <div class="col-lg-1"></div>
-	    	
-	    </div>
+		    </div>
+		    <div class="col-lg-1"></div>
+		</div>
 		
 		
 		<div id="sinossi" class="row col-lg-11 jumbotron">
 	   		<h3 class="text-danger">Sinossi</h3>
-	   		<h5 class="lead">${film.sinossi}</h5>
+	   		<h5 class="lead">${episodio.sinossi}</h5>
 	   </div>
-		
+	   
 		
 		<div id="valutation" class="row col-lg-11 justify-content-center jumbotron">
-	   		<h3>Quanto ti è piaciuto il film?</h3>
+	   		<h3>Quanto ti è piaciuta la serie?</h3>
 	   		<br>	    	
 	   		<div id="rateYo2"></div>
 	   </div>
-		
 	
 		<!-- Footer -->
 	    <footer class="py-4 bg-dark">
@@ -168,7 +173,6 @@
 		<!--  rating -->
 		<script src="js/jquery.rateyo.js"></script>
 		
-		<script src="js/contenuto.js"></script>
-		
+		<script src="js/episodio.js"></script>
 	</body>
 </html>

@@ -221,10 +221,10 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           		<td class="cella">${episodio.titolo}</td>
           		<td class="cella">${episodio.durata}</td>
           		<td class="cella">${episodio.filmato}</td>
-          		<td class="cella">${episodio.numeroEpisodio}</td>
+          		<td class="cella">${episodio.numero_episodio}</td>
           		<td class="cella">${episodio.stagione.numero_stagione}</td>
           		<td class="buttonCella">
-          			<button class="btn btn-warning" onclick="aggiornaEpisodio('${episodio.id_episodio}', '${episodio.titolo}', '${episodio.durata}', '${episodio.filmato}', '${episodio.numeroEpisodio}', '${episodio.stagione.numero_stagione}');">Aggiorna</button>
+          			<button class="btn btn-warning" onclick="aggiornaEpisodio('${episodio.id_episodio}', '${episodio.titolo}', '${episodio.durata}', '${episodio.filmato}', '${episodio.numero_episodio}', '${episodio.stagione.numero_stagione}');">Aggiorna</button>
           		</td>
           		<td class="buttonCella">
           			<form action="eliminaEpisodio" method="POST">

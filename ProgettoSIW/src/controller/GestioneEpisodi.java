@@ -17,7 +17,7 @@ public class GestioneEpisodi extends HttpServlet
 	{
 		int idSerieTV = Integer.parseInt(req.getParameter("id"));
 		
-		List<Episodio> episodi = DatabaseManager.getInstance().getDaoFactory().getEpisodioDAO().findBySerieTv(idSerieTV);
+		List<Episodio> episodi = DatabaseManager.getInstance().getDaoFactory().getEpisodioDAO().cercaPerIdSerieTV(idSerieTV);
 		req.setAttribute("episodi", episodi);
 			
 		RequestDispatcher rd  = req.getRequestDispatcher("gestioneEpisodi.jsp");

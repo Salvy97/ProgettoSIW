@@ -1,7 +1,7 @@
 package model;
 
 public class Stagione {
-	private String id_stagione;
+	private int id_stagione;
 	private int numero_stagione;
 	private int numero_episodi;
 	private SerieTV serieTV;
@@ -9,18 +9,18 @@ public class Stagione {
 
 	public Stagione(){}
 	
-	public Stagione(String id_stagione, int numero_stagione, int numero_episodi, SerieTV serieTV){
+	public Stagione(int id_stagione, int numero_stagione, int numero_episodi, SerieTV serieTV){
 		this.id_stagione = id_stagione;
 		this.numero_stagione = numero_stagione;
 		this.numero_episodi = numero_episodi;
 		this.serieTV = serieTV;
 	}
 
-	public String getId_stagione() {
+	public int getId_stagione() {
 		return id_stagione;
 	}
 
-	public void setId_stagione(String id_stagione) {
+	public void setId_stagione(int id_stagione) {
 		this.id_stagione = id_stagione;
 	}
 

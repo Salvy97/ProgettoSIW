@@ -12,5 +12,11 @@ public interface EpisodioDao {
 	public void delete(Episodio stagione); //Delete
 	
 	public List<Episodio> findAll();
-	public List<Episodio> findBySerieTv(int idSerieTV);
+	public List<Episodio> cercaPerIdStagione(int id);
+	public List<Episodio> cercaPerIdSerieTV(int id);
+	
+	public List<Episodio> cercaUltimiInseriti();
+	public List<Episodio> cercaPiuVisti();
+	public int getIdStagioneFromIdEpisodio(int id);
+	public int getIdSerieTVFromIdStagione(int id);
 }

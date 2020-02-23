@@ -18,7 +18,7 @@ public final class Contenuti_getOne extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		int id = Integer.parseInt(req.getParameter("id"));
 		DatabaseManager dbm = DatabaseManager.getInstance();
-		Film film = dbm.getDaoFactory().getFilmDAO().findByPrimaryKey(id);
+		Film film = dbm.getDaoFactory().getFilmDAO().cercaPerId(id);
 
 		String json = new Gson().toJson(film);
 

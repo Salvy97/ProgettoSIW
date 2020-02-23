@@ -42,6 +42,13 @@ body {
     transform: translateY(-50%);
 }
 
+#durationFilm {
+	text-align: left;
+	font-size: 14px;
+	font-weight: bold;
+	color: #0000ff;
+}
+
 #yearFilm {
 	text-align: center;
 	font-size: 14px;
@@ -51,7 +58,7 @@ body {
 
 #genderFilm {
 	text-align: right;
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: bold;
 	color: #0000ff;
 }

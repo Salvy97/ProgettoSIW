@@ -102,26 +102,50 @@ body {
 	padding-bottom: 60px;
 }
 
-.mostPopular.jumbotron {
+.mostPopularFilm.jumbotron {
 	height: 30px;
 	font-family: "big_noodle_titling";
 	color: #ff0000;
 	font-size: 32px;
 	padding-bottom: 40px;
 	padding-top: 0;
-	width: 200px;
+	width: 250px;
 	margin: 0 auto;
 	background: #aaaaaa;
 }
 
-.mostWatched.jumbotron {
+.mostWatchedFilm.jumbotron {
 	height: 30px;
 	font-family: "big_noodle_titling";
 	color: #ff0000;
 	font-size: 32px;
 	padding-bottom: 40px;
 	padding-top: 0;
-	width: 156px;
+	width: 190px;
+	margin: 0 auto;
+	background: #aaaaaa;
+}
+
+.mostPopularEpisode.jumbotron {
+	height: 30px;
+	font-family: "big_noodle_titling";
+	color: #ffff00;
+	font-size: 32px;
+	padding-bottom: 40px;
+	padding-top: 0;
+	width: 280px;
+	margin: 0 auto;
+	background: #aaaaaa;
+}
+
+.mostWatchedEpisode.jumbotron {
+	height: 30px;
+	font-family: "big_noodle_titling";
+	color: #ffff00;
+	font-size: 32px;
+	padding-bottom: 40px;
+	padding-top: 0;
+	width: 220px;
 	margin: 0 auto;
 	background: #aaaaaa;
 }
@@ -150,16 +174,30 @@ body {
 
 #genderFilm {
 	text-align: right;
+	font-size: 13px;
+	font-weight: bold;
+	color: #0000ff;
+}
+
+#durationEpisode {
+	text-align: left;
 	font-size: 14px;
 	font-weight: bold;
 	color: #0000ff;
 }
 
-#imgCardFilm {
+#viewsEpisode {
+	text-align: right;
+	font-size: 14px;
+	font-weight: bold;
+	color: #0000ff;
+}
+
+#imgCard {
 	height: 350px;
 }
 
-#cardTitleFilm {
+#cardTitle {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	margin-bottom: 0px;
@@ -174,4 +212,9 @@ body {
 #ricercaContenuto {
 	margin-top: 20px;
 	margin-left: 10px;
+}
+
+.imgCar {
+	width: 800px;
+	height: 350px;
 }

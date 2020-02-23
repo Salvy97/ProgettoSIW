@@ -8,7 +8,10 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 		
-		<title>Golden Streaming - Serie TV</title>
+		<c:set var="serieTV" value="${serieTV}"></c:set>
+		<c:set var="stagione" value="${stagione}"></c:set>
+		
+		<title>${serieTV.titolo} - Episodi</title>
 		
 		<!-- Material Design Bootstrap
         <link href="MDB/css/mdb.min.css" rel="stylesheet"> -->
@@ -17,7 +20,7 @@
 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		
 		<!-- Custom styles for this template -->
-		<link href="css/serieTV.css" rel="stylesheet">
+		<link href="css/episodes.css" rel="stylesheet">
 		
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
@@ -48,10 +51,10 @@
 		            		<a class="nav-link" href="ottieniSerieTV">Serie TV</a>
 		          		</li>
 		          		<li class="nav-item">
-		            		<a class="nav-link" href="ottieniForum">Forum</a>
+		            		<a class="nav-link" href="#">Forum</a>
 		          		</li>
 		         		<li class="nav-item">
-		            		<a class="nav-link" href="contatti.jsp">Contatti</a>
+		            		<a class="nav-link" href="#">Contatti</a>
 		          		</li>
 		        	</ul>
 	      		</div>
@@ -70,12 +73,7 @@
 							        <div class="dropdown-menu">
 							        	<h6 class="dropdown-header">${sessionScope.name}</h6>
 							        	<div class="dropdown-divider"></div>
-							            <a href="${pageContext.request.contextPath}/user?username=${sessionScope.name}" class="dropdown-item">Profilo</a>
-							            <c:choose>
-						    				<c:when test="${sessionScope.abbonamento==false}">
-						    					 <a href="abbonamento" class="dropdown-item">Abbonati</a>
-						    				</c:when>
-						    			</c:choose>
+							            <a href="#" class="dropdown-item">Profilo</a>
 							            <a href="LogoutServlet" class="dropdown-item">Logout</a>
 							        </div>
 							    </div>
@@ -103,75 +101,36 @@
 				<!-- Lista serieTV form -->
 			    <div class="row jumbotron col-lg-12 searchSerieTV justify-content-center">
 				  
-			        <div class="row col-lg-9 catalogoSerieTV justify-content-center">Lista Serie TV</div>
-			    	
-			    	<div class="row col-lg-3 justify-content-center">
-	    				<a class="jumbotron linkPageBoxSerieTV" href="ottieniCercaSerieTV">Cerca una serie TV</a>
-					</div>
+			        <div class="row col-lg-12 catalogoSerieTV justify-content-center">Episodi</div>
 					
 				</div>
 				
 				
 		    </div>
 		    
-		    <!-- Pagination -->
-		    <div class="row col-lg-12 paginationCharacter justify-content-center">
-				
-				  <ul id="idItem" class="list-group list-group-horizontal">
-				    
-				    <!-- <li class="list-group-item"><a href="ottieniSerieTVPerCarattere?character=A">A</a></li> -->
-				    
-				    <li class="list-group-item"><button type="button" class="btn btnList">A</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">B</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">C</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">D</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">E</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">F</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">G</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">H</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">I</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">J</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">K</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">L</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">M</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">N</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">O</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">P</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">Q</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">R</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">S</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">T</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">U</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">V</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">W</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">X</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">Y</button></li>
-				    <li class="list-group-item"><button type="button" class="btn btnList">Z</button></li>
-				    
-				  </ul>
-			</div>
+		    
 		    
 		    
 		    <!-- Result-->
 		    <div id="result" class="row jumbotron">
 
 
-		    	<c:forEach items="${serieTVs}" var="serieTV">
+		    	<c:forEach items="${episodi}" var="episodio">
 		            
 			        <div class="content col-lg-4 col-md-6 mb-4">
 			            <div class="card h-100">
-			            	<a href="ottieniStagioni?id_serie=${serieTV.id_serieTV}" class="imageContent">
+			            	<a href="ottieniEpisodio?id_ep=${episodio.id_episodio}&id_stg=${stagione.id_stagione}&id_serie=${serieTV.id_serieTV}" class="imageContent">
 			            		<img id="imgCardSerieTV" class="card-img-top" src="images/${serieTV.locandina}" alt="">
 			            	</a>
 				            <div class="card-body"> 
 				                <h4 id="cardTitleSerieTV" class="card-title jumbotron">
-				                	<a href="ottieniStagioni?id_serie=${serieTV.id_serieTV}">${serieTV.titolo}</a>
+				                	<a href="ottieniEpisodio?id_ep=${episodio.id_episodio}&id_stg=${stagione.id_stagione}&id_serie=${serieTV.id_serieTV}">${stagione.numero_stagione}x${episodio.numero_episodio} - ${episodio.titolo}</a>
 				                </h4>
 				            </div> 
 			                <div class="card-footer">
 			                    <div class="row">
-			                	    <div id="yearSerieTV" class="col-sm-6">${serieTV.anno}</div>
-			              		    <div id="genderSerieTV" class="col-sm-6">${serieTV.genere}</div>		
+			                	    <div id="durationEpisode" class="col-sm-6">${episodio.durata}'</div>
+			              		    <div id="viewsEpisode" class="col-sm-6">${episodio.visualizzazioni} visualizzazioni</div>
 			              	    </div>
 			                </div>
 			             </div>

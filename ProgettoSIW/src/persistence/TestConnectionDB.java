@@ -1,10 +1,5 @@
 package persistence;
 
-import model.Episodio;
-import model.SerieTV;
-import model.Stagione;
-import persistence.dao.EpisodioDao;
-
 public class TestConnectionDB {
 	
 	public static void main(String args[]) {
@@ -12,10 +7,8 @@ public class TestConnectionDB {
 //		UtilDao util = factory.getUtilDAO();
 //		util.dropDatabase();	
 //		util.createDatabase();
-		
-		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.POSTGRESQL);
-		EpisodioDao episodioDao = factory.getEpisodioDAO();
-		//StagioneDao stagioneDao = factory.getStagioneDAO();
+
+		/*StagioneDao stagioneDao = factory.getStagioneDAO();
 		//SerieTVDao serieTVDao = factory.getSerieTVDAO();
 		
 		//Film film1 = new Film("FLM03","Fast and Furious", 2006, 85);
@@ -33,6 +26,9 @@ public class TestConnectionDB {
 		System.out.println("Elenco episodi: ");
 		for(Episodio e : episodioDao.findAll()) {
 			System.out.println(e.getId_episodio()+" "+e.getTitolo()+" "+e.getDurata()+" "+e.getStagione().getId_stagione());		}
-
+		*/
+		
+		//System.out.println(eDao.getIdStagioneFromIdEpisodio(4));
+		//System.out.println(eDao.getIdSerieTVFromIdStagione(4));
 	}
 }

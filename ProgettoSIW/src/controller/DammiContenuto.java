@@ -21,6 +21,7 @@ public class DammiContenuto extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+
 		HttpSession session = req.getSession();
 		Boolean abbonamento = (Boolean) session.getAttribute("abbonamento");
 		
@@ -32,6 +33,12 @@ public class DammiContenuto extends HttpServlet{
 				Film film = fDao.cercaPerId(Integer.parseInt(req.getParameter("id")));
 				
 				req.setAttribute("film", film);
+				
+				// da aggiustare incrementa visualizzazioni
+				//String userLogged = session.getAttribute("name").toString();
+				//if(!session.getAttribute("name").equals(userLogged))
+					fDao.incrementaVisualizzazioni(Integer.parseInt(req.getParameter("id")));
+
 				
 				RequestDispatcher rd = req.getRequestDispatcher("contenuto.jsp");
 				rd.forward(req, resp);
