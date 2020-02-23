@@ -23,13 +23,12 @@ class StagioneDaoJDBC implements StagioneDao {
 	public void save(Stagione stagione) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert into stagione(id_stagione, numero_stagione, numero_episodi,"
-					+ " serie_tv_id) values (?,?,?,?)";
+			String insert = "insert into stagione(numero_stagione, numero_episodi,"
+					+ " serie_tv_id) values (?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setInt(1, stagione.getId_stagione());
-			statement.setInt(2, stagione.getNumero_stagione());
-			statement.setInt(3, stagione.getNumero_episodi());
-			statement.setInt(4, stagione.getSerieTV().getId_serieTV());
+			statement.setInt(1, stagione.getNumero_stagione());
+			statement.setInt(2, stagione.getNumero_episodi());
+			statement.setInt(3, stagione.getSerieTV().getId_serieTV());
 			
 			statement.executeUpdate();
 		} catch (SQLException e) {

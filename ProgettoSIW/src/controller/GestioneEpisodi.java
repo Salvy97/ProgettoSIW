@@ -15,9 +15,9 @@ public class GestioneEpisodi extends HttpServlet
 {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
-		int idSerieTV = Integer.parseInt(req.getParameter("id"));
+		int idStagione = Integer.parseInt(req.getParameter("id"));
 		
-		List<Episodio> episodi = DatabaseManager.getInstance().getDaoFactory().getEpisodioDAO().cercaPerIdSerieTV(idSerieTV);
+		List<Episodio> episodi = DatabaseManager.getInstance().getDaoFactory().getEpisodioDAO().cercaPerIdStagione(idStagione);
 		req.setAttribute("episodi", episodi);
 			
 		RequestDispatcher rd  = req.getRequestDispatcher("gestioneEpisodi.jsp");

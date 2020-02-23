@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import model.Episodio;
@@ -23,17 +25,23 @@ class EpisodioDaoJDBC implements EpisodioDao {
 		Connection connection = this.dataSource.getConnection();
 		try {
 			String insert = "insert into episodio(titolo, durata,"
-					+ " filmato, visualizzazioni, numero_episodio, sinossi, stagione_id) values (?,?,?,?,?,?,?)";
+					+ " filmato, data_inserimento, visualizzazioni, numero_episodio, sinossi, stagione_id) values (?,?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, episodio.getTitolo());
 			statement.setInt(2, episodio.getDurata());
 			statement.setString(3, episodio.getFilmato());
-			statement.setInt(4, 0);
-			statement.setInt(5, episodio.getNumero_episodio());
-			statement.setString(6, episodio.getSinossi());
-			statement.setInt(7, episodio.getStagione().getId_stagione());
+			Timestamp timestamp = new Timestamp(new Date().getTime());
+			statement.setTimestamp(4, timestamp);
+			statement.setInt(5, 0);
+			statement.setInt(6, episodio.getNumero_episodio());
+			statement.setString(7, episodio.getSinossi());
+			statement.setInt(8, episodio.getStagione().getId_stagione());
 			
 			statement.executeUpdate();
+			
+			Stagione stagione = DatabaseManager.getInstance().getDaoFactory().getStagioneDAO().cercaPerId(episodio.getStagione().getId_stagione());
+			stagione.setNumero_episodi(stagione.getNumero_episodi() + 1);
+			DatabaseManager.getInstance().getDaoFactory().getStagioneDAO().update(stagione);
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		} finally {
@@ -113,10 +121,25 @@ class EpisodioDaoJDBC implements EpisodioDao {
 	public void delete(Episodio episodio) {
 		Connection connection = this.dataSource.getConnection();
 		try {
+			String query = "select stagione_id from episodio where id_episodio = ?";
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setInt(1, episodio.getId_episodio());
+			ResultSet result = statement.executeQuery();
+			if (result.next())
+			{
+				Stagione stagione = new Stagione();
+				stagione.setId_stagione(result.getInt(1));
+				episodio.setStagione(stagione);
+			}
+			
 			String delete = "delete FROM episodio WHERE id_episodio = ? ";
-			PreparedStatement statement = connection.prepareStatement(delete);
+			statement = connection.prepareStatement(delete);
 			statement.setInt(1, episodio.getId_episodio());
 			statement.executeUpdate();
+			
+			Stagione stagione = DatabaseManager.getInstance().getDaoFactory().getStagioneDAO().cercaPerId(episodio.getStagione().getId_stagione());
+			stagione.setNumero_episodi(stagione.getNumero_episodi() - 1);
+			DatabaseManager.getInstance().getDaoFactory().getStagioneDAO().update(stagione);
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		} finally {

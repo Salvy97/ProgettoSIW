@@ -18,12 +18,10 @@ public class AggiornaStagione extends HttpServlet
 		
 		int idStagione = Integer.parseInt(req.getParameter("idStagione")); 
 		int numeroEpisodi = Integer.parseInt(req.getParameter("numeroEpisodi"));
-		int numeroStagione = Integer.parseInt(req.getParameter("numeroStagione"));
 		
 		Stagione editedStagione = new Stagione();
 		editedStagione.setId_stagione(idStagione);
 		editedStagione.setNumero_episodi(numeroEpisodi);
-		editedStagione.setStagione(numeroStagione);
 
 		dbm.getDaoFactory().getStagioneDAO().update(editedStagione);
 		

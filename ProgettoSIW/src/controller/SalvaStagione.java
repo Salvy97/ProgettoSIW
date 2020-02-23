@@ -17,10 +17,9 @@ public class SalvaStagione extends HttpServlet
 	{
 		int idSerieTV = Integer.parseInt(req.getParameter("idSerieTV"));
 		int numeroStagione = Integer.parseInt(req.getParameter("numeroStagione"));
-		int numeroEpisodi = Integer.parseInt(req.getParameter("numeroEpisodi"));
 		
 		Stagione stagione = new Stagione();
-		stagione.setNumero_episodi(numeroEpisodi);
+		stagione.setNumero_episodi(0);
 		stagione.setStagione(numeroStagione);
 		SerieTV serieTV = new SerieTV();
 		serieTV.setId_serieTV(idSerieTV);

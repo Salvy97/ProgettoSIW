@@ -121,15 +121,11 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="salvaSerieTV" method="POST">
+					<form action="salvaStagione" method="POST">
 						<input type="hidden" name="idSerieTV" value='<%= request.getParameter("id") %>'>
 						<div class="form-group">
 							<label for="titolo">Numero stagione</label> <input type="text"
 								class="form-control" name="numeroStagione" id="numeroStagione" aria-describedby="titoloHelp">
-						</div>
-						<div class="form-group">
-							<label for="anno">Numero episodi</label> <input type="number"
-								class="form-control" name="numeroEpisodi" id="numeroEpisodi">
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
@@ -162,10 +158,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 						<div class="form-group">
 							<label for="titolo">Numero stagione</label> <input type="text"
 								class="form-control" name="numeroStagione" id="numeroStagioneA" aria-describedby="titoloHelp">
-						</div>
-						<div class="form-group">
-							<label for="anno">Numero episodi</label> <input type="number"
-								class="form-control" name="numeroEpisodi" id="numeroEpisodiA">
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
