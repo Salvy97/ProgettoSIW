@@ -169,3 +169,7 @@ body {
 	font-size: 48px;
 	text-align: center;
 }
+
+.imageContent:hover {
+	opacity: 0.7;
+}
