@@ -210,11 +210,14 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 	</div>
 
     <!-- Page Content -->
-    <div class="main container" id="main">
-      <h1>Gestione Episodi</h1> 
-      <button type="button" class="btn btn-success adminAddBtn"
-	data-toggle="modal" data-target="#exampleModalCenter">Aggiungi
-	un episodio</button>
+    <div class="main container card" id="main">
+      <h1>Gestione Episodi</h1>
+      <div class="row">
+      	<div class="col-lg-2" style="padding-left: 20px; padding-bottom: 20px;">
+	      <button type="button" class="btn btn-success adminAddBtn " data-toggle="modal" data-target="#exampleModalCenter">Aggiungi un episodio</button>
+		</div>
+		<div class="col-lg-10"></div>
+	  </div>
 	
       <table class="table table-hover">
         <thead>
@@ -238,7 +241,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           		<td class="cella">${episodio.numero_episodio}</td>
           		<td class="cella" id="cellaSinossi">${episodio.sinossi}</td>
           		<td class="buttonCella">
-          			<button class="btn btn-warning" onclick="aggiornaEpisodio('${episodio.id_episodio}', '${episodio.titolo}', '${episodio.durata}', '${episodio.filmato}', '${episodio.numero_episodio}', '${episodio.sinossi}');">Aggiorna</button>
+          			<button class="btn btn-warning" onclick="aggiornaEpisodio('${episodio.id_episodio}', '${episodio.durata}', '${episodio.filmato}', '${episodio.numero_episodio}');">Aggiorna</button>
           		</td>
           		<td class="buttonCella">
           			<form action="eliminaEpisodio" method="POST">
@@ -248,6 +251,8 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           		</td>
           	</tr>
           	<% i++; %>
+          	<input type="hidden" id="titolo${episodio.id_episodio}" value="${episodio.titolo}"/>
+          	<input type="hidden" id="sinossi${episodio.id_episodio}" value="${episodio.sinossi}"/>
           </c:forEach>
         </thead>
         <tbody id="table-content"></tbody>

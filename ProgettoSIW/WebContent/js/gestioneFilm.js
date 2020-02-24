@@ -212,10 +212,10 @@
 //  loadContentList();
 //});
 
-function aggiornaFilm(idFilm, titolo, anno, durata, genere, regista, locandina, filmato, immagineForum, sinossi)
+function aggiornaFilm(idFilm, anno, durata, genere, regista, locandina, filmato, immagineForum)
 {
 	document.getElementById("idA").value = idFilm;
-	document.getElementById("titoloA").value = titolo;
+	document.getElementById("titoloA").value = document.getElementById("titolo" + idFilm).value;
 	document.getElementById("annoA").value = anno;
 	document.getElementById("durataA").value = durata;
 	document.getElementById("genereA").value = genere;
@@ -223,7 +223,7 @@ function aggiornaFilm(idFilm, titolo, anno, durata, genere, regista, locandina, 
 	document.getElementById("locandinaA").value = locandina;
 	document.getElementById("filmatoA").value = filmato;
 	document.getElementById("immagineForumA").value = immagineForum;
-	document.getElementById("sinossiA").value = sinossi;
+	document.getElementById("sinossiA").value = document.getElementById("sinossi" + idFilm).value;;
 	
 	$("#aggiornaFilm").modal("show");
 }

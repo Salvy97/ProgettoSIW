@@ -39,16 +39,12 @@ public class DammiContenuto extends HttpServlet{
 			}
 			else
 			{
-				req.setAttribute("message", "Effettuare l'abbonamento!");
-				
 				RequestDispatcher rd = req.getRequestDispatcher("ottieniIndex");
 				rd.forward(req, resp);
 			}
         }
 		else
 		{
-			req.setAttribute("message", "Effettuare login!");
-			
 			RequestDispatcher rd = req.getRequestDispatcher("ottieniIndex");
 			rd.forward(req, resp);
 		}

@@ -8,7 +8,7 @@
 			<meta name="description" content="">
 			<meta name="author" content="">
 			
-			<title>Abbonati</title>
+			<title>Pannello Admin</title>
 			
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css" />
 	    <link rel="stylesheet"
@@ -101,13 +101,16 @@
 	    
 	    <!-- Page Content -->
 	    <div class="container" id="main">
-	    
-	    
-	    <h1> Pannello Admin </h1>
-	    
-		<a href="${pageContext.request.contextPath}/gestioneFilm"><button type="button" class="btn btn-success">Gestione Film</button></a>
-	    <a href="${pageContext.request.contextPath}/gestioneSerieTV"><button type="button" class="btn btn-success">Gestione Serie TV</button></a>
-	    
+	    	<div class="card h-100">
+			    <h1 class="card-title"> Pannello Admin </h1>
+			    <div class="card-body">
+					<a href="${pageContext.request.contextPath}/gestioneFilm"><button type="button" class="btn btn-success">Gestione Film</button></a>
+				    <a href="${pageContext.request.contextPath}/gestioneSerieTV"><button type="button" class="btn btn-success">Gestione Serie TV</button></a>
+	    		</div>
+	    		<div class="card-footer">
+	    			Gestisci i contenuti da qui
+	    		</div>
+	    	</div>
 	    </div>
 
 	    <footer class="py-4 bg-dark fixed-bottom">

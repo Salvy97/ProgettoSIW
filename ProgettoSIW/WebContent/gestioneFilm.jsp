@@ -240,11 +240,14 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 	</div>
 
     <!-- Page Content -->
-    <div class="main container" id="main">
-      <h1>Gestione Film</h1> 
-      <button type="button" class="btn btn-success adminAddBtn"
-	data-toggle="modal" data-target="#exampleModalCenter">Aggiungi
-	un film</button>
+    <div class="main container card" id="main">
+      <h1>Gestione Film</h1>
+      <div class="row">
+      	<div class="col-lg-2" style="padding-left: 20px; padding-bottom: 20px;">
+	      <button type="button" class="btn btn-success adminAddBtn " data-toggle="modal" data-target="#exampleModalCenter">Aggiungi un film</button>
+		</div>
+		<div class="col-lg-10"></div>
+	  </div>
 	
       <table class="table table-hover">
         <thead>
@@ -276,7 +279,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           		<td class="cella">${film.immagineForum}</td>
           		<td class="cella" id="cellaSinossi">${film.sinossi}</td>
           		<td class="buttonCella">
-          			<button class="btn btn-warning" onclick="aggiornaFilm('${film.id_film}', '${film.titolo}', '${film.anno}', '${film.durata}', '${film.genere}', '${film.regista}', '${film.locandina}', '${film.filmato}', '${film.immagineForum}', '${film.sinossi}');">Aggiorna</button>
+          			<button class="btn btn-warning" onclick="aggiornaFilm('${film.id_film}', '${film.anno}', '${film.durata}', '${film.genere}', '${film.regista}', '${film.locandina}', '${film.filmato}', '${film.immagineForum}');">Aggiorna</button>
           		</td>
           		<td class="buttonCella">
           			<form action="eliminaFilm" method="POST">
@@ -286,6 +289,8 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           		</td>
           	</tr>
           	<% i++; %>
+          	<input type="hidden" id="titolo${film.id_film}" value="${film.titolo}"/>
+          	<input type="hidden" id="sinossi${film.id_film}" value="${film.sinossi}"/>
           </c:forEach>
         </thead>
         <tbody id="table-content"></tbody>

@@ -19,6 +19,10 @@ body {
   	margin: auto;
 }
 
+#logo {
+	padding-right: 80px;
+}
+
 .actionBtn {
 	cursor: pointer;	
 }

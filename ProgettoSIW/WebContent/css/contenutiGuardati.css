@@ -14,6 +14,10 @@ body {
   	margin: auto;
 }
 
+#logo {
+	padding-right: 80px;
+}
+
 #titoloPagina {
 	padding-bottom: 50px;
 	font-family: "Raleway";

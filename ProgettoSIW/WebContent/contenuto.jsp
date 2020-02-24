@@ -150,7 +150,7 @@
 		
 		
 		<div id="valutation" class="row col-lg-11 justify-content-center jumbotron">
-	   		<h3>Quanto ti è piaciuto il film?</h3>
+	   		<h3>Quanto ti è piaciuto il film? </h3>
 	   		<br>	    	
 	   		<div id="rateYo2"></div>
 	   </div>

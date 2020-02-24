@@ -101,6 +101,72 @@
 	
 		<!-- Page Content -->
 	    <div class="container" style="padding-top: 100px; padding-bottom: 100px;">
+	    
+	    	<c:choose>
+				<c:when test="${sessionScope.error=='password'}">
+			    	<div id="myModal" class="modal fade" tabindex="-1">
+				        <div class="modal-dialog">
+				            <div class="modal-content">
+				                <div class="modal-header">
+				                    <h5 class="modal-title">Errore</h5>
+				                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+				                </div>
+				                <div class="modal-body">
+				                    <p>Le password non corrispondono!</p>
+				                    <p class="text-secondary"><small>Riprova.</small></p>
+				                </div>
+				                <div class="modal-footer">
+				                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+				                </div>
+				            </div>
+				        </div>
+				    </div>    
+			    </c:when>
+			</c:choose>
+	    
+	    	<c:choose>
+				<c:when test="${sessionScope.error=='usernameUsed'}">
+			    	<div id="myModal" class="modal fade" tabindex="-1">
+				        <div class="modal-dialog">
+				            <div class="modal-content">
+				                <div class="modal-header">
+				                    <h5 class="modal-title">Errore</h5>
+				                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+				                </div>
+				                <div class="modal-body">
+				                    <p>L'username inserito è già in uso!</p>
+				                    <p class="text-secondary"><small>Riprova.</small></p>
+				                </div>
+				                <div class="modal-footer">
+				                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+				                </div>
+				            </div>
+				        </div>
+				    </div>    
+			    </c:when>
+			</c:choose>
+			
+			<c:choose>
+				<c:when test="${sessionScope.error=='emailUsed'}">
+			    	<div id="myModal" class="modal fade" tabindex="-1">
+				        <div class="modal-dialog">
+				            <div class="modal-content">
+				                <div class="modal-header">
+				                    <h5 class="modal-title">Errore</h5>
+				                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+				                </div>
+				                <div class="modal-body">
+				                    <p>L'email inserita è già in uso!</p>
+				                    <p class="text-secondary"><small>Riprova.</small></p>
+				                </div>
+				                <div class="modal-footer">
+				                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+				                </div>
+				            </div>
+				        </div>
+				    </div>    
+			    </c:when>
+			</c:choose>
 		
 			<div class="signup-form">
 			    <form action="signUp" method="post">
@@ -122,10 +188,10 @@
 			            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
 			        </div>
 					<div class="form-group">
-			            <input type="password" class="form-control" name="confirm_password" placeholder="Conferma Password" required="required">
+			            <input type="password" class="form-control" name="confirmPassword" placeholder="Conferma Password" required="required">
 			        </div>        
 			        <div class="form-group">
-						<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+						<label class="checkbox-inline"><input type="checkbox" required="required"> Accetto i <a href="#">termini di utilizzo</a> &amp; <a href="#">sulla Privacy</a></label>
 					</div>
 					<div class="form-group">
 			            <button type="submit" class="btn btn-success btn-lg btn-block">Registrati</button>

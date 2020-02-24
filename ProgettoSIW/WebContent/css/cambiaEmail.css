@@ -7,6 +7,10 @@ body, html {
   	background-attachment: fixed;
 }
 
+#logo {
+	padding-right: 80px;
+}
+
 h1 {
 	padding-top: 36px;
 }

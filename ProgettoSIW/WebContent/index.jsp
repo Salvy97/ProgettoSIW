@@ -167,18 +167,7 @@
 								</div>
 							</form>
 				        </div>
-     
-			         <!--  <div class="dropdown">
-						  <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						    Cerca contenuto
-						  </button>
-						  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						    <a class="dropdown-item" href="ottieniCercaFilm">Film</a>
-						    <a class="dropdown-item" href="ottieniCercaSerieTV">Serie TV</a>
-						  </div>
-					  </div> -->
-					
-			 	</div>
+			 		</div>
 					
 					
 					
@@ -311,7 +300,7 @@
 					        <div class="content col-lg-4 col-md-6 mb-4">
 					            <div class="card h-100">
 					            	<a href="ottieniEpisodio?id_ep=${ultimiEpisodiInseriti[loop.index].id_episodio}&id_stg=${stagioniPiuViste[loop.index].id_stagione}&id_serie=${serieTVPiuViste[loop.index].id_serieTV}" class="imageContent">
-					            		<img id="imgCard" class="card-img-top" src="images/${serieTVPiuViste[loop.index].locandina}" alt="">
+					            		<img id="imgCard" class="card-img-top" src="images/${ultimeSerieTVInserite[loop.index].locandina}" alt="">
 					            	</a>
 						            <div class="card-body"> 
 						                <h4 id="cardTitle" class="card-title jumbotron">

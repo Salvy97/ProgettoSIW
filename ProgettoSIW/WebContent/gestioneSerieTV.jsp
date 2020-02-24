@@ -208,11 +208,14 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 	</div>
 
     <!-- Page Content -->
-    <div class="main container" id="main">
-      <h1>Gestione Serie TV</h1> 
-      <button type="button" class="btn btn-success adminAddBtn"
-	data-toggle="modal" data-target="#exampleModalCenter">Aggiungi
-	una serie TV</button>
+    <div class="main container card" id="main">
+      <h1>Gestione Serie TV</h1>
+      <div class="row">
+      	<div class="col-lg-2" style="padding-left: 20px; padding-bottom: 20px;">
+	      <button type="button" class="btn btn-success adminAddBtn " data-toggle="modal" data-target="#exampleModalCenter">Aggiungi una serie TV</button>
+		</div>
+		<div class="col-lg-10"></div>
+	  </div>
 	
       <table class="table table-hover">
         <thead>

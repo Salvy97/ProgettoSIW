@@ -47,6 +47,6 @@ public class AggiornaEpisodio extends HttpServlet
 
 		dbm.getDaoFactory().getEpisodioDAO().update(editedEpisodio);
 		
-		res.sendRedirect("gestioneSerieTV");
+		res.sendRedirect("gestioneEpisodi?id=" + Integer.parseInt(req.getParameter("idStagione")));
 	}
 }

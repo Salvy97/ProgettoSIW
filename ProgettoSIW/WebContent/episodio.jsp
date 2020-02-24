@@ -156,7 +156,7 @@
 	   
 		
 		<div id="valutation" class="row col-lg-11 justify-content-center jumbotron">
-	   		<h3>Quanto ti è piaciuta la serie?</h3>
+	   		<h3>Quanto ti è piaciuto l'episodio? </h3>
 	   		<br>	    	
 	   		<div id="rateYo2"></div>
 	   </div>

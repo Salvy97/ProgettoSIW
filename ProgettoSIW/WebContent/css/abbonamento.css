@@ -9,6 +9,10 @@ body {
   	margin: auto;
 }
 
+#logo {
+	padding-right: 80px;
+}
+
 #main {
 	margin-top: 2.5rem;
 	margin-bottom: 9.5rem;

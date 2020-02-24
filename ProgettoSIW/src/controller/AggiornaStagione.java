@@ -25,6 +25,6 @@ public class AggiornaStagione extends HttpServlet
 
 		dbm.getDaoFactory().getStagioneDAO().update(editedStagione);
 		
-		res.sendRedirect("gestioneSerieTV");
+		res.sendRedirect("gestioneStagioni?id=" + Integer.parseInt(req.getParameter("idSerieTV")));
 	}
 }

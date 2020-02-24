@@ -23,6 +23,7 @@ public class SignUp extends HttpServlet
 		String cognome = req.getParameter("cognome");
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
+		String confirmPassword = req.getParameter("confirmPassword");
 		
 		Utente utente = new Utente();
 		Profilo profilo = new Profilo();
@@ -36,13 +37,39 @@ public class SignUp extends HttpServlet
 		utente.setPassword(password);
 		
 		profilo.setUsername(username);
-		
+
 		UtenteDAO uDao = DatabaseManager.getInstance().getDaoFactory().getUtenteDAO();
-		uDao.save(utente);
-		ProfiloDAO pDao = DatabaseManager.getInstance().getDaoFactory().getProfiloDAO();
-		pDao.save(profilo);
-		
-		req.getSession().setAttribute("message", "Registrato con successo!");
-    	resp.sendRedirect("ottieniLogin");	
+		Utente existingUtente = uDao.findByUsername(utente.getUsername());
+		if (password.equals(confirmPassword))
+		{	
+			if (existingUtente == null)
+			{
+				existingUtente = uDao.findByEmail(utente.getEmail());
+				if (existingUtente == null)
+				{
+					uDao.save(utente);
+					ProfiloDAO pDao = DatabaseManager.getInstance().getDaoFactory().getProfiloDAO();
+					pDao.save(profilo);
+					
+					req.getSession().setAttribute("error", "none");
+			    	resp.sendRedirect("ottieniLogin");	
+				}
+				else
+				{
+					req.getSession().setAttribute("error", "emailUsed");
+			    	resp.sendRedirect("ottieniRegistration");
+				}
+			}
+			else
+			{
+				req.getSession().setAttribute("error", "usernameUsed");
+		    	resp.sendRedirect("ottieniRegistration");
+			}	
+		}
+		else
+		{
+			req.getSession().setAttribute("error", "password");
+	    	resp.sendRedirect("ottieniRegistration");
+		}
 	}
 }

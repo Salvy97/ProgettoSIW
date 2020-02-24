@@ -533,16 +533,6 @@
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>controller.ok</servlet-name>
-    <servlet-class>controller.ok</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>controller.ok</servlet-name>
-    <url-pattern>/ok</url-pattern>
-  </servlet-mapping>
-
-
-  <servlet>
     <servlet-name>api.Abbonamenti_getAll</servlet-name>
     <servlet-class>api.Abbonamenti_getAll</servlet-class>
   </servlet>
