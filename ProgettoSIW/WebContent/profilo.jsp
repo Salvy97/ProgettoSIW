@@ -275,7 +275,6 @@
 					            	<a href="ottieniContenuto?id=${fav.id_film}" class="imageContent">
 					            		<img id="imgCard" class="card-img-top" src="images/${fav.locandina}" alt="">
 					            	</a>
-						          
 					             </div>
 					         </div>
 						</c:forEach>
@@ -289,10 +288,9 @@
 						<c:forEach items="${favSerieTVs}" var="fav">
 							<div class="col-lg-4">
 								<div class="card h-100">
-					            	<a href="ottieniContenuto?id=${fav.id_serieTV}" class="imageContent">
+					            	<a href="ottieniStagioni?id_serie=${fav.id_serieTV}" class="imageContent">
 					            		<img id="imgCard" class="card-img-top" src="images/${fav.locandina}" alt="">
 					            	</a>
-						          
 					             </div>
 					         </div>
 						</c:forEach>
