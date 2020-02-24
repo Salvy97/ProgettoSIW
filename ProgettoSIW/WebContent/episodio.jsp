@@ -52,10 +52,10 @@
 		            		<a class="nav-link" href="ottieniSerieTV">Serie TV</a>
 		          		</li>
 		          		<li class="nav-item">
-		            		<a class="nav-link" href="#">Forum</a>
+		            		<a class="nav-link" href="ottieniForum">Forum</a>
 		          		</li>
 		         		<li class="nav-item">
-		            		<a class="nav-link" href="#">Contatti</a>
+		            		<a class="nav-link" href="contatti.jsp">Contatti</a>
 		          		</li>
 		        	</ul>
 	      		</div>
@@ -104,7 +104,7 @@
 	    <input type="hidden" id="contenuto" value="<%= request.getParameter("id_ep") %>"/>
 	        
 	    <div class="contentBackground">
-	    	<img src="images/${serieTV.locandina}"/>
+	    	<img src="${serieTV.immagineForum}"/>
 	    </div>
 	    
 	    <div id="videoTitle">${episodio.titolo}</div>

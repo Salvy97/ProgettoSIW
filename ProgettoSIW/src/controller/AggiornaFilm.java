@@ -38,6 +38,7 @@ public class AggiornaFilm extends HttpServlet
 		immagineForum = req.getParameter("immagineForum");
 		sinossi = req.getParameter("sinossi");
 		
+		Film film = dbm.getDaoFactory().getFilmDAO().cercaPerId(idFilm);
 		Film editedFilm = new Film();
 		editedFilm.setId_film(idFilm);
 		editedFilm.setTitolo(titolo);
@@ -49,6 +50,8 @@ public class AggiornaFilm extends HttpServlet
 		editedFilm.setFilmato(filmato);
 		editedFilm.setImmagineForum(immagineForum);
 		editedFilm.setSinossi(sinossi);
+		editedFilm.setVisualizzazioni(film.getVisualizzazioni());
+		editedFilm.setData_inserimento(film.getData_inserimento());
 
 		dbm.getDaoFactory().getFilmDAO().update(editedFilm);
 		

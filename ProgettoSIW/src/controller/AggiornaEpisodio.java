@@ -33,6 +33,7 @@ public class AggiornaEpisodio extends HttpServlet
 		numeroEpisodio = Integer.parseInt(req.getParameter("numeroEpisodio"));
 		sinossi = req.getParameter("sinossi");
 		
+		Episodio episodio = dbm.getDaoFactory().getEpisodioDAO().cercaPerId(idEpisodio);
 		Episodio editedEpisodio = new Episodio();
 		editedEpisodio.setId_episodio(idEpisodio);
 		editedEpisodio.setTitolo(titolo);
@@ -40,6 +41,8 @@ public class AggiornaEpisodio extends HttpServlet
 		editedEpisodio.setFilmato(filmato);
 		editedEpisodio.setNumero_episodio(numeroEpisodio);
 		editedEpisodio.setSinossi(sinossi);
+		editedEpisodio.setVisualizzazioni(episodio.getVisualizzazioni());
+		editedEpisodio.setData_inserimento(episodio.getData_inserimento());
 		
 		Stagione stagione = new Stagione();
 		stagione.setId_stagione(idStagione);

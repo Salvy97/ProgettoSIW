@@ -35,7 +35,8 @@ body {
 	font-size: 48px;
 	font-weight: bold;
 	color: #ffff00;
-	padding-left: 250px;
+	padding-top: 30px;
+	text-align: center;
 }
 
 .video {
