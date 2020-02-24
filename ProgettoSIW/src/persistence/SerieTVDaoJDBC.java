@@ -182,7 +182,7 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 	public void update(SerieTV serieTV) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update serie_tv SET titolo = ?, anno = ?, stagioni = ?, genere = ?, locandina = ?, immagine_forum = ? WHERE id_serie_tv = ?";
+			String update = "update serie_tv SET titolo = ?, anno = ?, genere = ?, locandina = ?, immagine_forum = ? WHERE id_serie_tv = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, serieTV.getTitolo());
 			statement.setInt(2, serieTV.getAnno());

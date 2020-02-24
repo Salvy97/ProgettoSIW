@@ -174,8 +174,8 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="aggiornaFilm" method="POST">
-						<input type="hidden" name="idFilm" id="idA"/>
+					<form action="aggiornaSerieTV" method="POST">
+						<input type="hidden" name="idSerieTV" id="idA"/>
 						<div class="form-group">
 							<label for="titolo">Titolo</label> <input type="text"
 								class="form-control" name="titolo" id="titoloA" aria-describedby="titoloHelp">

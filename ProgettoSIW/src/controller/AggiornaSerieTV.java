@@ -33,6 +33,6 @@ public class AggiornaSerieTV extends HttpServlet
 		
 		dbm.getDaoFactory().getSerieTVDAO().update(serieTV);
 
-		res.sendRedirect("gestioneFilm");
+		res.sendRedirect("gestioneSerieTV");
 	}
 }
