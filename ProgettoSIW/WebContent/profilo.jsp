@@ -267,7 +267,7 @@
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="emp-profile secondaryEmp">
-					<p id="textInfoTitle">FILM PREFERITI</p>
+					<p class="textInfoTitle">FILM PREFERITI</p>
 					<div class="row">
 						<c:forEach items="${favFilms}" var="fav">
 							<div class="col-lg-4">
@@ -283,7 +283,7 @@
 			</div>
 			<div class="col-lg-6">
 				<div class="emp-profile secondaryEmp">
-					<p id="textInfoTitle">SERIE TV PREFERITE</p>
+					<p class="textInfoTitle">SERIE TV PREFERITE</p>
 					<div class="row">
 						<c:forEach items="${favSerieTVs}" var="fav">
 							<div class="col-lg-4">
