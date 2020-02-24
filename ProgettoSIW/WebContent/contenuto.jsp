@@ -101,15 +101,14 @@
 	    	</div>
 	    </nav>
 	    	    
-	    <input type="hidden" id="contenuto" value="<%= request.getParameter("id") %>"/>
+	    <input type="hidden" id="contenuto" value="<%= request.getParameter("id") %>"/> 
 	        
 	    <div class="contentBackground">
 	    	<img src="${film.immagineForum}"/>
 	    </div>
 	    
 	    <div id="videoTitle">${film.titolo}</div>
-	    
-	    
+
 	    <div class="row col-lg-12 justify-content-center">
 	    	
 	    	<div class="col-lg-1"></div>
@@ -149,10 +148,28 @@
 	   </div>
 		
 		
-		<div id="valutation" class="row col-lg-11 justify-content-center jumbotron">
+		<div id="valutation" class="container jumbotron">
 	   		<h3>Quanto ti è piaciuto il film? </h3>
 	   		<br>	    	
 	   		<div id="rateYo2"></div>
+	   		<div id="fav">
+		   		<c:choose>
+		    		<c:when test="${sessionScope.fav==false}">
+		    			<form id="favForm" action="gestisciFilmPreferito" method="POST">
+		    				<span id="favText">Aggiungilo ai preferiti:</span>
+		    				<input type="hidden" name="contenuto" id="contenutoForm" value="<%= request.getParameter("id") %>"/> 
+			    			<img src="images/emptyStar.png" width="4%" onclick="document.getElementById('favForm').submit();"/>
+			    		</form>
+		    		</c:when>
+		    		<c:otherwise>
+		    			<form id="favForm" action="gestisciFilmPreferito" method="POST">
+		    				<span id="favText">Rimuovilo dai preferiti:</span>
+		    				<input type="hidden" name="contenuto" id="contenutoForm" value="<%= request.getParameter("id") %>"/> 
+			    			<img src="images/filledStar.png" width="4%" onclick="document.getElementById('favForm').submit();"/>
+		    			</form>
+		    		</c:otherwise>
+		    	</c:choose>
+		    </div>
 	   </div>
 		
 	

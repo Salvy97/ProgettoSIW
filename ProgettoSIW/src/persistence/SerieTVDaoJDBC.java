@@ -6,10 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
-
+import model.ContenutoPreferito;
 import model.SerieTV;
 import persistence.dao.SerieTVDao;
-
 
 public class SerieTVDaoJDBC implements SerieTVDao{
 
@@ -351,6 +350,54 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 			try {
 				connection.close();
 			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return serieTVs;
+	}
+
+	@Override
+	public List<SerieTV> findFavouriteSerieTVs(List<ContenutoPreferito> contenutiPreferiti) 
+	{
+		List<SerieTV> serieTVs = new LinkedList<>();
+		Connection connection = this.dataSource.getConnection();
+		try 
+		{
+			for (int i = 0; i < contenutiPreferiti.size(); i++)
+			{
+				PreparedStatement statement;
+				String query = "select * from serie_tv where id_serie_tv = ?";
+				statement = connection.prepareStatement(query);
+				statement.setInt(1, contenutiPreferiti.get(i).getIdContenuto());
+				ResultSet result = statement.executeQuery();
+				
+				if (result.next())
+				{
+					SerieTV serieTV = new SerieTV();
+					
+					serieTV.setId_serieTV(result.getInt("id_serie_tv"));
+					serieTV.setTitolo(result.getString("titolo"));
+					serieTV.setAnno(result.getInt("anno"));
+					serieTV.setGenere(result.getString("genere"));
+					serieTV.setImmagineForum(result.getString("immagine_forum"));
+					serieTV.setLocandina(result.getString("locandina"));
+					
+					serieTVs.add(serieTV);
+				}
+			}
+		}
+		catch (SQLException e) 
+		{
+			throw new PersistenceException(e.getMessage());
+		} 
+		finally 
+		{
+			try 
+			{
+				connection.close();
+			} 
+			catch (SQLException e) 
+			{
 				throw new PersistenceException(e.getMessage());
 			}
 		}

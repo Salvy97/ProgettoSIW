@@ -109,6 +109,25 @@
 				  
 			        <div class="row col-lg-12 catalogoSerieTV justify-content-center">Stagioni</div>
 					
+					<div style="text-align: center">
+						<c:choose>
+				    		<c:when test="${sessionScope.fav==false}">
+				    			<form id="favForm" action="gestisciSerieTVPreferita" method="POST">
+				    				<span id="favText">Aggiungila ai preferiti:</span>
+				    				<input type="hidden" name="contenuto" id="contenutoForm" value="<%= request.getParameter("id_serie") %>"/> 
+					    			<img src="images/emptyStar.png" width="12%" onclick="document.getElementById('favForm').submit();"/>
+					    		</form>
+				    		</c:when>
+				    		<c:otherwise>
+				    			<form id="favForm" action="gestisciSerieTVPreferita" method="POST">
+				    				<span id="favText">Rimuovila dai preferiti:</span>
+				    				<input type="hidden" name="contenuto" id="contenutoForm" value="<%= request.getParameter("id_serie") %>"/> 
+					    			<img src="images/filledStar.png" width="12%" onclick="document.getElementById('favForm').submit();"/>
+				    			</form>
+				    		</c:otherwise>
+				    	</c:choose>
+				    </div>
+					
 				</div>
 				
 				

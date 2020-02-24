@@ -1,6 +1,8 @@
 package persistence.dao;
 
 import java.util.List;
+
+import model.ContenutoPreferito;
 import model.Film;
 
 public interface FilmDao {
@@ -20,4 +22,6 @@ public interface FilmDao {
 	public List<Film> cercaPiuVisti();
 	public int getIdFilmFromTitle(String title);
 	public void incrementaVisualizzazioni(int id);
+	
+	public List<Film> findFavouriteFilms(List<ContenutoPreferito> contenutiPreferiti);
 }

@@ -8,6 +8,8 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
+import model.ContenutoPreferito;
 import model.Film;
 import model.Post;
 import persistence.dao.FilmDao;
@@ -544,5 +546,58 @@ class FilmDaoJDBC implements FilmDao {
 				throw new PersistenceException(e.getMessage());
 			}
 		}
+	}
+
+	@Override
+	public List<Film> findFavouriteFilms(List<ContenutoPreferito> contenutiPreferiti) 
+	{
+		List<Film> films = new LinkedList<>();
+		Connection connection = this.dataSource.getConnection();
+		try 
+		{
+			for (int i = 0; i < contenutiPreferiti.size(); i++)
+			{
+				PreparedStatement statement;
+				String query = "select * from film where id_film = ?";
+				statement = connection.prepareStatement(query);
+				statement.setInt(1, contenutiPreferiti.get(i).getIdContenuto());
+				ResultSet result = statement.executeQuery();
+				
+				if (result.next())
+				{
+					Film film = new Film();
+					
+					film.setId_film(result.getInt("id_film"));
+					film.setTitolo(result.getString("titolo"));
+					film.setAnno(result.getInt("anno"));
+					film.setData_inserimento(result.getDate("data_inserimento"));
+					film.setDurata(result.getInt("durata"));
+					film.setGenere(result.getString("genere"));
+					film.setFilmato(result.getString("filmato"));
+					film.setImmagineForum(result.getString("immagine_forum"));
+					film.setLocandina(result.getString("locandina"));
+					film.setVisualizzazioni(result.getInt("visualizzazioni"));
+					film.setSinossi(result.getString("sinossi"));
+					
+					films.add(film);
+				}
+			}
+		}
+		catch (SQLException e) 
+		{
+			throw new PersistenceException(e.getMessage());
+		} 
+		finally 
+		{
+			try 
+			{
+				connection.close();
+			} 
+			catch (SQLException e) 
+			{
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return films;
 	}
 }

@@ -515,6 +515,24 @@
   </servlet-mapping>
   
   <servlet>
+  	<servlet-name>GestisciFilmPreferito</servlet-name>
+  	<servlet-class>controller.GestisciFilmPreferito</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>GestisciFilmPreferito</servlet-name>
+  	<url-pattern>/gestisciFilmPreferito</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>GestisciSerieTVPreferita</servlet-name>
+  	<servlet-class>controller.GestisciSerieTVPreferita</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>GestisciSerieTVPreferita</servlet-name>
+  	<url-pattern>/gestisciSerieTVPreferita</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>controller.CatalogoAbbonamenti</servlet-name>
     <servlet-class>controller.CatalogoAbbonamenti</servlet-class>
   </servlet>

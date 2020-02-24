@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.ContenutoPreferito;
 import model.SerieTV;
 import model.Stagione;
 import persistence.DatabaseManager;
@@ -33,8 +34,18 @@ public class DammiStagioni extends HttpServlet{
 		req.setAttribute("serieTV", serieTV);
 		req.setAttribute("stagioni", stagioni);
 		
+		List<ContenutoPreferito> contenutiPreferiti = DatabaseManager.getInstance().getDaoFactory().getContenutiPreferitiDAO().findSerieTVsByUsername((String) req.getSession().getAttribute("name"));
+		boolean alreadyFav = false;
+		for (int i = 0; i < contenutiPreferiti.size(); i++)
+			if (contenutiPreferiti.get(i).getIdContenuto() == Integer.parseInt(req.getParameter("id_serie")))
+				alreadyFav = true;
+			
+		if (alreadyFav)
+			req.getSession().setAttribute("fav", true);
+		else
+			req.getSession().setAttribute("fav", false);
+		
 		RequestDispatcher rd = req.getRequestDispatcher("stagioni.jsp");
 		rd.forward(req, resp);
-		
 	}
 }

@@ -67,3 +67,9 @@ function onPlayerStateChange(event)
 		$.post("aggiungiFilmVisto", { contenuto: contenuto }).done(function(data) {}); 
     }
 }
+
+function addToFav()
+{
+	var contenuto = $('#contenuto').val();
+	$.post("aggiungiFilmPreferito", { contenuto: contenuto }).done(function(data) {}); 
+}

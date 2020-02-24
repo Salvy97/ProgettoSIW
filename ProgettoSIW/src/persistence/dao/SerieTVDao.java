@@ -1,6 +1,7 @@
 package persistence.dao;
 
 import java.util.List;
+import model.ContenutoPreferito;
 import model.SerieTV;
 
 public interface SerieTVDao {
@@ -16,4 +17,6 @@ public interface SerieTVDao {
 	public List<SerieTV> findBySearchForm(String genere, int anno);
 	public List<SerieTV> cercaUltimiInseriti();
 	public List<SerieTV> cercaPiuVisti();
+	
+	public List<SerieTV> findFavouriteSerieTVs(List<ContenutoPreferito> contenutiPreferiti);
 }

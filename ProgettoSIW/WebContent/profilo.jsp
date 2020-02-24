@@ -106,7 +106,7 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container emp-profile">
+    <div class="container emp-profile" id="mainEmp">
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
@@ -261,6 +261,45 @@
                 </div>
             </div>
         </div>        
+	</div>
+	
+	<div id="secondaryContainer" class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="emp-profile secondaryEmp">
+					<p id="textInfoTitle">FILM PREFERITI</p>
+					<div class="row">
+						<c:forEach items="${favFilms}" var="fav">
+							<div class="col-lg-4">
+								<div class="card h-100">
+					            	<a href="ottieniContenuto?id=${fav.id_film}" class="imageContent">
+					            		<img id="imgCard" class="card-img-top" src="images/${fav.locandina}" alt="">
+					            	</a>
+						          
+					             </div>
+					         </div>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="emp-profile secondaryEmp">
+					<p id="textInfoTitle">SERIE TV PREFERITE</p>
+					<div class="row">
+						<c:forEach items="${favSerieTVs}" var="fav">
+							<div class="col-lg-4">
+								<div class="card h-100">
+					            	<a href="ottieniContenuto?id=${fav.id_serieTV}" class="imageContent">
+					            		<img id="imgCard" class="card-img-top" src="images/${fav.locandina}" alt="">
+					            	</a>
+						          
+					             </div>
+					         </div>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
     
     <footer class="py-4 bg-dark fixed-bottom">

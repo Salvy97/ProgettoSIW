@@ -37,6 +37,12 @@ body {
 	color: #ffff00;
 	text-align: center;
 	padding-top: 30px;
+	padding-bottom: 20px;
+}
+
+#fav {
+	padding-top: 2%;
+	text-align: center;
 }
 
 .video {
@@ -107,4 +113,17 @@ body {
 	margin: auto;
 	margin-bottom: 20px;
 	padding: 10px;
+}
+
+#favText {
+	font-size: 24px;
+	color: black;
+}
+
+h3 {
+	text-align: center;
+}
+
+#rateYo2 {
+	padding-left: 42%;
 }
