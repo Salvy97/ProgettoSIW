@@ -211,7 +211,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
     <!-- Page Content -->
     <div class="main container card" id="main">
-      <h1>Gestione Episodi</h1>
+      <h1>Gestione Episodi della stagione ${stagione.numero_stagione} di ${serieTV.titolo}</h1>
       <div class="row">
       	<div class="col-lg-2" style="padding-left: 20px; padding-bottom: 20px;">
 	      <button type="button" class="btn btn-success adminAddBtn " data-toggle="modal" data-target="#exampleModalCenter">Aggiungi un episodio</button>
