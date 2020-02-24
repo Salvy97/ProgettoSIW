@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.ContenutoPreferito;
 import model.Film;
+import model.Rating;
 import persistence.DatabaseManager;
 import persistence.dao.FilmDao;
 
@@ -44,7 +45,16 @@ public class DammiContenuto extends HttpServlet{
 					session.setAttribute("fav", false);
 				
 				req.setAttribute("film", film);
-							
+				
+				float ratingValue = DatabaseManager.getInstance().getDaoFactory().getRatingDAO().calculateRatingFilm(Integer.parseInt(req.getParameter("id")));
+				req.setAttribute("rating", ratingValue);
+				
+				Rating rating = DatabaseManager.getInstance().getDaoFactory().getRatingDAO().findRatedFilmByUsername((String) session.getAttribute("name"), Integer.parseInt(req.getParameter("id")));
+				if (rating == null)	
+					req.setAttribute("rated", false);
+				else
+					req.setAttribute("rated", true);
+				
 				RequestDispatcher rd = req.getRequestDispatcher("contenuto.jsp");
 				rd.forward(req, resp);
 			}

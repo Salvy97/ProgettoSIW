@@ -100,4 +100,9 @@ class PostgresDAOFactory extends DAOFactory {
 	public ContenutiPreferitiDAO getContenutiPreferitiDAO() {
 		return new ContenutiPreferitiDAOJDBC(dataSource);
 	}
+	
+	@Override
+	public RatingDAO getRatingDAO() {
+		return new RatingDAOJDBC(dataSource);
+	}
 }

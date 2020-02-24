@@ -1,7 +1,7 @@
 $(function () {
- 
+	
   $("#rateYo").rateYo({
-	  rating: 4.5,
+	  rating: parseFloat(document.getElementById("rating").value),
 	  normalFill: "#808080",
 	  spacing   : "7px",
 	  readOnly: true,
@@ -25,7 +25,10 @@ $(function () {
 		
 	  }).on("rateyo.set", function (e, data) {
 	 
-              alert("Valutazione: " + data.rating);
+		      alert("Valutazione: " + data.rating);
+		  
+              var contenuto = $("#contenuto").val();
+              $.post("valutaFilm", { contenuto: contenuto, rating: data.rating }).done(function(data) {});        
               
               $("#valutation").empty();
               $("#valutation").append('<h3>Grazie per la tua valutazione!</h3>');

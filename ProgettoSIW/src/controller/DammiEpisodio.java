@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Episodio;
+import model.Rating;
 import model.SerieTV;
 import model.Stagione;
 import persistence.DatabaseManager;
@@ -44,6 +45,15 @@ public class DammiEpisodio extends HttpServlet{
 				req.setAttribute("serieTV", serieTV);
 				req.setAttribute("stagione", stagione);
 				req.setAttribute("episodio", episodio);
+				
+				float ratingValue = DatabaseManager.getInstance().getDaoFactory().getRatingDAO().calculateRatingEpisodio(Integer.parseInt(req.getParameter("id_ep")));
+				req.setAttribute("rating", ratingValue);
+				
+				Rating rating = DatabaseManager.getInstance().getDaoFactory().getRatingDAO().findRatedEpisodeByUsername((String) session.getAttribute("name"), Integer.parseInt(req.getParameter("id_ep")));
+				if (rating == null)	
+					req.setAttribute("rated", false);
+				else
+					req.setAttribute("rated", true);
 				
 				RequestDispatcher rd = req.getRequestDispatcher("episodio.jsp");
 				rd.forward(req, resp);

@@ -533,6 +533,24 @@
   </servlet-mapping>
   
   <servlet>
+  	<servlet-name>ValutaFilm</servlet-name>
+  	<servlet-class>controller.ValutaFilm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ValutaFilm</servlet-name>
+  	<url-pattern>/valutaFilm</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>ValutaEpisodio</servlet-name>
+  	<servlet-class>controller.ValutaEpisodio</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ValutaEpisodio</servlet-name>
+  	<url-pattern>/valutaEpisodio</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>controller.CatalogoAbbonamenti</servlet-name>
     <servlet-class>controller.CatalogoAbbonamenti</servlet-class>
   </servlet>

@@ -102,6 +102,7 @@
 	    </nav>
 	    	    
 	    <input type="hidden" id="contenuto" value="<%= request.getParameter("id") %>"/> 
+	    <input type="hidden" id="rating" value="${rating}"/> 
 	        
 	    <div class="contentBackground">
 	    	<img src="${film.immagineForum}"/>
@@ -148,10 +149,19 @@
 	   </div>
 		
 		
-		<div id="valutation" class="container jumbotron">
-	   		<h3>Quanto ti è piaciuto il film? </h3>
-	   		<br>	    	
-	   		<div id="rateYo2"></div>
+		<div class="container jumbotron" id="valutationDiv">
+			<div id="valutation">
+				<c:choose>
+			    	<c:when test="${rated==false}">
+				   		<h3>Quanto ti è piaciuto il film?</h3>
+				   		<br>	    	
+				   		<div id="rateYo2"></div>
+				   	</c:when>
+				 	<c:otherwise>
+				 		<h3>Hai già votato questo contenuto!</h3>
+				 	</c:otherwise>
+				</c:choose>
+			</div>
 	   		<div id="fav">
 		   		<c:choose>
 		    		<c:when test="${sessionScope.fav==false}">
@@ -170,7 +180,7 @@
 		    		</c:otherwise>
 		    	</c:choose>
 		    </div>
-	   </div>
+	    </div>
 		
 	
 		<!-- Footer -->

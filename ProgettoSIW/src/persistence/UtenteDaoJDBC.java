@@ -9,7 +9,8 @@ import java.util.List;
 import model.Utente;
 import persistence.dao.UtenteDAO;
 
-public class UtenteDaoJDBC implements UtenteDAO {
+public class UtenteDaoJDBC implements UtenteDAO 
+{
 	private DataSource dataSource;
 
 	public UtenteDaoJDBC(DataSource dataSource) {

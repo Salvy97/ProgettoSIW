@@ -103,7 +103,15 @@ body {
 	border-color: blue;	
 }
 
-#valutation {
+h3 {
+	text-align: center;
+}
+
+#rateYo2 {
+	padding-left: 42%;
+}
+
+#valutationDiv {
 	margin: auto;
 	margin-bottom: 20px;
 	padding: 10px;
