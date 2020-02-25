@@ -4,7 +4,7 @@ $(document).ready(function()
 	{
 		if (data.length == 0)
 		{
-			$("#notifiche").append('<p>Non hai nuove notifiche</p>');
+			$("#notifiche").append('<p style="padding-left: 20px;">Non hai nuove notifiche</p>');
 			document.getElementById("notificationSymbol").setAttribute("class", "fa fa-envelope-open");
 		}
 		$.each(data, function(key, value)
