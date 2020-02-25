@@ -30,9 +30,8 @@
 	      		</button>
 	      		<div class="collapse navbar-collapse" id="navbarResponsive">
 		        	<ul class="navbar-nav">
-		          		<li class="nav-item active">
+		          		<li class="nav-item">
 		          			<a class="nav-link" href="ottieniIndex">Home
-		              			<span class="sr-only">(current)</span>
 		            		</a>
 		          		</li>
 		          		<li class="nav-item">
@@ -41,7 +40,7 @@
 		          		<li class="nav-item">
 		            		<a class="nav-link" href="ottieniSerieTV">Serie TV</a>
 		          		</li>
-		          		<li class="nav-item">
+		          		<li class="nav-item active">
 		            		<a class="nav-link" href="ottieniForum">Forum</a>
 		          		</li>
 		         		<li class="nav-item">

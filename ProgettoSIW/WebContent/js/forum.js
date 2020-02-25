@@ -125,7 +125,11 @@ function updateCharNumber()
 
 function goToProfileFromComment()
 {
-	location.href = "user?username=" + document.getElementById("commentUsername").innerHTML;
+	var username = document.getElementsByClassName("commentUsername")[0];
+	if (username == null)
+		location.href = "user?username=" + document.getElementsByClassName("lastCommentUsername")[0].innerHTML;
+	else
+		location.href = "user?username=" + username.innerHTML;
 }
 
 function goToProfileFromPost()
