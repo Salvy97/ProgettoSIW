@@ -3,7 +3,7 @@ $(document).ready(function()
 	$.getJSON("ottieniNotifiche", function(data)
 	{
 		if (data.length == 0)
-			$("#notifiche").append('<p style="padding-left: 4px;">Non hai nuove notifiche</p>');
+			$("#notifiche").append('<p>Non hai nuove notifiche</p>');
 		$.each(data, function(key, value)
 		{
 			var idNotifica = value.idNotifica;
