@@ -74,7 +74,7 @@
 				    	<li class="nav-item">
 				    		<div class="dropdown">
 					    		<button class="btn btn-outline-primary" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								    <i class="fa fa-envelope"></i>
+								    <i id="notificationSymbol" class="fa fa-envelope"></i>
 								</button>
 								<div id="notifiche" class="dropdown-menu"></div>
 							</div>
