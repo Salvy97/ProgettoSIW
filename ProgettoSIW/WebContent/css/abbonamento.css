@@ -13,6 +13,13 @@ body {
 	padding-right: 80px;
 }
 
+.fa.fa-envelope {
+	font-size: 20px;
+	width: 20px;
+	text-align: center;
+	text-decoration: none;
+}
+
 #main {
 	margin-top: 2.5rem;
 	margin-bottom: 9.5rem;

@@ -20,6 +20,13 @@ body {
 	padding-right: 80px;
 }
 
+.fa.fa-envelope {
+	font-size: 20px;
+	width: 20px;
+	text-align: center;
+	text-decoration: none;
+}
+
 .contentBackground img {
 	position: fixed;
 	left: 0;

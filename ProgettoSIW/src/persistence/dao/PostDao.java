@@ -6,7 +6,7 @@ import model.Post;
 public interface PostDao {
 	
 	public void save(Post post);  // Create
-	public Post findByPrimaryKey(String id);  // Retrieve
+	public Post findByPrimaryKey(int id);  // Retrieve
 	public List<Post> findAll();
 	public List<Post> findPostsOfThatContent(String contenuto);
 	public List<Post> findPostsOfThatUser(String username);

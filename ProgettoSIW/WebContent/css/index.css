@@ -23,6 +23,13 @@ body {
 	padding-right: 80px;
 }
 
+.fa.fa-envelope {
+	font-size: 20px;
+	width: 20px;
+	text-align: center;
+	text-decoration: none;
+}
+
 #description {
 	font-family: "Raleway";
 	font-weight: bold;
@@ -55,13 +62,13 @@ body {
 	padding-top: 40px;
 }
 
-.fa:hover {
+.socialNetworks.fa:hover {
 	opacity: 0.7;
 	color: white;
 	text-decoration: none;
 }
 
-.fa {
+.socialNetworks.fa {
   padding: 20px;
   font-size: 80px;
   width: 50px;

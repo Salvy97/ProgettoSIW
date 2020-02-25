@@ -44,14 +44,14 @@ public class PostDaoJDBC implements PostDao {
 		}
 	}  
 
-	public Post findByPrimaryKey(String id) {
+	public Post findByPrimaryKey(int id) {
 		Connection connection = this.dataSource.getConnection();
 		Post post = null;
 		try {
 			PreparedStatement statement;
 			String query = "select * from post where id = ?";
 			statement = connection.prepareStatement(query);
-			statement.setString(1, id);
+			statement.setInt(1, id);
 			ResultSet result = statement.executeQuery();
 			if (result.next()) {
 				post = new Post();

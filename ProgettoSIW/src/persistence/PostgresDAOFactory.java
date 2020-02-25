@@ -105,4 +105,9 @@ class PostgresDAOFactory extends DAOFactory {
 	public RatingDAO getRatingDAO() {
 		return new RatingDAOJDBC(dataSource);
 	}
+	
+	@Override
+	public NotificaDAO getNotificaDAO() {
+		return new NotificaDAOJDBC(dataSource);
+	}
 }

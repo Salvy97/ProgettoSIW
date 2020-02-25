@@ -78,27 +78,32 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 						</c:choose>
 					</div>
 	      			<ul class="navbar-nav lg-auto ml-auto sg-auto">
-            			<c:choose>
+		           		<c:choose>
 						    <c:when test="${sessionScope.name!=null}">
+						    	<li class="nav-item">
+						    		<div class="dropdown">
+							    		<button class="btn btn-outline-primary" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										    <i class="fa fa-envelope"></i>
+										</button>
+										<div id="notifiche" class="dropdown-menu"></div>
+									</div>
+						    	</li>
 							    <li class="nav-item">
-						        	<span class="btn btn-outline-primary">${sessionScope.name}</span>
-						        </li>
-							    <div class="dropdown">
-							        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									    &#128100;
-									</button>
-							        <div class="dropdown-menu">
-							        	<h6 class="dropdown-header">${sessionScope.name}</h6>
-							        	<div class="dropdown-divider"></div>
-							            <a href="${pageContext.request.contextPath}/user?username=${sessionScope.name}" class="dropdown-item">Profilo</a>
-							            <c:choose>
-						    				<c:when test="${sessionScope.abbonamento==false}">
-						    					 <a href="abbonamento" class="dropdown-item">Abbonati</a>
-						    				</c:when>
-						    			</c:choose>
-							            <a href="LogoutServlet" class="dropdown-item">Logout</a>
+							    	<div class="dropdown">
+						        		<button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${sessionScope.name}  &#128100;</button>
+						        		<div class="dropdown-menu">
+								        	<h6 class="dropdown-header">${sessionScope.name}</h6>
+								        	<div class="dropdown-divider"></div>
+									        <a href="${pageContext.request.contextPath}/user?username=${sessionScope.name}" class="dropdown-item">Profilo</a>
+									        <c:choose>
+								    			<c:when test="${sessionScope.abbonamento==false}">
+								    				<a href="abbonamento" class="dropdown-item">Abbonati</a>
+								    			</c:when>
+								    		</c:choose>
+									        <a href="LogoutServlet" class="dropdown-item">Logout</a>
+							        	</div>
 							        </div>
-							    </div>
+						        </li>
 						    </c:when>    
 						    <c:otherwise>
 						    	<li class="nav-item">
@@ -109,7 +114,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 			          			</li>
 						    </c:otherwise>
 						</c:choose>
-	        		</ul>
+		       		</ul>
 	    		</div>
       </div>
     </nav>
@@ -273,5 +278,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.js"></script>
     <script src="js/gestioneEpisodi.js"></script>
+    <script src="js/notifiche.js"></script>
   </body>
 </html>

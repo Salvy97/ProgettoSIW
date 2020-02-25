@@ -1,6 +1,7 @@
 package persistence;
 
 import persistence.dao.FilmDao;
+import persistence.dao.NotificaDAO;
 import persistence.dao.PostDao;
 import persistence.dao.ProfiloDAO;
 import persistence.dao.RatingDAO;
@@ -66,4 +67,5 @@ public abstract class DAOFactory {
   public abstract ContenutiGuardatiDAO getContenutiGuardatiDAO();
   public abstract ContenutiPreferitiDAO getContenutiPreferitiDAO();
   public abstract RatingDAO getRatingDAO();
+  public abstract NotificaDAO getNotificaDAO();
 }

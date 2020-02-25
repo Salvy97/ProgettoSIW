@@ -551,6 +551,24 @@
   </servlet-mapping>
   
   <servlet>
+  	<servlet-name>DammiNotifiche</servlet-name>
+  	<servlet-class>controller.DammiNotifiche</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DammiNotifiche</servlet-name>
+  	<url-pattern>/ottieniNotifiche</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>EliminaNotifica</servlet-name>
+  	<servlet-class>controller.EliminaNotifica</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>EliminaNotifica</servlet-name>
+  	<url-pattern>/eliminaNotifica</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>controller.CatalogoAbbonamenti</servlet-name>
     <servlet-class>controller.CatalogoAbbonamenti</servlet-class>
   </servlet>
