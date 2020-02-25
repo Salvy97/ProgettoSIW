@@ -25,23 +25,22 @@ class FilmDaoJDBC implements FilmDao {
 	public void save(Film film) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert into film(id_film, titolo, anno,"
-					+ " durata, genere, locandina, regista, filmato, data_inserimento, visualizzazioni, immagine_forum, sinossi) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+			String insert = "insert into film(titolo, anno,"
+					+ " durata, genere, locandina, regista, filmato, data_inserimento, visualizzazioni, immagine_forum, sinossi) values (?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 
-			statement.setInt(1, film.getId_film());
-			statement.setString(2, film.getTitolo());
-			statement.setInt(3, film.getAnno());
-			statement.setInt(4, film.getDurata());
-			statement.setString(5, film.getGenere());
-			statement.setString(6, film.getLocandina());
-			statement.setString(7, film.getRegista());
-			statement.setString(8, film.getFilmato());
+			statement.setString(1, film.getTitolo());
+			statement.setInt(2, film.getAnno());
+			statement.setInt(3, film.getDurata());
+			statement.setString(4, film.getGenere());
+			statement.setString(5, film.getLocandina());
+			statement.setString(6, film.getRegista());
+			statement.setString(7, film.getFilmato());
 			Timestamp timestamp = new Timestamp(new Date().getTime());
-			statement.setTimestamp(9, timestamp);
-			statement.setInt(10, film.getVisualizzazioni());
-			statement.setString(11, film.getImmagineForum());
-			statement.setString(12, film.getSinossi());
+			statement.setTimestamp(8, timestamp);
+			statement.setInt(9, film.getVisualizzazioni());
+			statement.setString(10, film.getImmagineForum());
+			statement.setString(11, film.getSinossi());
 
 			statement.executeUpdate();
 		} catch (SQLException e) {

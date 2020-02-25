@@ -149,9 +149,11 @@
 	    </div>
 		
 		
-		<div id="sinossi" class="row col-lg-11 jumbotron">
+		<div id="sinossi" class="container jumbotron">
 	   		<h3 class="text-danger">Sinossi</h3>
-	   		<h5 class="lead">${film.sinossi}</h5>
+	   		<div>
+	   			<h5 class="lead">${film.sinossi}</h5>
+	   		</div>
 	   </div>
 		
 		
