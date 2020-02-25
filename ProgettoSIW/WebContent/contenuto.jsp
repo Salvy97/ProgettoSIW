@@ -169,22 +169,29 @@
 				</c:choose>
 			</div>
 	   		<div id="fav">
-		   		<c:choose>
-		    		<c:when test="${sessionScope.fav==false}">
-		    			<form id="favForm" action="gestisciFilmPreferito" method="POST">
-		    				<span id="favText">Aggiungilo ai preferiti:</span>
-		    				<input type="hidden" name="contenuto" id="contenutoForm" value="<%= request.getParameter("id") %>"/> 
-			    			<img src="images/emptyStar.png" width="4%" onclick="document.getElementById('favForm').submit();"/>
-			    		</form>
-		    		</c:when>
-		    		<c:otherwise>
-		    			<form id="favForm" action="gestisciFilmPreferito" method="POST">
-		    				<span id="favText">Rimuovilo dai preferiti:</span>
-		    				<input type="hidden" name="contenuto" id="contenutoForm" value="<%= request.getParameter("id") %>"/> 
-			    			<img src="images/filledStar.png" width="4%" onclick="document.getElementById('favForm').submit();"/>
-		    			</form>
-		    		</c:otherwise>
-		    	</c:choose>
+	   			<div class="row">
+	   				<div class="col-lg-8">
+				   		<c:choose>
+				    		<c:when test="${sessionScope.fav==false}">
+				    			<form id="favForm" action="gestisciFilmPreferito" method="POST">
+				    				<span id="favText">Aggiungilo ai preferiti:</span>
+				    				<input type="hidden" name="contenuto" id="contenutoForm" value="<%= request.getParameter("id") %>"/> 
+					    			<img src="images/emptyStar.png" width="6%" onclick="document.getElementById('favForm').submit();"/>
+					    		</form>
+				    		</c:when>
+				    		<c:otherwise>
+				    			<form id="favForm" action="gestisciFilmPreferito" method="POST">
+				    				<span id="favText">Rimuovilo dai preferiti:</span>
+				    				<input type="hidden" name="contenuto" id="contenutoForm" value="<%= request.getParameter("id") %>"/> 
+					    			<img src="images/filledStar.png" width="6%" onclick="document.getElementById('favForm').submit();"/>
+				    			</form>
+				    		</c:otherwise>
+				    	</c:choose>
+				    </div>
+				    <div class="col-lg-4" style="text-align: right;">
+						<a href="ottieniPost?contenuto=${film.titolo}"><button class="btn btn-success">Forum del film</button></a>
+					</div>
+				</div>
 		    </div>
 	    </div>
 		

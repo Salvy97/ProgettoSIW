@@ -179,6 +179,9 @@
 				 	</c:otherwise>
 				</c:choose>
 		    </div>
+		    <div style="text-align: right;">
+				<a href="ottieniPost?contenuto=${serieTV.titolo}"><button class="btn btn-success">Forum della serie</button></a>
+			</div>
 		</div>
 	
 		<!-- Footer -->

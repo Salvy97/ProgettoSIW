@@ -33,17 +33,22 @@ public class CreaCommento extends HttpServlet
 		
 		if (comment != null)
 		{
-			CommentoDAO fDao = DatabaseManager.getInstance().getDaoFactory().getCommentoDAO();
-			fDao.save(commento);
+			CommentoDAO cDao = DatabaseManager.getInstance().getDaoFactory().getCommentoDAO();
+			cDao.save(commento);
 			
 			Notifica notifica = new Notifica();
 			Post post = DatabaseManager.getInstance().getDaoFactory().getPostDAO().findByPrimaryKey(idPost);
 			notifica.setPost(post);
 			notifica.setUsername(post.getUsername());
-			notifica.setCommento(commento);
-			DatabaseManager.getInstance().getDaoFactory().getNotificaDAO().save(notifica);
 			
-			resp.sendRedirect("ottieniPost?contenuto=" + contenuto);
+			notifica.setCommento(cDao.getLastOne());
+			if (!notifica.getUsername().equals(username))
+				DatabaseManager.getInstance().getDaoFactory().getNotificaDAO().save(notifica);
+			
+			if (!contenuto.equals(""))
+				resp.sendRedirect("ottieniPost?contenuto=" + contenuto);
+			else
+				resp.sendRedirect("ottieniPostUser?username=" + req.getParameter("username"));
 		}
 	}
 }

@@ -156,6 +156,7 @@
 				    			<input name="commento" id="commento" class="col-lg-10" placeholder="Commenta" onkeyup="updateCharNumber();"/>
 				    			<input type="hidden" name="post" id="postCommento"/>
 				    			<input type="hidden" name="contenuto" id="contenutoCommento"/>
+				    			<input type="hidden" name="username" value="<%= request.getParameter("username") %>"/>
 				    		</form>
 				    		<button class="btn btn-info col-lg-2" name="posta" style="margin: 0 10px;" onclick="commenta();">Posta</button>
 			    		</div>

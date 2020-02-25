@@ -129,17 +129,6 @@ public class CommentoDAOJDBC implements CommentoDAO
 		}	
 		return commenti;
 	}
-	
-	@Override
-	public List<Commento> findAll() 
-	{
-		return null;
-	}
-
-	@Override
-	public void update(Commento commento) 
-	{	
-	}
 
 	@Override
 	public void delete(Commento commento) {
@@ -159,5 +148,45 @@ public class CommentoDAOJDBC implements CommentoDAO
 				throw new PersistenceException(e.getMessage());
 			}
 		}	
+	}
+
+	@Override
+	public Commento getLastOne() 
+	{
+		List<Commento> commenti = new ArrayList<Commento>();
+		Connection connection = this.dataSource.getConnection();
+		try 
+		{
+			PreparedStatement statement;
+			String query = "select * from commento";
+			statement = connection.prepareStatement(query);
+			ResultSet result = statement.executeQuery();
+			Commento commento = null;
+			while (result.next())
+			{
+				commento = new Commento();
+				commento.setId(result.getInt("id"));				
+				commento.setCommento(result.getString("commento"));
+				commento.setUsername(result.getString("username"));
+				commento.setPost(result.getInt("post"));
+				commenti.add(commento);
+			}
+		} 
+		catch (SQLException e) 
+		{
+			throw new PersistenceException(e.getMessage());
+		} 
+		finally 
+		{
+			try 
+			{
+				connection.close();
+			} 
+			catch (SQLException e) 
+			{
+				throw new PersistenceException(e.getMessage());
+			}
+		}	
+		return commenti.get(commenti.size() - 1);
 	}
 }
