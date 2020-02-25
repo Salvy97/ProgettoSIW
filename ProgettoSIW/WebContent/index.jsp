@@ -174,8 +174,6 @@
 				        </div>
 			 		</div>
 					
-					
-					
 		    		<div id="description" class="carousel slide jumbotron row" data-ride="carousel" style="margin: 0 auto;">
 			    		<div class="col-lg-3" style="margin: 0 auto; padding: 0;">
 			    			<img src="images/logoDescription.gif"/>	
