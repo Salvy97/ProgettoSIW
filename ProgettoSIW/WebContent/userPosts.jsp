@@ -177,10 +177,8 @@
 	    </footer>
 	
 		<!-- Bootstrap core JavaScript -->
-	 	
+	 	<script src="jquery/jquery.min.js"></script>
 	    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-	    
-	    <script src="jquery/jquery.min.js"></script>
 	    <script src="js/userPosts.js"></script>
 	    <script src="js/notifiche.js"></script>
 	</body>
