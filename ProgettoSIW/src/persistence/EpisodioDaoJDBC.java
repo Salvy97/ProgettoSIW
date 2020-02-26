@@ -95,16 +95,16 @@ class EpisodioDaoJDBC implements EpisodioDao {
 	public void update(Episodio episodio) {
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update episodio SET titolo = ?, durata = ?, filmato = ?, visualizzazioni = ?, numero_episodio = ?, stagione_id = ? WHERE id_episodio = ?";
+			String update = "update episodio SET titolo = ?, durata = ?, filmato = ?, visualizzazioni = ?, numero_episodio = ?, sinossi = ?, stagione_id = ? WHERE id_episodio = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, episodio.getTitolo());
 			statement.setInt(2, episodio.getDurata());
 			statement.setString(3, episodio.getFilmato());
 			statement.setInt(4, episodio.getVisualizzazioni());
 			statement.setInt(5, episodio.getNumero_episodio());
-			statement.setString(7, episodio.getSinossi());
-			statement.setInt(6, episodio.getStagione().getId_stagione());
-			statement.setInt(7, episodio.getId_episodio());
+			statement.setString(6, episodio.getSinossi());
+			statement.setInt(7, episodio.getStagione().getId_stagione());
+			statement.setInt(8, episodio.getId_episodio());
 			
 			statement.executeUpdate();
 		} catch (SQLException e) {
