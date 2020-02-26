@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Film;
+import model.SerieTV;
 import persistence.DatabaseManager;
 import persistence.dao.FilmDao;
+import persistence.dao.SerieTVDao;
 
 
 public class DammiContenutoDaTitolo extends HttpServlet{
@@ -29,23 +31,30 @@ public class DammiContenutoDaTitolo extends HttpServlet{
 				FilmDao fDao = DatabaseManager.getInstance().getDaoFactory().getFilmDAO();
 				Film film = fDao.cercaPerId(fDao.getIdFilmFromTitle(req.getParameter("contenuto")));
 				
-				req.setAttribute("film", film);
+				if (film == null)
+				{
+					SerieTVDao sDao = DatabaseManager.getInstance().getDaoFactory().getSerieTVDAO();
+					SerieTV serieTV = sDao.cercaPerId(sDao.getIdSerieTVFromTitle(req.getParameter("contenuto")));
 				
-				RequestDispatcher rd = req.getRequestDispatcher("contenuto.jsp");
-				rd.forward(req, resp);
+					RequestDispatcher rd = req.getRequestDispatcher("ottieniStagioni?id_serie=" + serieTV.getId_serieTV());
+					rd.forward(req, resp);
+				}
+				else
+				{
+					req.setAttribute("film", film);
+					
+					RequestDispatcher rd = req.getRequestDispatcher("ottieniContenuto?id=" + film.getId_film());
+					rd.forward(req, resp);
+				}
 			}
 			else
 			{
-				req.setAttribute("message", "Effettuare l'abbonamento!");
-				
 				RequestDispatcher rd = req.getRequestDispatcher("ottieniIndex");
 				rd.forward(req, resp);
 			}
         }
 		else
 		{
-			req.setAttribute("message", "Effettuare login!");
-			
 			RequestDispatcher rd = req.getRequestDispatcher("ottieniIndex");
 			rd.forward(req, resp);
 		}

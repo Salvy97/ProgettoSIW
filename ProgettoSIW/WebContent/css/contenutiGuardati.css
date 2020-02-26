@@ -148,3 +148,7 @@ div.footer a.Cbtn-danger{
 div.footer a.Cbtn-danger:hover{
 	background-color: #fd7676;
 }
+
+#contenuti {
+	padding-bottom: 100px;
+}

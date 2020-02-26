@@ -112,7 +112,7 @@
     </nav>
 
 
-	<div class="container">
+	<div id="contenuti" class="container">
 		<div id="titoloPagina">Film guardati da <%= request.getParameter("username") %></div>
         <div class="row"> 
         	<c:forEach items="${contenutiGuardati}" var="contenutoGuardato">

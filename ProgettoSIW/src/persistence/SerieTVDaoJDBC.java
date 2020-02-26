@@ -404,4 +404,35 @@ public class SerieTVDaoJDBC implements SerieTVDao{
 		return serieTVs;
 	}
 
+	@Override
+	public int getIdSerieTVFromTitle(String title) 
+	{
+		Connection connection = this.dataSource.getConnection();
+		int idSerieTV = 0;
+		try
+		{
+			PreparedStatement statement;
+			String query = "select id_serie_tv from serie_tv where serie_tv.titolo = '" + title + "'";
+			statement = connection.prepareStatement(query);
+			ResultSet result = statement.executeQuery();
+			while (result.next()) 
+				idSerieTV = result.getInt(1);
+		} 
+		catch (SQLException e) 
+		{
+			throw new PersistenceException(e.getMessage());
+		} 
+		finally 
+		{
+			try 
+			{
+				connection.close();
+			} catch (SQLException e) 
+			{
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return idSerieTV;
+	}
+
 }

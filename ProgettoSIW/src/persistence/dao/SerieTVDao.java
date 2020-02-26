@@ -19,4 +19,5 @@ public interface SerieTVDao {
 	public List<SerieTV> cercaPiuVisti();
 	
 	public List<SerieTV> findFavouriteSerieTVs(List<ContenutoPreferito> contenutiPreferiti);
+	public int getIdSerieTVFromTitle(String title);
 }
